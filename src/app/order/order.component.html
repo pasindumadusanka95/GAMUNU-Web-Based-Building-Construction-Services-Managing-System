@@ -1,0 +1,66 @@
+
+<!-- order form -->
+<form #orderForm="ngForm" autocomplete="off" (submit)="onSubmit(orderForm)">
+  <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="orderService.selectedOrder._id">
+  <div class="row">
+    <div class="col-lg-5 col-md-12 col-sm-12 offset-sm-2">
+      <div class="row">
+
+          <div class="col-md-12 mb-3">
+              <label>Date</label>
+              <input type="text" name="date" #date="ngModel" [(ngModel)]="orderService.selectedOrder.date" class="form-control" required>
+              <div *ngIf="date.invalid && date.touched" class="validation-error">This field is required.</div>
+            </div>
+        <div class="col-md-12 mb-3">
+          <label>Order ID</label>
+          <input type="number" name="order_id" #order_id="ngModel" [(ngModel)]="orderService.selectedOrder.order_id" class="form-control" required>
+        </div>
+
+        <div class="col-md-12 mb-3">
+          <label>Service ID</label>
+          <input type="number" name="service_id" #service_id="ngModel" [(ngModel)]="orderService.selectedOrder.service_id" class="form-control" required>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <label>Customer Name</label>
+          <input type="text" name="cus_name" #cus_name="ngModel" [(ngModel)]="orderService.selectedOrder.cus_name" class="form-control" required>
+        </div>
+
+        <div class="col-md-12 mb-3">
+          <label>Customer Phone</label>
+          <input type="number" name="cus_phone" #cus_phone="ngModel" [(ngModel)]="orderService.selectedOrder.cus_phone" class="form-control" required>
+          </div>
+
+          <div class="col-md-12 mb-3">
+            <label>Customer Address</label>
+            <input type="text" name="cus_address" #cus_address="ngModel" [(ngModel)]="orderService.selectedOrder.cus_address" class="form-control" required>
+            </div>
+
+            <div class="col-md-12 mb-3">
+              <label>Customer Email</label>
+              <input type="text" name="cus_email" #cus_email="ngModel" [(ngModel)]="orderService.selectedOrder.cus_email" class="form-control" required>
+              </div>
+
+              <div class="col-md-12 mb-3">
+                <label>Payment ID</label>
+                <input type="number" name="payment_id" #payment_id="ngModel" [(ngModel)]="orderService.selectedOrder.payment_id" class="form-control" required>
+                </div>
+
+
+
+  </div>
+      <div class="form-group text-right">
+        <button type="button" class="btn btn-secondary gap-right" (click)="resetForm(form)">Reset</button>
+        <button type="submit" class="btn btn-success" [disabled]="form.invalid" value="submit">Add Lectuer</button>
+      </div>
+
+    </div>
+  </div>
+
+</form><!-- Student form ends-->
+<div class="alert alert-info"  *ngIf="showSuccessMessage">
+  Submitted successfully.
+</div>
