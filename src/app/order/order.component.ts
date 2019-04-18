@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../shared/order.service';
 import {NgForm} from '@angular/forms';
+
+//declare var M:any;
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
@@ -12,6 +14,7 @@ export class OrderComponent implements OnInit {
   constructor(public orderService: OrderService) { }
 
   ngOnInit() {
+    this.resetForm();
   }
 
 resetForm(form?: NgForm){
@@ -27,8 +30,14 @@ resetForm(form?: NgForm){
     cus_address: '',
     cus_email: '',
     payment_id: null
-    }
+    };
   }
 }
 
+onSubmit(form : NgForm){
+  this.orderService.postOrder(form.value).subscribe((res)=>{
+    this.resetForm(form);
+   // M.toast({html: 'Saved Successfully', classes: 'rounded'});
+  });
+}
 }

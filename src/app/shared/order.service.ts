@@ -13,6 +13,15 @@ export class OrderService {
 
   selectedOrder: Order;
   orders: Order[];
+  readonly baseURL= 'http://localhost:3000/orders';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  postOrder(ord: Order){
+    return this.http.post(this.baseURL,ord);
+  }
+
+  getOrderList(){
+    return this.http.get(this.baseURL);
+  }
 }

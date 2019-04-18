@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
-
+import { OrderService } from '../../shared/order.service';
+import {Order} from '../../shared/order.model';
 // core components
 import {
   chartOptions,
@@ -22,10 +23,10 @@ export class DashboardComponent implements OnInit {
   public clicked: boolean = true;
   public clicked1: boolean = false;
 
-  constructor() { }
+  constructor(public orderService: OrderService) { }
 
   ngOnInit() {
-
+    this.refreshOrderList();
     this.datasets = [
       [0, 20, 10, 30, 15, 40, 20, 60, 60],
       [0, 20, 5, 25, 10, 30, 15, 40, 40]
@@ -62,4 +63,10 @@ export class DashboardComponent implements OnInit {
     this.salesChart.update();
   }
 
+
+  refreshOrderList(){
+    this.orderService.getOrderList().subscribe((res)=>{
+      this.orderService.orders= res as Order[];
+    });
+  }
 }

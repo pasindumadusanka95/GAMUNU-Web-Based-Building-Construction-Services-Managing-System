@@ -37,7 +37,7 @@ router.put('/:id', (req, res) => {
         cus_email: req.body.cus_email,
         payment_id:req.body.payment_id,
       };
-  order.findByIdAndUpdate(req.params.id, { $set: emp }, { new: true }, (err, doc) => {
+  order.findByIdAndUpdate(req.params.id, { $set: ord }, { new: true }, (err, doc) => {
       if (!err) { res.send(doc); }
       else { console.log('Error in Order Update :' + JSON.stringify(err, undefined, 2)); }
   });

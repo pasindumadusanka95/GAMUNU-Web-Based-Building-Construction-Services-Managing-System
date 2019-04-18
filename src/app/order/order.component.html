@@ -3,7 +3,7 @@
 <form #orderForm="ngForm" autocomplete="off" (submit)="onSubmit(orderForm)">
   <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="orderService.selectedOrder._id">
   <div class="row">
-    <div class="col-lg-5 col-md-12 col-sm-12 offset-sm-2">
+    <div class="col-lg-3 col-md-12 col-sm-12 offset-sm-2">
       <div class="row">
 
           <div class="col-md-12 mb-3">
@@ -53,8 +53,8 @@
 
   </div>
       <div class="form-group text-right">
-        <button type="button" class="btn btn-secondary gap-right" (click)="resetForm(form)">Reset</button>
-        <button type="submit" class="btn btn-success" [disabled]="form.invalid" value="submit">Add Lectuer</button>
+        <button type="button" class="btn btn-secondary gap-right" (click)="resetForm(orderForm)">Reset</button>
+        <button type="submit" class="btn btn-success" [disabled]="orderForm.invalid" value="submit">Add Lectuer</button>
       </div>
 
     </div>
