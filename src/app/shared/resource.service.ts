@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
-import {Project} from './project.model';
+import {Resource} from './resource.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProjectService {
+export class ResourceService {
 
-  selectedProject: Project;
-  projects: Project[];
-  readonly baseURL= 'http://localhost:3000/projects';
+  selectedResource: Resource;
+  resource: Resource[];
+  readonly baseURL= 'http://localhost:3000/resources';
 
   constructor(private http: HttpClient) { }
 
-  postProject(pro: Project){
+  postResource(pro: Resource){
     return this.http.post(this.baseURL,pro);
   }
 
-  getProjectList(){
+  getResourceList(){
     return this.http.get(this.baseURL);
   }
 }

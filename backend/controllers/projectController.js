@@ -57,7 +57,7 @@ router.delete('/:id', (req, res) => {
 });
 
 router.post('/',(req,res)=>{
-
+  console.log(req.body);
     var pro= new project({
       project_id: req.body.project_id,
       order_id: req.body.order_id,
@@ -70,6 +70,7 @@ router.post('/',(req,res)=>{
       project_cost:req.body.project_cost,
       worker_count: req.body.worker_count,
   });
+
   pro.save((err,doc)=>{
     if(!err){res.send(doc); }
     else { console.log('Error in Project Save : ' + JSON.stringify(err,undefined,2));}
