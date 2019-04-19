@@ -9,8 +9,8 @@ import {Jobapply} from './jobapply.model';
 export class JobapplyService {
 
   selectedJobapply: Jobapply;
-  jobapply: Jobapply[];
-  readonly baseURL= 'http://localhost:3000/jobapply';
+  jobapplys: Jobapply[];
+  readonly baseURL= 'http://localhost:3000/jobapplys';
 
   constructor(private http: HttpClient) { }
 
@@ -20,5 +20,6 @@ export class JobapplyService {
 
   getJobapplyList(){
     return this.http.get(this.baseURL);
+
   }
 }

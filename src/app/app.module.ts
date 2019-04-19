@@ -15,6 +15,8 @@ import { ComponentsModule } from './components/components.module';
 import { OrderComponent } from './order/order.component';
 
 
+
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -30,6 +32,8 @@ import { OrderComponent } from './order/order.component';
     AdminLayoutComponent,
     AuthLayoutComponent,
     OrderComponent
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
