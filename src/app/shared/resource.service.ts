@@ -14,8 +14,8 @@ export class ResourceService {
 
   constructor(private http: HttpClient) { }
 
-  postResource(pro: Resource){
-    return this.http.post(this.baseURL,pro);
+  postResource(reso: Resource){
+    return this.http.post(this.baseURL,reso);
   }
 
   getResourceList(){

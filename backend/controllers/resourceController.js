@@ -54,8 +54,8 @@ router.delete('/:id', (req, res) => {
 });
 
 router.post('/',(req,res)=>{
-  var reso= new resoruce({
-    resoruce_id: req.body.resoruce_id,
+  var reso= new resource({
+    resource_id: req.body.resource_id,
     resource_type: req.body. resource_type,
     resource_name:req.body. resource_name,
     resource_owner: req.body. resource_owner,
