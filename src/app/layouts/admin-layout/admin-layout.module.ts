@@ -15,6 +15,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ServiceComponent } from 'src/app/service/service.component';
 import { ResourcesComponent } from 'src/app/resources/resources.component';
 import { ProjectsComponent } from 'src/app/projects/projects.component';
+import { AddserviceComponent } from 'src/app/addservice/addservice.component';
+import { AddprojectsComponent } from 'src/app/addprojects/addprojects.component';
+import { AddresourcesComponent } from 'src/app/addresources/addresources.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -34,8 +37,11 @@ import { ProjectsComponent } from 'src/app/projects/projects.component';
     MapsComponent,
     ServiceComponent,
     ResourcesComponent,
-    ProjectsComponent
-  ]
+    ProjectsComponent,
+    AddserviceComponent,
+    AddresourcesComponent,
+    AddprojectsComponent
+  ], entryComponents:[AddserviceComponent]
 })
 
 export class AdminLayoutModule {}

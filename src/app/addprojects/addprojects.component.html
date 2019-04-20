@@ -1,0 +1,78 @@
+<!-- order form -->
+
+<form #projectForm="ngForm" autocomplete="off" (submit)="onSubmit(projectForm)">
+  <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="projectService.selectedProject._id">
+  <div class="row">
+
+    <div class="col-md-12 mb-3">
+              <label>Project ID</label>
+              <input size="16" type="number" name="project_id" #project_id="ngModel" [(ngModel)]="projectService.selectedProject.project_id" class="form-control" required>
+              <div *ngIf="project_id.invalid && project_id.touched" class="validation-error">This field is required.</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 mb-3">
+          <label>Order ID</label>
+          <input size="16" type="number" name="order_id" #order_id="ngModel" [(ngModel)]="projectService.selectedProject.order_id" class="form-control" required>
+        </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 mb-3">
+          <label>Project Name</label>
+          <input size="16" type="text" name="project_name" #project_name="ngModel" [(ngModel)]="projectService.selectedProject.project_name" class="form-control" required>
+        </div>
+        </div>
+
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <label>Start Date</label>
+          <input size="16" type="text" name="start_date" #start_date="ngModel" [(ngModel)]="projectService.selectedProject.start_date" class="form-control" required>
+        </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+        <label>End Date</label>
+        <input size="16" type="text" name="end_date" #end_date="ngModel" [(ngModel)]="projectService.selectedProject.end_date" class="form-control" required>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mb-3">
+      <label>Project Location</label>
+      <input size="16" type="text" name="project_loc" #project_loc="ngModel" [(ngModel)]="projectService.selectedProject.project_loc" class="form-control" required>
+    </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 mb-3">
+    <label>Customer Name</label>
+    <input size="16" type="text" name="cus_name" #cus_name="ngModel" [(ngModel)]="projectService.selectedProject.cus_name" class="form-control" required>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 mb-3">
+  <label>Project Status</label>
+  <input size="16" type="text" name="project_status" #project_status="ngModel" [(ngModel)]="projectService.selectedProject.project_status" class="form-control" required>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-12 mb-3">
+<label>Project Cost</label>
+<input size="16" type="text" name="project_cost" #project_cost="ngModel" [(ngModel)]="projectService.selectedProject.project_cost" class="form-control" required>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-12 mb-3">
+<label>Worker Count</label>
+<input size="16" type="text" name="worker_count" #worker_count="ngModel" [(ngModel)]="projectService.selectedProject.worker_count" class="form-control" required>
+</div>
+</div>
+      <div class="form-group text-right">
+        <button type="button" class="btn btn-secondary gap-right" (click)="resetForm(projectForm)">Reset</button>
+        <button type="submit" class="btn btn-success" [disabled]="projectForm.invalid" value="submit">Submit</button>
+      </div>
+
+
+
+
+</form>
+

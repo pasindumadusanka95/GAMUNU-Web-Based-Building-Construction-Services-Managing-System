@@ -7,12 +7,15 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
-
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {  ToastrModule } from 'ngx-toastr';
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { OrderComponent } from './order/order.component';
+import { AddserviceComponent } from './addservice/addservice.component';
+import { AddresourcesComponent } from './addresources/addresources.component';
+import { AddprojectsComponent } from './addprojects/addprojects.component';
 
 
 
@@ -25,17 +28,25 @@ import { OrderComponent } from './order/order.component';
     ComponentsModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ToastrModule.forRoot({      // Register NgxToast NPM module
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    OrderComponent
+    OrderComponent,
+
+
 
 
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [NgbActiveModal],
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }
