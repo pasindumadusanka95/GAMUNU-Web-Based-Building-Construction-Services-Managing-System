@@ -45,7 +45,7 @@ router.delete('/:id', (req, res) => {
 
   service.findByIdAndRemove(req.params.id, (err, doc) => {
       if (!err) { res.send(doc); }
-      else { console.log('Error in Resource Delete :' + JSON.stringify(err, undefined, 2)); }
+      else { console.log('Error in Service Delete :' + JSON.stringify(err, undefined, 2)); }
   });
 });
 
@@ -59,7 +59,7 @@ router.post('/',(req,res)=>{
   });
   ser.save((err,doc)=>{
     if(!err){res.send(doc); }
-    else { console.log('Error in Resource Save : ' + JSON.stringify(err,undefined,2));}
+    else { console.log('Error in Service Save : ' + JSON.stringify(err,undefined,2));}
   });
 });
 module.exports = router;

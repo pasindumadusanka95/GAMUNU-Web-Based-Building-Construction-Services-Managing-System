@@ -23,7 +23,7 @@ export class AddresourcesComponent implements OnInit {
       resource_name: '',
       resource_owner: '',
       resource_count:null,
-      available:null,
+      available:null
 
       };
     }

@@ -133,7 +133,8 @@
                     <td>{{reso.resource_owner}}</td>
                     <td>{{reso.resource_count}}</td>
                     <td>{{reso.available}}</td>
-                    <td></td>
+                    <td> <button class="btn btn-outline-info" (click)="onEdit(lecturer)">Edit</button>
+                      <button class="btn btn-outline-danger" (click)="onDelete(lecturer.id)">Delete</button></td>
                     <!-- <td>{{ord.date}}</td> -->
 
 

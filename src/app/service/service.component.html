@@ -121,6 +121,7 @@
                   <th>Service Name</th>
                   <th>Service Type</th>
                   <th>Price</th>
+                  <th></th>
                   <!-- <th>service type</th>
                   <th>service name</th>
                   <th class="text-right">price</th>
@@ -135,6 +136,10 @@
                     <td>{{ser.service_name}}</td>
                     <td>{{ser.service_type}}</td>
                     <td>{{ser.price}}</td>
+                    <td>
+                      <button class="btn btn-outline-info" (click)="onEdit(ser)">Edit</button>
+              <button class="btn btn-outline-danger" (click)="onDelete(ser._id,serviceForm)">Delete</button>
+                    </td>
                     <!-- <td>{{ord.date}}</td> -->
 
 

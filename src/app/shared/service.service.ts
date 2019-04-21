@@ -21,4 +21,10 @@ export class ServiceService {
   getServiceList(){
     return this.http.get(this.baseURL);
   }
+  putService(ser: Service){
+    return this.http.put(this.baseURL + `/${ser._id}`, ser);
+  }
+  deleteService(_id:String){
+    return this.http.delete(this.baseURL+`+/${_id}`);
+  }
 }

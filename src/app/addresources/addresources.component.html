@@ -32,13 +32,13 @@
         <div class="row">
           <div class="col-md-12 mb-3">
         <label>Resource Count</label>
-        <input size="16" type="text" name="resource_count" #resource_count="ngModel" [(ngModel)]="resourceService.selectedResource.resource_count" class="form-control" required>
+        <input size="16" type="number" name="resource_count" #resource_count="ngModel" [(ngModel)]="resourceService.selectedResource.resource_count" class="form-control" required>
       </div>
       </div>
       <div class="row">
         <div class="col-md-12 mb-3">
       <label>Available</label>
-      <input size="16" type="text" name="available" #available="ngModel" [(ngModel)]="resourceService.selectedResource.available" class="form-control" required>
+      <input size="16" type="number" name="available" #available="ngModel" [(ngModel)]="resourceService.selectedResource.available" class="form-control" required>
     </div>
     </div>
 

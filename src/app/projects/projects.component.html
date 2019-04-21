@@ -120,6 +120,7 @@
                   <th>Project Status</th>
                   <th>Project Cost</th>
                   <th>Worker Count</th>
+                  <th></th>
                   <!-- <th>service type</th>
                   <th>service name</th>
                   <th class="text-right">price</th>
@@ -140,6 +141,8 @@
                     <td>{{pro.project_status}}</td>
                     <td>{{pro.project_cost}}</td>
                     <td>{{pro.worker_count}}</td>
+                    <td> <button class="btn btn-outline-info" (click)="onEdit(pro)">Edit</button>
+                      <button class="btn btn-outline-danger" (click)="onDelete(lecturer.id)">Delete</button></td>
                     <!-- <td>{{ord.date}}</td> -->
 
 
