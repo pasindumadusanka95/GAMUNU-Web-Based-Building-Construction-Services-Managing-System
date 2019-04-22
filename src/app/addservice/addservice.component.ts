@@ -6,7 +6,8 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-addservice',
   templateUrl: './addservice.component.html',
-  styleUrls: ['./addservice.component.css']
+  styleUrls: ['./addservice.component.css'],
+  providers: [ServiceService]
 })
 export class AddserviceComponent implements OnInit {
   closeResult: string;

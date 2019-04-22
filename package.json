@@ -31,6 +31,7 @@
     "ngx-toastr": "^9.1.2",
     "nouislider": "13.1.1",
     "rxjs": "^6.4.0",
+    "rxjs-compat": "^6.4.0",
     "zone.js": "0.8.29"
   },
   "devDependencies": {

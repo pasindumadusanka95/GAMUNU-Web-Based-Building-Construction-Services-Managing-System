@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
 import {Resource} from './resource.model';
+import { Project } from './project.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,11 @@ export class ResourceService {
 
   getResourceList(){
     return this.http.get(this.baseURL);
+  }
+  putService(reso: Project){
+    return this.http.put(this.baseURL + `/${reso._id}`, reso);
+  }
+  deleteService(_id:String){
+    return this.http.delete(this.baseURL+`+/${_id}`);
   }
 }

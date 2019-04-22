@@ -11,7 +11,8 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-service',
   templateUrl: './service.component.html',
-  styleUrls: ['./service.component.css']
+  styleUrls: ['./service.component.css'],
+  providers: [ServiceService]
 })
 export class ServiceComponent implements OnInit {
 

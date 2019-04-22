@@ -6,7 +6,7 @@
           <div class="col s7">
 <!-- order form -->
 
-<form #serviceForm="ngForm" autocomplete="off" (submit)="onSubmit(serviceForm)">
+<form #serviceForm="ngForm" autocomplete="off" (ngSubmit)="onSubmit(serviceForm)">
   <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="serviceService.selectedService._id">
   <div class="row">
 
@@ -43,7 +43,7 @@
 
       <div class="form-group text-right">
         <button type="button" class="btn btn-secondary gap-right" (click)="resetForm(serviceForm)">Reset</button>
-        <button  class="btn btn-success" type="submit"  [disabled]="serviceForm.invalid" value="submit">Submit</button>
+        <button  class="btn btn-success" type="submit"  [disabled]="serviceForm.invalid" >Submit</button>
       </div>
 
 
