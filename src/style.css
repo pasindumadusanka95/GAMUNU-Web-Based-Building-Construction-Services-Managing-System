@@ -1,0 +1,13 @@
+.label { font-size: 14px; }
+#tst{
+  border:1px solid grey;
+  border-radius:20px;margin-top:9px;
+}
+a.action-btn{
+  color: #9e9e9e ;
+  margin: 0px 5px;
+
+}
+a.action-btn:hover{
+  cursor: pointer;
+}
