@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal, NgbActiveModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { ServiceService } from '../shared/service.service';
@@ -11,6 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class AddserviceComponent implements OnInit {
   closeResult: string;
+  @Input() x:string = "Hello ";
   constructor(
     public modalService: NgbModal,
     public serviceService: ServiceService,

@@ -10,6 +10,7 @@ import {Service} from './service.model';
 })
 export class ServiceService {
 
+  x = 10;
   selectedService: Service;
   service: Service[];
   readonly baseURL= 'http://localhost:3000/services';
@@ -27,6 +28,6 @@ export class ServiceService {
     return this.http.put(this.baseURL + `/${ser._id}`, ser);
   }
   deleteService(_id:String){
-    return this.http.delete(this.baseURL+`+/${_id}`);
+    return this.http.delete(this.baseURL+`/${_id}`);
   }
 }

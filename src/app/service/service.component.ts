@@ -3,9 +3,6 @@ import { OrderService } from '../shared/order.service';
 import { Order } from '../shared/order.model';
 import { ServiceService } from '../shared/service.service';
 import { Service } from '../shared/service.model';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ToastrService } from 'ngx-toastr';
-import { AddserviceComponent } from '../addservice/addservice.component';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -80,7 +77,8 @@ onDelete(_id:string , form:NgForm ){
     this.serviceService.deleteService(_id).subscribe((res)=>{
       this.refreshServiceList();
       this.resetForm(form);
-    });
+    },
+    (e) => console.log(e.message));
   }
 }
 }
