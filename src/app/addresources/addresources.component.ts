@@ -13,6 +13,7 @@ export class AddresourcesComponent implements OnInit {
   constructor(public resourceService: ResourceService) { }
   ngOnInit() {
     this.resetForm();
+    this.refreshResourceList();
   }
   resetForm(form?: NgForm){
     if(form){
@@ -24,7 +25,7 @@ export class AddresourcesComponent implements OnInit {
       resource_name: '',
       resource_owner: '',
       resource_count:null,
-      available:null
+      available:null,
 
       };
     }
@@ -48,5 +49,9 @@ export class AddresourcesComponent implements OnInit {
       this.refreshResourceList();
     });
   }
+}
+  onEdit(reso:Resource){
+    this.resourceService.selectedResource= reso;
+
   }
 }

@@ -12,10 +12,7 @@ import { Service } from '../shared/service.model';
 export class AddserviceComponent implements OnInit {
   closeResult: string;
   constructor(
-    public modalService: NgbModal,
-    public serviceService: ServiceService,
-   public toastr : ToastrService,
-   public activeModal: NgbActiveModal) { }
+    public serviceService: ServiceService) { }
 
 
 

@@ -9,7 +9,7 @@
               <div class="row">
                 <div class="col">
                   <h5 class="card-title text-uppercase text-muted mb-0">New Job Application</h5>
-                  <span class="h2 font-weight-bold mb-0">{{refreshJobapplyList()}}</span>
+                  <span class="h2 font-weight-bold mb-0">{{jobapplyService.jobapplys.length}}</span>
                 </div>
                 <div class="col-auto">
                   <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -142,7 +142,7 @@
                     <td>{{pro.project_cost}}</td>
                     <td>{{pro.worker_count}}</td>
                     <td> <button class="btn btn-outline-info" (click)="onEdit(pro)">Edit</button>
-                      <button class="btn btn-outline-danger" (click)="onDelete(lecturer.id)">Delete</button></td>
+                      <button class="btn btn-outline-danger" (click)="onDelete(pro._id,projectForm)">Delete</button></td>
                     <!-- <td>{{ord.date}}</td> -->
 
 

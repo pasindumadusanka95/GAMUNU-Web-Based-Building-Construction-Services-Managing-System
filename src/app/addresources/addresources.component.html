@@ -1,6 +1,6 @@
 <!-- order form -->
 
-<form #resourceForm="ngForm" autocomplete="off" (submit)="onSubmit(resourceForm)">
+<form #resourceForm="ngForm" autocomplete="off" (ngSubmit)="onSubmit(resourceForm)">
   <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="resourceService.selectedResource._id">
   <div class="row">
 
@@ -47,7 +47,7 @@
 
       <div class="form-group text-right">
         <button type="button" class="btn btn-secondary gap-right" (click)="resetForm(resourceForm)">Reset</button>
-        <button type="submit" class="btn btn-success" [disabled]="resourceForm.invalid" value="submit">Submit</button>
+        <button type="submit" class="btn btn-success" [disabled]="resourceForm.invalid" >Submit</button>
       </div>
 
 

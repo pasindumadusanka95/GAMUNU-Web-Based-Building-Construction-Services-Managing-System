@@ -4,17 +4,19 @@ import { Order } from '../shared/order.model';
 import { ServiceService } from '../shared/service.service';
 import { Service } from '../shared/service.model';
 import { NgForm } from '@angular/forms';
+import { JobapplyService } from '../shared/jobapply.service';
 
 @Component({
   selector: 'app-service',
   templateUrl: './service.component.html',
   styleUrls: ['./service.component.css'],
-  providers: [ServiceService]
+
 })
 export class ServiceComponent implements OnInit {
 
   constructor(public orderService:OrderService,
-    public serviceService: ServiceService
+    public serviceService: ServiceService,
+    public jobapplyService:JobapplyService
     ) { }
 
   ngOnInit() {

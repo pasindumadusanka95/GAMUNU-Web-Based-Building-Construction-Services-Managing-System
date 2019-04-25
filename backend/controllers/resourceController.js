@@ -28,16 +28,14 @@ router.put('/:id', (req, res) => {
       return res.status(400).send(`No record with given id : ${req.params.id}`);
 
       var reso= {
-        date : req.body.date,
-        order_id: req.body.order_id,
-        servic_id: req.body.service_id,
-        cus_name:req.body.cus_name,
-        cus_phone: req.body.cus_phone,
-        cus_address:req.body.cus_address,
-        cus_email: req.body.cus_email,
-        payment_id:req.body.payment_id,
+        resource_id: req.body.resource_id,
+        resource_type: req.body. resource_type,
+        resource_name:req.body. resource_name,
+        resource_owner: req.body. resource_owner,
+        resource_count:req.body. resource_count,
+        available: req.body.available,
       };
-  resoruce.findByIdAndUpdate(req.params.id, { $set: reso }, { new: true }, (err, doc) => {
+  resource.findByIdAndUpdate(req.params.id, { $set: reso }, { new: true }, (err, doc) => {
       if (!err) { res.send(doc); }
       else { console.log('Error in Order Update :' + JSON.stringify(err, undefined, 2)); }
   });
