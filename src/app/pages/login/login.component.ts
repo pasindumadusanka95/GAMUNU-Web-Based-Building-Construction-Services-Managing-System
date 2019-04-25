@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-
+import { NgModel } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
