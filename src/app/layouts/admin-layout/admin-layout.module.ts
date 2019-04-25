@@ -18,6 +18,7 @@ import { ProjectsComponent } from 'src/app/projects/projects.component';
 import { AddserviceComponent } from 'src/app/addservice/addservice.component';
 import { AddprojectsComponent } from 'src/app/addprojects/addprojects.component';
 import { AddresourcesComponent } from 'src/app/addresources/addresources.component';
+import { ServiceService } from 'src/app/shared/service.service';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -41,7 +42,9 @@ import { AddresourcesComponent } from 'src/app/addresources/addresources.compone
     AddserviceComponent,
     AddresourcesComponent,
     AddprojectsComponent
-  ], entryComponents:[AddserviceComponent]
+  ],
+  providers: [
+  ]
 })
 
 export class AdminLayoutModule {}

@@ -45,7 +45,9 @@ import { AddprojectsComponent } from './addprojects/addprojects.component';
 
 
   ],
-  providers: [NgbActiveModal],
+  providers: [
+    NgbActiveModal
+  ],
   bootstrap: [AppComponent],
 
 })

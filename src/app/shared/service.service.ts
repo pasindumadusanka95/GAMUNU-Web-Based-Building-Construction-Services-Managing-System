@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
 import {Service} from './service.model';
 
 @Injectable({
@@ -10,7 +7,6 @@ import {Service} from './service.model';
 })
 export class ServiceService {
 
-  x = 10;
   selectedService: Service;
   service: Service[];
   readonly baseURL= 'http://localhost:3000/services';

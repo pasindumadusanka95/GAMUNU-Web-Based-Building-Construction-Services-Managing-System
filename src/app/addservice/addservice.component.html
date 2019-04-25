@@ -8,7 +8,6 @@
 
 <form #serviceForm="ngForm" autocomplete="off" (ngSubmit)="onSubmit(serviceForm)">
 
-  <p>{{x}}</p>
   <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="serviceService.selectedService._id">
   <div class="row">
 
