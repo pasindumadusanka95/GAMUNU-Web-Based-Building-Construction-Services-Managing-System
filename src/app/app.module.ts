@@ -47,7 +47,9 @@ import { LoginComponent } from './pages/login/login.component';
 
 
   ],
-  providers: [NgbActiveModal],
+  providers: [
+    NgbActiveModal
+  ],
   bootstrap: [AppComponent],
 
 })

@@ -21,4 +21,10 @@ export class ProjectService {
   getProjectList(){
     return this.http.get(this.baseURL);
   }
+  putProject(pro: Project){
+    return this.http.put(this.baseURL + `/${pro._id}`, pro);
+  }
+  deleteProject(_id:String){
+    return this.http.delete(this.baseURL+`/${_id}`);
+  }
 }

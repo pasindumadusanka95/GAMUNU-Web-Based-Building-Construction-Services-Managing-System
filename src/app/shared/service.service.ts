@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
 import {Service} from './service.model';
 
 @Injectable({
@@ -27,6 +24,6 @@ export class ServiceService {
     return this.http.put(this.baseURL + `/${ser._id}`, ser);
   }
   deleteService(_id:String){
-    return this.http.delete(this.baseURL+`+/${_id}`);
+    return this.http.delete(this.baseURL+`/${_id}`);
   }
 }

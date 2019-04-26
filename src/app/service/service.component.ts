@@ -3,21 +3,20 @@ import { OrderService } from '../shared/order.service';
 import { Order } from '../shared/order.model';
 import { ServiceService } from '../shared/service.service';
 import { Service } from '../shared/service.model';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ToastrService } from 'ngx-toastr';
-import { AddserviceComponent } from '../addservice/addservice.component';
 import { NgForm } from '@angular/forms';
+import { JobapplyService } from '../shared/jobapply.service';
 
 @Component({
   selector: 'app-service',
   templateUrl: './service.component.html',
   styleUrls: ['./service.component.css'],
-  providers: [ServiceService]
+
 })
 export class ServiceComponent implements OnInit {
 
   constructor(public orderService:OrderService,
-    public serviceService: ServiceService
+    public serviceService: ServiceService,
+    public jobapplyService:JobapplyService
     ) { }
 
   ngOnInit() {
@@ -80,7 +79,8 @@ onDelete(_id:string , form:NgForm ){
     this.serviceService.deleteService(_id).subscribe((res)=>{
       this.refreshServiceList();
       this.resetForm(form);
-    });
+    },
+    (e) => console.log(e.message));
   }
 }
 }
