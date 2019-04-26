@@ -1,19 +1,29 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-// import { NgModel } from '@angular/forms';
+import { LoginUser } from '../../shared/login-user';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  @Input() email: string;
-  @Input() password: string;
+
+  user = new LoginUser();
   constructor() { }
 
   ngOnInit() {
-	  console.log(this.email)
   }
   ngOnDestroy() {
+  }
+
+  display() {
+    if (!this.user.nic && !this.user.password) {
+      alert("NIC and Password missing")
+    } else if (!this.user.nic) {
+      alert("NIC is missing")
+    } else if (!this.user.password) {
+      alert("Password Missing")
+    }
+    console.log(this.user);
   }
 
 }
