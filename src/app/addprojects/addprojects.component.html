@@ -1,6 +1,6 @@
 <!-- order form -->
 
-<form #projectForm="ngForm" autocomplete="off" (submit)="onSubmit(projectForm)">
+<form #projectForm="ngForm" autocomplete="off" (ngSubmit)="onSubmit(projectForm)">
   <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="projectService.selectedProject._id">
   <div class="row">
 
@@ -68,7 +68,7 @@
 </div>
       <div class="form-group text-right">
         <button type="button" class="btn btn-secondary gap-right" (click)="resetForm(projectForm)">Reset</button>
-        <button type="submit" class="btn btn-success" [disabled]="projectForm.invalid" value="submit">Submit</button>
+        <button type="submit" class="btn btn-success" [disabled]="projectForm.invalid" >Submit</button>
       </div>
 
 
