@@ -17,6 +17,7 @@ import { AddserviceComponent } from './addservice/addservice.component';
 import { AddresourcesComponent } from './addresources/addresources.component';
 import { AddprojectsComponent } from './addprojects/addprojects.component';
 import { LoginComponent } from './pages/login/login.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
 
 
 
@@ -42,6 +43,7 @@ import { LoginComponent } from './pages/login/login.component';
     AuthLayoutComponent,
     OrderComponent,
     LoginComponent,
+    HomepageComponent,
 
 
 
