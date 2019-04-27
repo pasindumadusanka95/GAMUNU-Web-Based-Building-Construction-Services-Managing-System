@@ -22,4 +22,12 @@ export class JobapplyService {
     return this.http.get(this.baseURL);
 
   }
+
+  putJobapply(job: Jobapply){
+    return this.http.put(this.baseURL + `/${job._id}`, job);
+  }
+  deleteJobapply(_id:String){
+    return this.http.delete(this.baseURL+`/${_id}`);
+  }
 }
+
