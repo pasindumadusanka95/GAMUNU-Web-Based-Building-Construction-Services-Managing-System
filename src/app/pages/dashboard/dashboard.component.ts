@@ -13,6 +13,9 @@ import {
 } from "../../variables/charts";
 import { Jobapply } from 'src/app/shared/jobapply.model';
 import { WorkerService } from 'src/app/shared/worker.service';
+import { ProjectService } from 'src/app/shared/project.service';
+import { Project } from 'src/app/shared/project.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,47 +32,68 @@ export class DashboardComponent implements OnInit {
 
   constructor(public orderService: OrderService,
      public jobapplyService:JobapplyService,
-     public workerService: WorkerService
+     public workerService: WorkerService,
+     public projectService:ProjectService,
      ) { }
 
   ngOnInit() {
     this.refreshOrderList();
     this.refreshWorkerList();
     this.refreshJobapplyList();
-    this.datasets = [
-      [0, 20, 10, 30, 15, 40, 20, 60, 60],
-      [0, 20, 5, 25, 10, 30, 15, 40, 40]
-    ];
-    this.data = this.datasets[0];
-
-
-    var chartOrders = document.getElementById('chart-orders');
-
-    parseOptions(Chart, chartOptions());
-
-
-    var ordersChart = new Chart(chartOrders, {
-      type: 'bar',
-      options: chartExample2.options,
-      data: chartExample2.data
-    });
-
-    var chartSales = document.getElementById('chart-sales');
-
-    this.salesChart = new Chart(chartSales, {
-			type: 'line',
-			options: chartExample1.options,
-			data: chartExample1.data
-		});
+    this.refreshProjectList();
   }
 
+AddedWorker(_id:string , job:Jobapply){
+  if(confirm('Are you sure to add this one as a worker?')==true){
+  this.onDeleteJob(_id);
+  this.jobapplyService.selectedJobapply= job ;
+  this.workerService.postWorker(job).subscribe((res)=>{
+
+    this.refreshWorkerList();
+    this.refreshJobapplyList();
+  });
+  }
+}
 
 
 
+onDelete(_id:string , form:NgForm ){
+  if(confirm('Are you sure to delete this record?')==true){
+    this.workerService.deleteWorker(_id).subscribe((res)=>{
+      this.refreshWorkerList();
+    },
+    (e) => console.log(e.message));
+  }
+}
 
-  public updateOptions() {
-    this.salesChart.data.datasets[0].data = this.data;
-    this.salesChart.update();
+onDeleteJob(_id:string ){
+
+    this.jobapplyService.deleteJobapply(_id).subscribe((res)=>{
+      this.refreshJobapplyList();
+    },
+    (e) => console.log(e.message));
+
+}
+
+
+
+onEdit(wor:Worker){
+  this.workerService.selectedWorker= wor ;
+}
+onSubmitJob(form : NgForm){
+  if(form.value._id==''){
+  this.workerService.postWorker(form.value).subscribe((res)=>{
+
+    this.refreshWorkerList();
+
+  });
+}
+}
+
+  refreshProjectList(){
+    this.projectService.getProjectList().subscribe((res)=>{
+      this.projectService.projects = res as Project[];
+    });
   }
 
 
