@@ -18,6 +18,7 @@ import { AddresourcesComponent } from './addresources/addresources.component';
 import { AddprojectsComponent } from './addprojects/addprojects.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
+import { NavigationBarComponent } from './pages/navigation-bar/navigation-bar.component';
 
 
 
@@ -44,6 +45,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
     OrderComponent,
     LoginComponent,
     HomepageComponent,
+    NavigationBarComponent,
 
 
 
