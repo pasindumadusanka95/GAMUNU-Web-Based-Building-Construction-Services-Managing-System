@@ -21,4 +21,11 @@ export class WorkerService {
   getWorkerList(){
     return this.http.get(this.baseURL);
   }
+  putWorker(wor: Worker){
+    return this.http.put(this.baseURL + `/${wor._id}`, wor);
+  }
+  deleteWorker(_id:String){
+    return this.http.delete(this.baseURL+`/${_id}`);
+  }
 }
+
