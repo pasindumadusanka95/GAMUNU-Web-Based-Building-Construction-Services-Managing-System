@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { LoginUser } from '../../shared/login-user';
+import { AuthService } from '../../shared/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,7 +9,7 @@ import { LoginUser } from '../../shared/login-user';
 export class LoginComponent implements OnInit, OnDestroy {
 
   user = new LoginUser();
-  constructor() { }
+  constructor(public Auth : AuthService) { }
 
   ngOnInit() {
   }
@@ -22,8 +23,11 @@ export class LoginComponent implements OnInit, OnDestroy {
       alert("NIC is missing")
     } else if (!this.user.password) {
       alert("Password Missing")
-    }
-    console.log(this.user);
+	}
+	else{
+		this.Auth.checkUser(this.user)
+	}
+    // console.log(this.user);
   }
 
 }
