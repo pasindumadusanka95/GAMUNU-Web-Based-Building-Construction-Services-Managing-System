@@ -5,6 +5,7 @@ import { ServiceService } from '../shared/service.service';
 import { Service } from '../shared/service.model';
 import { NgForm } from '@angular/forms';
 import { JobapplyService } from '../shared/jobapply.service';
+import { ProjectService } from '../shared/project.service';
 
 @Component({
   selector: 'app-service',
@@ -16,13 +17,15 @@ export class ServiceComponent implements OnInit {
 
   constructor(public orderService:OrderService,
     public serviceService: ServiceService,
-    public jobapplyService:JobapplyService
+    public jobapplyService:JobapplyService,
+    public projectService: ProjectService
     ) { }
 
   ngOnInit() {
    this.refreshOrderList();
    this.refreshServiceList();
    this.resetForm();
+   this.projectService.setProjectCount();
   }
 
 
@@ -55,6 +58,7 @@ resetForm(form?: NgForm){
 
 onSubmit(form : NgForm){
   if(form.value._id==''){
+
   this.serviceService.postService(form.value).subscribe((res)=>{
     this.resetForm(form);
     this.refreshServiceList();

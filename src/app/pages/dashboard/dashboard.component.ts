@@ -4,13 +4,7 @@ import { OrderService } from '../../shared/order.service';
 import { JobapplyService } from '../../shared/jobapply.service';
 import {Order} from '../../shared/order.model';
 import {Worker} from '../../shared/worker.model'
-// core components
-import {
-  chartOptions,
-  parseOptions,
-  chartExample1,
-  chartExample2
-} from "../../variables/charts";
+
 import { Jobapply } from 'src/app/shared/jobapply.model';
 import { WorkerService } from 'src/app/shared/worker.service';
 import { ProjectService } from 'src/app/shared/project.service';
@@ -24,12 +18,6 @@ import { NgForm } from '@angular/forms';
 })
 export class DashboardComponent implements OnInit {
 
-  public datasets: any;
-  public data: any;
-  public salesChart;
-  public clicked: boolean = true;
-  public clicked1: boolean = false;
-
   constructor(public orderService: OrderService,
      public jobapplyService:JobapplyService,
      public workerService: WorkerService,
@@ -41,6 +29,7 @@ export class DashboardComponent implements OnInit {
     this.refreshWorkerList();
     this.refreshJobapplyList();
     this.refreshProjectList();
+    this.projectService.setProjectCount();
   }
 
 AddedWorker(_id:string , job:Jobapply){

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProjectService } from '../shared/project.service';
 import { NgForm } from '@angular/forms';
 import { Project } from '../shared/project.model';
@@ -9,11 +9,12 @@ import { Project } from '../shared/project.model';
   styleUrls: ['./addproject.component.css']
 })
 export class AddprojectsComponent implements OnInit {
-
+  @ViewChild('projectForm') project_form;
   constructor(public projectService: ProjectService) { }
 
   ngOnInit() {
-    this.resetForm();
+    this.resetForm(this.project_form);
+    this.refreshProjectList();
   }
   resetForm(form?: NgForm){
     if(form){

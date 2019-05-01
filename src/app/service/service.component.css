@@ -45,3 +45,6 @@ a.action-btn:hover{
   bottom: 10%;
   left:7%;
 }
+div.header {
+  background: url('../../assets/img/admin2.jpg')
+}
