@@ -5,23 +5,26 @@ import { ResourceService } from '../shared/resource.service';
 import { Order } from '../shared/order.model';
 import { NgForm } from '@angular/forms';
 import { JobapplyService } from '../shared/jobapply.service';
+import { ProjectService } from '../shared/project.service';
 
 @Component({
   selector: 'app-resources',
   templateUrl: './resources.component.html',
-  styleUrls: ['./resources.component.scss'],
+  styleUrls: ['./resources.component.css'],
 
 })
 export class ResourcesComponent implements OnInit {
 
   constructor( public orderService:OrderService,
     public resourceService:ResourceService,
-    public jobapplyService:JobapplyService) { }
+    public jobapplyService:JobapplyService,
+    public projectService:ProjectService) { }
 
   ngOnInit() {
     this.refreshOrderList();
     this.refreshResourceList();
     this.resetForm();
+    this.projectService.setProjectCount();
   }
 
   resetForm(form?: NgForm){

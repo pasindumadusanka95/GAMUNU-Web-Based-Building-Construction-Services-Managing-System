@@ -30,7 +30,7 @@ router.put('/:id', (req, res) => {
       var ord= {
         date : req.body.date,
         order_id: req.body.order_id,
-        servic_id: req.body.service_id,
+        service_id: req.body.service_id,
         cus_name:req.body.cus_name,
         cus_phone: req.body.cus_phone,
         cus_address:req.body.cus_address,
