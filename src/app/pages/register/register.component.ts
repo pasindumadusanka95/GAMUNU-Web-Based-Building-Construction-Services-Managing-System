@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Jobapply } from 'src/app/shared/jobapply.model';
 @Component({
@@ -10,13 +10,17 @@ export class RegisterComponent implements OnInit {
 
 	job = new Jobapply();
 
+jobs = [
+
+]
+
   constructor() { }
 
   ngOnInit() {
   }
 
   display(){
-	  console.log(this.job);
+	//   console.log(this.address);
   }
 
 }

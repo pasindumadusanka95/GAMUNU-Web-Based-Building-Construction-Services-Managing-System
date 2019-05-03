@@ -12,13 +12,26 @@
 									<div class="text-center text-muted mb-4">
 										<h1>Apply a job</h1>
 									</div>
-									<form role="form">
+									<form role="form" #jobForm="ngForm">
+										<!-- {{jobForm.value | json}} -->
+										
+										<!-- <div class="form-group">
+											<div class="input-group input-group-alternative mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text"><i class="fa fa-user"></i></span>
+												</div>
+												<input class="form-control" placeholder="Name" type="hidden" name="worker_id"
+													required ngModel>
+											</div>
+										</div> -->
+
 										<div class="form-group">
 											<div class="input-group input-group-alternative mb-3">
 												<div class="input-group-prepend">
 													<span class="input-group-text"><i class="fa fa-user"></i></span>
 												</div>
-												<input class="form-control" placeholder="Name" type="text" >
+												<input class="form-control" placeholder="Name" type="text" name="worker_name"
+													required ngModel>
 											</div>
 										</div>
 										<div class="form-group">
@@ -26,7 +39,8 @@
 												<div class="input-group-prepend">
 													<span class="input-group-text"><i class="fa fa-id-card"></i></span>
 												</div>
-												<input class="form-control" placeholder="NIC" type="text" name="nic" required [(ngModel)]="job.nic">
+												<input class="form-control" placeholder="NIC" type="text" name="worker_nic"
+													required ngModel>
 											</div>
 										</div>
 										<div class="form-group">
@@ -34,55 +48,84 @@
 												<div class="input-group-prepend">
 													<span class="input-group-text"><i class="fa fa-phone"></i></span>
 												</div>
-												<input class="form-control" placeholder="Phone" type="text">
+												<input class="form-control" placeholder="Phone" type="text"
+													name="worker_phone" required ngModel>
 											</div>
 										</div>
-										<div class="form-group">
-											<div class="input-group input-group-alternative mb-3">
-												<div class="input-group-prepend">
-													<span class="input-group-text"><i
-															class="fa fa-location-arrow"></i></span>
+
+										<!-- <div ngModelGroup="address"> -->
+											<div class="form-group">
+												<div class="input-group input-group-alternative mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i
+																class="fa fa-location-arrow"></i></span>
+													</div>
+
+													<select class="form-control" name="job_type" id="job_type" ngModel>
+														<option selected value="">I am interested in</option>
+														<option>I</option>
+														<option>am</option>
+														<option>interested</option>
+														<option>in</option>
+														<option>I am</option>
+														<option>interested in</option>
+													</select>
+													<!-- <input class="form-control" placeholder="City" type="text"
+														name="worker_address" required ngModel> -->
 												</div>
-												<input class="form-control" placeholder="Adderss Line 1" type="text">
 											</div>
-										</div>
-										<div class="form-group">
-											<div class="input-group input-group-alternative mb-3">
-												<div class="input-group-prepend">
-													<span class="input-group-text"><i
-															class="fa fa-location-arrow"></i></span>
+											<!-- <div class="form-group">
+												<div class="input-group input-group-alternative mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i
+																class="fa fa-location-arrow"></i></span>
+													</div>
+													<input class="form-control" placeholder="Adderss Line 2" type="text"
+														name="address2" required ngModel>
 												</div>
-												<input class="form-control" placeholder="Adderss Line 2" type="text">
 											</div>
-										</div>
-										<div class="form-group">
-											<div class="input-group input-group-alternative mb-3">
-												<div class="input-group-prepend">
-													<span class="input-group-text"><i
-															class="fa fa-location-arrow"></i></span>
+											<div class="form-group">
+												<div class="input-group input-group-alternative mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i
+																class="fa fa-location-arrow"></i></span>
+													</div>
+													<input class="form-control" placeholder="Adderss Line 3" type="text"
+														name="address3" required ngModel>
 												</div>
-												<input class="form-control" placeholder="Adderss Line 3" type="text">
-											</div>
-										</div>
+											</div> -->
+										<!-- </div> -->
 										<div class="form-group">
 											<div class="input-group input-group-alternative">
 												<div class="input-group-prepend">
 													<span class="input-group-text"><i
 															class="ni ni-lock-circle-open"></i></span>
 												</div>
-												<input class="form-control" placeholder="Password" type="password">
+												<input class="form-control" placeholder="Select a job type" type="text"
+													name="job_type" required ngModel>
 											</div>
 										</div>
+
 										<div class="form-group">
+											<div class="input-group input-group-alternative">
+												<div class="input-group-prepend">
+													<span class="input-group-text"><i
+															class="ni ni-lock-circle-open"></i></span>
+												</div>
+												<input class="form-control" placeholder="Password" type="password"
+													name="password" required ngModel>
+											</div>
+										</div>
+										<!-- <div class="form-group">
 											<div class="input-group input-group-alternative">
 												<div class="input-group-prepend">
 													<span class="input-group-text"><i
 															class="ni ni-lock-circle-open"></i></span>
 												</div>
 												<input class="form-control" placeholder="Reenter password"
-													type="password">
+													type="password" name="passwordC" required ngModel>
 											</div>
-										</div>
+										</div> -->
 										<div class="text-muted font-italic"><small>password strength: <span
 													class="text-success font-weight-700">strong</span></small></div>
 										<div class="row my-4">
@@ -98,7 +141,8 @@
 											</div>
 										</div>
 										<div class="text-center">
-											<button type="vutton" (click)="display()" class="btn btn-primary mt-4">Apply Job</button>
+											<button type="button" (click)="display()" class="btn btn-primary mt-4">Apply
+												Job</button>
 										</div>
 									</form>
 								</div>
