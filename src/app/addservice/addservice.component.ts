@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbModal, NgbActiveModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { ServiceService } from '../shared/service.service';
@@ -10,16 +10,13 @@ import { Service } from '../shared/service.model';
   styleUrls: ['./addservice.component.css']
 })
 export class AddserviceComponent implements OnInit {
+  @ViewChild('serviceForm') service_form;
   closeResult: string;
   constructor(
     public serviceService: ServiceService) { }
 
-
-
-
-
   ngOnInit() {
-    this.resetForm();
+    this.resetForm(this.service_form);
     this.refreshServiceList();
   }
   resetForm(form?: NgForm){
@@ -31,7 +28,6 @@ export class AddserviceComponent implements OnInit {
       service_name: '',
       service_type: '',
       price: '',
-
       };
     }
   }
@@ -42,7 +38,7 @@ export class AddserviceComponent implements OnInit {
     });
   }
   onSubmit(form : NgForm){
-    if(form.value._id==''){
+    if(form.value._id==""){
     this.serviceService.postService(form.value).subscribe((res)=>{
       this.resetForm(form);
       this.refreshServiceList();

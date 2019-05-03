@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ResourceService } from '../shared/resource.service';
 import { Resource } from '../shared/resource.model';
@@ -9,10 +9,10 @@ import { Resource } from '../shared/resource.model';
   styleUrls: ['./addresources.component.css']
 })
 export class AddresourcesComponent implements OnInit {
-
+  @ViewChild('resourceForm') resource_form;
   constructor(public resourceService: ResourceService) { }
   ngOnInit() {
-    this.resetForm();
+    this.resetForm(this.resource_form);
     this.refreshResourceList();
   }
   resetForm(form?: NgForm){

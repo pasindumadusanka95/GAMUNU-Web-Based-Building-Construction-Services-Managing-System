@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss']
+  styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent implements OnInit {
 
@@ -21,6 +21,8 @@ export class ProjectsComponent implements OnInit {
     this.refreshOrderList();
     this.refreshProjectList();
     this.resetForm();
+    this.projectService.setProjectCount();
+    this.orderService.setOrderCount();
   }
   resetForm(form?: NgForm){
     if (form){

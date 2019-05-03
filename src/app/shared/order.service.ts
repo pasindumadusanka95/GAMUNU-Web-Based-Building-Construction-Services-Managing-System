@@ -11,9 +11,13 @@ import {Order} from './order.model';
 })
 export class OrderService {
 
+  orderCount: Number;
   selectedOrder: Order;
   orders: Order[];
+
   readonly baseURL= 'http://localhost:3000/orders';
+  readonly baseCN= 'http://localhost:3000/orders/reqe';
+  readonly baseC= 'http://localhost:3000/orders/count';
 
   constructor(private http: HttpClient) { }
 
@@ -24,4 +28,24 @@ export class OrderService {
   getOrderList(){
     return this.http.get(this.baseURL);
   }
+  getReqOrderList(){
+    return this.http.get(this.baseCN);
+  }
+  putOrder(ord: Order){
+    return this.http.put(this.baseURL + `/${ord._id}`, ord);
+  }
+  deleteOrder(_id:String){
+    return this.http.delete(this.baseURL+`/${_id}`);
+  }
+
+  getOrderCount(){
+    return this.orderCount;
+  }
+
+  setOrderCount() {
+    this.http.get(this.baseC).subscribe((result:any) => {
+      this.orderCount = result.count;
+    }, (err) => { console.log(err)});
+  }
+
 }

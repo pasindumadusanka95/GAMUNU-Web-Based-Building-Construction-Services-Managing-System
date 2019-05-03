@@ -11,6 +11,14 @@ router.get('/',(req,res)=>{
     else { console.log('Error in Retriving Projects : ' + JSON.stringify(err,undefined,2));}
   });
 });
+router.get('/count',(req,res)=>{
+  project.find({project_status:'Ongoing'},(err, docs) =>{
+    if(!err){
+      res.send(JSON.stringify({count: docs.length}));
+    }
+    else { console.log('Error in Retriving Projects : ' + JSON.stringify(err,undefined,2));}
+  });
+});
 
 router.get('/:id', (req, res) => {
   if (!ObjectId.isValid(req.params.id))
@@ -21,6 +29,8 @@ router.get('/:id', (req, res) => {
       else { console.log('Error in Retriving Projects :' + JSON.stringify(err, undefined, 2)); }
   });
 });
+
+
 
 
 router.put('/:id', (req, res) => {

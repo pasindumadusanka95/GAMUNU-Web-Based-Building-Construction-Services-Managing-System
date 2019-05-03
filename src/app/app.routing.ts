@@ -7,10 +7,12 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
+import { RegisterComponent } from './pages/register/register.component';
 // import { LoginComponent } from './auth/login/login.component';
 
 const routes: Routes =[
 	{ path: 'login', component:LoginComponent },
+	{ path: 'register', component:RegisterComponent },
 	{ path: 'home', component: HomepageComponent},
   {
     path: '',
