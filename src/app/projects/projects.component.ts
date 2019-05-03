@@ -21,6 +21,8 @@ export class ProjectsComponent implements OnInit {
     this.refreshOrderList();
     this.refreshProjectList();
     this.resetForm();
+    this.projectService.setProjectCount();
+    this.orderService.setOrderCount();
   }
   resetForm(form?: NgForm){
     if (form){

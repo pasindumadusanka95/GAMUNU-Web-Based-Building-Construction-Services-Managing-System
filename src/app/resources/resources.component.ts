@@ -25,6 +25,7 @@ export class ResourcesComponent implements OnInit {
     this.refreshResourceList();
     this.resetForm();
     this.projectService.setProjectCount();
+    this.orderService.setOrderCount();
   }
 
   resetForm(form?: NgForm){

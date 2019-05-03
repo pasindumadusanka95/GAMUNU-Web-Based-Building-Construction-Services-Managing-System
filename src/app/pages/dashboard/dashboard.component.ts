@@ -25,11 +25,12 @@ export class DashboardComponent implements OnInit {
      ) { }
 
   ngOnInit() {
-    this.refreshOrderList();
+    this.refreshReqOrderList();
     this.refreshWorkerList();
     this.refreshJobapplyList();
     this.refreshProjectList();
     this.projectService.setProjectCount();
+    this.orderService.setOrderCount();
   }
 
 AddedWorker(_id:string , job:Jobapply){
@@ -86,8 +87,13 @@ onSubmitJob(form : NgForm){
   }
 
 
-  refreshOrderList(){
-    this.orderService.getOrderList().subscribe((res)=>{
+  // refreshOrderList(){
+  //   this.orderService.getOrderList().subscribe((res)=>{
+  //     this.orderService.orders= res as Order[];
+  //   });
+  // }
+  refreshReqOrderList(){
+    this.orderService.getReqOrderList().subscribe((res)=>{
       this.orderService.orders= res as Order[];
     });
   }
@@ -101,6 +107,28 @@ onSubmitJob(form : NgForm){
       this.jobapplyService.jobapplys= res as Jobapply[];
     });
   }
+AcceptOrder(ord:Order){
+  if(confirm('Are you sure to Accept this Order?')==true){
+  this.orderService.selectedOrder= ord ;
+
+  ord.order_status='Accepted';
+  this.orderService.putOrder(ord).subscribe((res)=>{
+    this.refreshReqOrderList();
+  });
+}
+}
 
 
+
+
+RejectOrder(ord:Order){
+if(confirm('Are you sure to Reject this Order?')==true){
+  this.orderService.selectedOrder= ord ;
+
+  ord.order_status='Rejected';
+  this.orderService.putOrder(ord).subscribe((res)=>{
+    this.refreshReqOrderList();
+  });
+}
+}
 }

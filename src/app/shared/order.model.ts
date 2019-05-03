@@ -8,4 +8,5 @@ export class Order {
   cus_address: string;
   cus_email: string;
   payment_id: number;
+  order_status: string;
 }
