@@ -8,7 +8,8 @@ var order = mongoose.model('order',{
   cus_phone: {type: Number},
   cus_address: {type: String},
   cus_email: {type: String},
-  payment_id: {type: Number}
+  payment_id: {type: Number},
+  order_status:{type: String}
 });
 
 module.exports = {order};

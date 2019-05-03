@@ -29,7 +29,8 @@ resetForm(form?: NgForm){
     cus_phone: null,
     cus_address: '',
     cus_email: '',
-    payment_id: null
+    payment_id: null,
+    order_status:'',
     };
   }
 }

@@ -30,7 +30,7 @@
               <div class="row">
                 <div class="col">
                   <h5 class="card-title text-uppercase text-muted mb-0">Newly Arrived Orders</h5>
-                  <span class="h2 font-weight-bold mb-0">{{orderService.orders.length}}</span>
+                  <span class="h2 font-weight-bold mb-0">{{orderService.getOrderCount()}}</span>
                 </div>
                 <div class="col-auto">
                   <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -90,9 +90,10 @@
             <thead>
                 <tr>
                     <th>date</th>
-                    <th>order id</th>
+                    <th>payment id</th>
                     <th>customer name</th>
                     <th>customer phone</th>
+                    <th></th>
 
                 </tr>
             </thead>
@@ -101,9 +102,13 @@
 
                     <tr *ngFor="let ord of orderService.orders">
                       <td>{{ord.date}}</td>
-                      <td>{{ord.order_id}}</td>
+                      <td>{{ord.payment_id}}</td>
                       <td>{{ord.cus_name}}</td>
                       <td>{{ord.cus_phone}}</td>
+                      <td>
+                        <button style='border-radius:30px' class='btn btn-success' (click)="AcceptOrder(ord)">Accept</button>
+                        <button style='border-radius:30px' class='btn btn-danger' (click)="RejectOrder(ord)">Reject</button>
+                      </td>
 
                         </tr>
             </tbody>
@@ -182,8 +187,8 @@
                       <td class="tst">{{job.job_type}}</td>
                       <td>{{job.worker_name}}</td>
                       <td>{{job.worker_phone}}</td>
-                      <td><button type='submit' class='btn btn-primary' style='border-radius:50px' alt='Add' (click)="AddedWorker(job._id,job)">+</button>
-                        <button style='border-radius:50px' class='btn btn-danger' (click)="onDeleteJob(job._id)">x</button></td>
+                      <td><button type='submit' class='btn btn-primary' style='border-radius:50px' alt='Add' (click)="AddedWorker(job._id,job)">Add</button>
+                        <button style='border-radius:50px' class='btn btn-danger' (click)="onDeleteJob(job._id)">Remove</button></td>
 
                       <!-- <td>{{ord.date}}</td> -->
 
@@ -246,7 +251,7 @@
                       <td>{{wor.job_type}}</td>
                      <td>
 
-                            <button style='border-radius:30px' class='btn btn-danger' (click)="onDelete(wor._id)">x</button>
+                            <button style='border-radius:30px' class='btn btn-danger' (click)="onDelete(wor._id)">Remove</button>
 
 
                      </td>

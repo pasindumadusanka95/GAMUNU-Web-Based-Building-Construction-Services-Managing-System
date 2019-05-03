@@ -12,6 +12,19 @@ router.get('/',(req,res)=>{
   });
 });
 
+router.get('/reqe',(req,res)=>{
+  order.find({order_status:'requested'},(err, docs) =>{
+    if(!err){res.send(docs); }
+    else { console.log('Error in Retriving Orders : ' + JSON.stringify(err,undefined,2));}
+  });
+});
+router.get('/count',(req,res)=>{
+  order.find({order_status:'requested'},(err, docs) =>{
+    if(!err) {
+    res.send(JSON.stringify({count: docs.length})); }
+    else { console.log('Error in Retriving Orders : ' + JSON.stringify(err,undefined,2));}
+  });
+});
 router.get('/:id', (req, res) => {
   if (!ObjectId.isValid(req.params.id))
       return res.status(400).send(`No record with given id : ${req.params.id}`);
@@ -21,6 +34,8 @@ router.get('/:id', (req, res) => {
       else { console.log('Error in Retriving Orders :' + JSON.stringify(err, undefined, 2)); }
   });
 });
+
+
 
 
 router.put('/:id', (req, res) => {
@@ -36,6 +51,7 @@ router.put('/:id', (req, res) => {
         cus_address:req.body.cus_address,
         cus_email: req.body.cus_email,
         payment_id:req.body.payment_id,
+        order_status:req.body.order_status,
       };
   order.findByIdAndUpdate(req.params.id, { $set: ord }, { new: true }, (err, doc) => {
       if (!err) { res.send(doc); }
@@ -57,12 +73,13 @@ router.post('/',(req,res)=>{
   var ord= new order({
     date : req.body.date,
     order_id: req.body.order_id,
-    servic_id: req.body.service_id,
+    service_id: req.body.service_id,
     cus_name:req.body.cus_name,
     cus_phone: req.body.cus_phone,
     cus_address:req.body.cus_address,
     cus_email: req.body.cus_email,
     payment_id:req.body.payment_id,
+    order_status:req.body.order_status,
   });
   ord.save((err,doc)=>{
     if(!err){res.send(doc); }

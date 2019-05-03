@@ -26,6 +26,7 @@ export class ServiceComponent implements OnInit {
    this.refreshServiceList();
    this.resetForm();
    this.projectService.setProjectCount();
+   this.orderService.setOrderCount();
   }
 
 
