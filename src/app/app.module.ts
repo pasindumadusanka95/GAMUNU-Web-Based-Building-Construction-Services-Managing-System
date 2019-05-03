@@ -19,7 +19,7 @@ import { AddprojectsComponent } from './addprojects/addprojects.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { NavigationBarComponent } from './pages/navigation-bar/navigation-bar.component';
-
+import { RegisterComponent } from './pages/register/register.component'
 
 
 
@@ -46,7 +46,7 @@ import { NavigationBarComponent } from './pages/navigation-bar/navigation-bar.co
     LoginComponent,
     HomepageComponent,
     NavigationBarComponent,
-
+	RegisterComponent
 
 
 
