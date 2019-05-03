@@ -31,7 +31,7 @@
 													<span class="input-group-text"><i class="fa fa-user"></i></span>
 												</div>
 												<input class="form-control" placeholder="Name" type="text" name="worker_name"
-													required ngModel>
+													required [(ngModel)]="job.worker_name">
 											</div>
 										</div>
 										<div class="form-group">
@@ -40,7 +40,7 @@
 													<span class="input-group-text"><i class="fa fa-id-card"></i></span>
 												</div>
 												<input class="form-control" placeholder="NIC" type="text" name="worker_nic"
-													required ngModel>
+													required [(ngModel)]="job.worker_nic">
 											</div>
 										</div>
 										<div class="form-group">
@@ -49,7 +49,7 @@
 													<span class="input-group-text"><i class="fa fa-phone"></i></span>
 												</div>
 												<input class="form-control" placeholder="Phone" type="text"
-													name="worker_phone" required ngModel>
+													name="worker_phone" required [(ngModel)]="job.worker_phone">
 											</div>
 										</div>
 
@@ -61,7 +61,7 @@
 																class="fa fa-location-arrow"></i></span>
 													</div>
 
-													<select class="form-control" name="job_type" id="job_type" ngModel>
+													<select class="form-control" name="job_type" id="job_type" [(ngModel)]="job.job_type">
 														<option selected value="">I am interested in</option>
 														<option>I</option>
 														<option>am</option>
@@ -74,16 +74,17 @@
 														name="worker_address" required ngModel> -->
 												</div>
 											</div>
-											<!-- <div class="form-group">
+											<div class="form-group">
 												<div class="input-group input-group-alternative mb-3">
 													<div class="input-group-prepend">
 														<span class="input-group-text"><i
 																class="fa fa-location-arrow"></i></span>
 													</div>
-													<input class="form-control" placeholder="Adderss Line 2" type="text"
-														name="address2" required ngModel>
+													<input class="form-control" placeholder="Adderss" type="text"
+														name="worker_address" required [(ngModel)]="job.worker_address">
 												</div>
 											</div>
+											<!-- 
 											<div class="form-group">
 												<div class="input-group input-group-alternative mb-3">
 													<div class="input-group-prepend">
@@ -95,7 +96,7 @@
 												</div>
 											</div> -->
 										<!-- </div> -->
-										<div class="form-group">
+										<!-- <div class="form-group">
 											<div class="input-group input-group-alternative">
 												<div class="input-group-prepend">
 													<span class="input-group-text"><i
@@ -104,7 +105,7 @@
 												<input class="form-control" placeholder="Select a job type" type="text"
 													name="job_type" required ngModel>
 											</div>
-										</div>
+										</div> -->
 
 										<div class="form-group">
 											<div class="input-group input-group-alternative">
@@ -113,7 +114,7 @@
 															class="ni ni-lock-circle-open"></i></span>
 												</div>
 												<input class="form-control" placeholder="Password" type="password"
-													name="password" required ngModel>
+													name="worker_password" required [(ngModel)]="job.worker_password">
 											</div>
 										</div>
 										<!-- <div class="form-group">

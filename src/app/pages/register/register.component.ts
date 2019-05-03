@@ -10,9 +10,6 @@ export class RegisterComponent implements OnInit {
 
 	job = new Jobapply();
 
-jobs = [
-
-]
 
   constructor() { }
 
@@ -20,7 +17,7 @@ jobs = [
   }
 
   display(){
-	//   console.log(this.address);
+	  console.log(this.job);
   }
 
 }
