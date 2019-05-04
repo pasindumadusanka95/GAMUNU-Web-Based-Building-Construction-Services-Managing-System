@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
 	// console.log(this.job);
-	this.jobApplyService.awaitJobApply(this.job)
+	// this.jobApplyService.awaitJobApply(this.job)
   }
 
 //   postWorker(wor: Worker) {
