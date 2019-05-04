@@ -11,8 +11,14 @@ export class JobapplyService {
   selectedJobapply: Jobapply;
   jobapplys: Jobapply[];
   readonly baseURL= 'http://localhost:3000/jobapplys';
+  readonly jobAppURL= 'http://localhost:3000/applyjob';
 
   constructor(private http: HttpClient) { }
+
+  awaitJobApply(jobapp: Jobapply){
+	  console.log(jobapp)
+	return this.http.post(this.jobAppURL,jobapp);
+  }
 
   postJobapply(jobapp: Jobapply){
     return this.http.post(this.baseURL,jobapp);

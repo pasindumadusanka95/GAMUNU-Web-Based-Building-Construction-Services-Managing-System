@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Jobapply } from 'src/app/shared/jobapply.model';
+import { JobapplyService } from 'src/app/shared/jobapply.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -8,16 +9,21 @@ import { Jobapply } from 'src/app/shared/jobapply.model';
 })
 export class RegisterComponent implements OnInit {
 
-	job = new Jobapply();
+  job = new Jobapply();
 
-
-  constructor() { }
+  constructor(
+	  public jobApplyService: JobapplyService
+  ) { }
 
   ngOnInit() {
   }
 
-  display(){
-	  console.log(this.job);
+  onSubmit() {
+	// console.log(this.job);
+	this.jobApplyService.awaitJobApply(this.job)
   }
 
+//   postWorker(wor: Worker) {
+//     return this.http.post(this.baseURL, wor);
+//   }
 }

@@ -30,8 +30,9 @@
 												<div class="input-group-prepend">
 													<span class="input-group-text"><i class="fa fa-user"></i></span>
 												</div>
-												<input class="form-control" placeholder="Name" type="text" name="worker_name"
+												<input #name class="form-control" placeholder="Name" type="text" name="worker_name"
 													required [(ngModel)]="job.worker_name">
+													
 											</div>
 										</div>
 										<div class="form-group">
@@ -142,7 +143,7 @@
 											</div>
 										</div>
 										<div class="text-center">
-											<button type="button" (click)="display()" class="btn btn-primary mt-4">Apply
+											<button type="button" (click)="onSubmit()" class="btn btn-primary mt-4">Apply
 												Job</button>
 										</div>
 									</form>
