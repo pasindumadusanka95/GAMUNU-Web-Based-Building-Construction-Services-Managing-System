@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProjectService } from '../shared/project.service';
 import { NgForm } from '@angular/forms';
 import { Project } from '../shared/project.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-addprojects',
@@ -10,7 +11,8 @@ import { Project } from '../shared/project.model';
 })
 export class AddprojectsComponent implements OnInit {
   @ViewChild('projectForm') project_form;
-  constructor(public projectService: ProjectService) { }
+  constructor(public projectService: ProjectService,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.resetForm(this.project_form);
@@ -46,13 +48,14 @@ export class AddprojectsComponent implements OnInit {
     this.projectService.postProject(form.value).subscribe((res)=>{
       this.resetForm(form);
       this.refreshProjectList();
-     // M.toast({html: 'Saved Successfully', classes: 'rounded'});
+      this.toastr.success('Submiited Successfully', 'Project Data');
     });
   } else{
   // tslint:disable-next-line: deprecation
     this.projectService.putProject(form.value).subscribe((res)=>{
       this.resetForm(form);
       this.refreshProjectList();
+      this.toastr.info('Updated Successfully', 'Project Data');
     });
   }
 }

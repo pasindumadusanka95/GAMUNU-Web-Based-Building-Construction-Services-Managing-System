@@ -26,14 +26,14 @@
       <div class="row">
         <div class="col-md-12 mb-3">
           <label>Start Date</label>
-          <input size="16" type="text" name="start_date" #start_date="ngModel" [(ngModel)]="projectService.selectedProject.start_date" class="form-control" required>
+          <input size="16" type="date" name="start_date" #start_date="ngModel" [(ngModel)]="projectService.selectedProject.start_date" class="form-control" required>
         </div>
         </div>
 
         <div class="row">
           <div class="col-md-12 mb-3">
         <label>End Date</label>
-        <input size="16" type="text" name="end_date" #end_date="ngModel" [(ngModel)]="projectService.selectedProject.end_date" class="form-control" required>
+        <input size="16" type="date" name="end_date" #end_date="ngModel" [(ngModel)]="projectService.selectedProject.end_date" class="form-control" required>
       </div>
       </div>
       <div class="row">
@@ -57,13 +57,13 @@
 <div class="row">
   <div class="col-md-12 mb-3">
 <label>Project Cost</label>
-<input size="16" type="text" name="project_cost" #project_cost="ngModel" [(ngModel)]="projectService.selectedProject.project_cost" class="form-control" required>
+<input size="16" type="number" name="project_cost" #project_cost="ngModel" [(ngModel)]="projectService.selectedProject.project_cost" class="form-control" required>
 </div>
 </div>
 <div class="row">
   <div class="col-md-12 mb-3">
 <label>Worker Count</label>
-<input size="16" type="text" name="worker_count" #worker_count="ngModel" [(ngModel)]="projectService.selectedProject.worker_count" class="form-control" required>
+<input size="16" type="number" name="worker_count" #worker_count="ngModel" [(ngModel)]="projectService.selectedProject.worker_count" class="form-control" required>
 </div>
 </div>
       <div class="form-group text-right">

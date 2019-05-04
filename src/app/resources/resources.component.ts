@@ -6,6 +6,7 @@ import { Order } from '../shared/order.model';
 import { NgForm } from '@angular/forms';
 import { JobapplyService } from '../shared/jobapply.service';
 import { ProjectService } from '../shared/project.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-resources',
@@ -18,7 +19,8 @@ export class ResourcesComponent implements OnInit {
   constructor( public orderService:OrderService,
     public resourceService:ResourceService,
     public jobapplyService:JobapplyService,
-    public projectService:ProjectService) { }
+    public projectService:ProjectService,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.refreshOrderList();
@@ -79,6 +81,7 @@ onEdit(reso:Resource){
       this.resourceService.deleteResource(_id).subscribe((res)=>{
         this.refreshResourceList();
         this.resetForm(form);
+        this.toastr.error('Deleted Successfully', 'Resource Data');
       },
       (e) => console.log(e.message));
     }
