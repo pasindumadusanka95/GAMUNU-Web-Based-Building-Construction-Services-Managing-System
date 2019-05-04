@@ -2,6 +2,7 @@ import { Component, OnInit,ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ResourceService } from '../shared/resource.service';
 import { Resource } from '../shared/resource.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-addresources',
@@ -10,7 +11,8 @@ import { Resource } from '../shared/resource.model';
 })
 export class AddresourcesComponent implements OnInit {
   @ViewChild('resourceForm') resource_form;
-  constructor(public resourceService: ResourceService) { }
+  constructor(public resourceService: ResourceService,
+    private toastr:ToastrService) { }
   ngOnInit() {
     this.resetForm(this.resource_form);
     this.refreshResourceList();
@@ -40,13 +42,14 @@ export class AddresourcesComponent implements OnInit {
     this.resourceService.postResource(form.value).subscribe((res)=>{
       this.resetForm(form);
       this.refreshResourceList();
-     // M.toast({html: 'Saved Successfully', classes: 'rounded'});
+      this.toastr.success('Submiited Successfully', 'Resource Data');
     });
   } else{
   // tslint:disable-next-line: deprecation
     this.resourceService.putResource(form.value).subscribe((res)=>{
       this.resetForm(form);
       this.refreshResourceList();
+      this.toastr.info('Updated Successfully', 'Resource Data');
     });
   }
 }

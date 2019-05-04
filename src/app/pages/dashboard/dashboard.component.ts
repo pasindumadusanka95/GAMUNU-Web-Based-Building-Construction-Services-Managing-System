@@ -10,6 +10,7 @@ import { WorkerService } from 'src/app/shared/worker.service';
 import { ProjectService } from 'src/app/shared/project.service';
 import { Project } from 'src/app/shared/project.model';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,6 +23,7 @@ export class DashboardComponent implements OnInit {
      public jobapplyService:JobapplyService,
      public workerService: WorkerService,
      public projectService:ProjectService,
+     private toastr: ToastrService
      ) { }
 
   ngOnInit() {
@@ -73,9 +75,8 @@ onEdit(wor:Worker){
 onSubmitJob(form : NgForm){
   if(form.value._id==''){
   this.workerService.postWorker(form.value).subscribe((res)=>{
-
     this.refreshWorkerList();
-
+    this.toastr.info('and Worker Added', 'Application Accepted');
   });
 }
 }
@@ -110,10 +111,10 @@ onSubmitJob(form : NgForm){
 AcceptOrder(ord:Order){
   if(confirm('Are you sure to Accept this Order?')==true){
   this.orderService.selectedOrder= ord ;
-
   ord.order_status='Accepted';
   this.orderService.putOrder(ord).subscribe((res)=>{
     this.refreshReqOrderList();
+    this.toastr.success(' Successfully', 'Order Accepted');
   });
 }
 }
@@ -128,6 +129,7 @@ if(confirm('Are you sure to Reject this Order?')==true){
   ord.order_status='Rejected';
   this.orderService.putOrder(ord).subscribe((res)=>{
     this.refreshReqOrderList();
+    this.toastr.error('Successfully', 'Order Rejected');
   });
 }
 }
