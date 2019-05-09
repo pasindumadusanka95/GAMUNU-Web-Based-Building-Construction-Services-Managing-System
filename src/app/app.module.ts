@@ -19,8 +19,8 @@ import { AddprojectsComponent } from './addprojects/addprojects.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { NavigationBarComponent } from './pages/navigation-bar/navigation-bar.component';
-import { RegisterComponent } from './pages/register/register.component'
-
+import { RegisterComponent } from './pages/register/register.component';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 
 
 @NgModule({
@@ -37,6 +37,8 @@ import { RegisterComponent } from './pages/register/register.component'
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }),
+    MatButtonModule,
+    MatCheckboxModule
   ],
   declarations: [
     AppComponent,
@@ -46,7 +48,8 @@ import { RegisterComponent } from './pages/register/register.component'
     LoginComponent,
     HomepageComponent,
     NavigationBarComponent,
-	RegisterComponent
+  RegisterComponent,
+
 
 
 

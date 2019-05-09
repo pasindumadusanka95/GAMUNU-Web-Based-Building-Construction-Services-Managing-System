@@ -6,6 +6,7 @@ import { Service } from '../shared/service.model';
 import { NgForm } from '@angular/forms';
 import { JobapplyService } from '../shared/jobapply.service';
 import { ProjectService } from '../shared/project.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-service',
@@ -18,7 +19,8 @@ export class ServiceComponent implements OnInit {
   constructor(public orderService:OrderService,
     public serviceService: ServiceService,
     public jobapplyService:JobapplyService,
-    public projectService: ProjectService
+    public projectService: ProjectService,
+    private toastr : ToastrService
     ) { }
 
   ngOnInit() {
@@ -63,7 +65,7 @@ onSubmit(form : NgForm){
   this.serviceService.postService(form.value).subscribe((res)=>{
     this.resetForm(form);
     this.refreshServiceList();
-   // M.toast({html: 'Saved Successfully', classes: 'rounded'});
+
   });
 }
 else{
@@ -71,6 +73,7 @@ else{
   this.serviceService.putService(form.value).subscribe((res)=>{
     this.resetForm(form);
     this.refreshServiceList();
+
   });
 }
 }
@@ -84,6 +87,7 @@ onDelete(_id:string , form:NgForm ){
     this.serviceService.deleteService(_id).subscribe((res)=>{
       this.refreshServiceList();
       this.resetForm(form);
+      this.toastr.error('Deleted Successfully', 'Service Data');
     },
     (e) => console.log(e.message));
   }

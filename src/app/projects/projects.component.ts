@@ -5,6 +5,7 @@ import { Order } from '../shared/order.model';
 import { Project } from '../shared/project.model';
 import { JobapplyService } from '../shared/jobapply.service';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-projects',
@@ -15,7 +16,8 @@ export class ProjectsComponent implements OnInit {
 
   constructor( public orderService:OrderService,
     public projectService:ProjectService,
-    public jobapplyService:JobapplyService) { }
+    public jobapplyService:JobapplyService,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.refreshOrderList();
@@ -78,6 +80,7 @@ onEdit(pro:Project){
       this.projectService.deleteProject(_id).subscribe((res)=>{
         this.refreshProjectList();
         this.resetForm(form);
+        this.toastr.error('Deleted Successfully', 'Project Data');
       },
       (e) => console.log(e.message));
     }

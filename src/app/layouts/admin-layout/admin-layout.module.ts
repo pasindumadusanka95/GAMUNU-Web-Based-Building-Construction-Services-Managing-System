@@ -19,16 +19,36 @@ import { AddserviceComponent } from 'src/app/addservice/addservice.component';
 import { AddprojectsComponent } from 'src/app/addprojects/addprojects.component';
 import { AddresourcesComponent } from 'src/app/addresources/addresources.component';
 import { ServiceService } from 'src/app/shared/service.service';
-// import { ToastrModule } from 'ngx-toastr';
+import {
+  ToastrModule,
+  ToastNoAnimation,
+  ToastNoAnimationModule
+} from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCheckboxModule, MatButtonModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
+    ToastNoAnimationModule.forRoot({      // Register NgxToast NPM module
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     HttpClientModule,
     NgbModule,
-    ClipboardModule
+    ClipboardModule,
+    ToastrModule.forRoot({      // Register NgxToast NPM module
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+
+    }),
+    MatButtonModule,
+    MatCheckboxModule,
+    ReactiveFormsModule
   ],
   declarations: [
     DashboardComponent,
@@ -44,7 +64,8 @@ import { ServiceService } from 'src/app/shared/service.service';
     AddprojectsComponent
   ],
   providers: [
-  ]
+  ],
+
 })
 
 export class AdminLayoutModule {}

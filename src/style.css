@@ -11,3 +11,6 @@ a.action-btn{
 a.action-btn:hover{
   cursor: pointer;
 }
+@import '~ngx-toastr/toastr.css';
+
+

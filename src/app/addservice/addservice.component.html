@@ -15,18 +15,21 @@
               <label>Service ID</label>
               <input size="16" type="number" name="service_id" #service_id="ngModel" [(ngModel)]="serviceService.selectedService.service_id" class="form-control" required>
               <div *ngIf="service_id.invalid && service_id.touched" class="validation-error">This field is required.</div>
+
             </div>
           </div>
           <div class="row">
             <div class="col-md-12 mb-3">
           <label>Service Name</label>
           <input size="16" type="text" name="service_name" #service_name="ngModel" [(ngModel)]="serviceService.selectedService.service_name" class="form-control" required>
+
         </div>
           </div>
           <div class="row">
             <div class="col-md-12 mb-3">
           <label>Service Type</label>
           <input size="16" type="text" name="service_type" #service_type="ngModel" [(ngModel)]="serviceService.selectedService.service_type" class="form-control" required>
+          <div *ngIf="service_type.invalid && service_type.touched" class="validation-error">This field is required.</div>
         </div>
         </div>
 

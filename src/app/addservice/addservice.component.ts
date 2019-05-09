@@ -4,6 +4,9 @@ import { ToastrService } from 'ngx-toastr';
 import { ServiceService } from '../shared/service.service';
 import { NgForm } from '@angular/forms';
 import { Service } from '../shared/service.model';
+
+
+
 @Component({
   selector: 'app-addservice',
   templateUrl: './addservice.component.html',
@@ -13,7 +16,8 @@ export class AddserviceComponent implements OnInit {
   @ViewChild('serviceForm') service_form;
   closeResult: string;
   constructor(
-    public serviceService: ServiceService) { }
+    public serviceService: ServiceService,
+    private toastr : ToastrService) { }
 
   ngOnInit() {
     this.resetForm(this.service_form);
@@ -42,14 +46,16 @@ export class AddserviceComponent implements OnInit {
     this.serviceService.postService(form.value).subscribe((res)=>{
       this.resetForm(form);
       this.refreshServiceList();
-     // M.toast({html: 'Saved Successfully', classes: 'rounded'});
+      this.toastr.success('Submitted Successfully', 'Service Data');
     });
+
   }
   else{
   // tslint:disable-next-line: deprecation
     this.serviceService.putService(form.value).subscribe((res)=>{
       this.resetForm(form);
       this.refreshServiceList();
+      this.toastr.info('Updated Successfully', 'Service Data');
     });
   }
   }
