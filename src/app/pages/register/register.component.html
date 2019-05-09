@@ -30,7 +30,7 @@
 											<input class="form-control" type="text" name="worker_nic"
 												#worker_nic="ngModel"
 												[(ngModel)]="jobApplyService.selectedJobapply.worker_nic"
-												placeholder="Eg : 953145104V" required>
+												placeholder="Eg : 953145104V" required ng-pattern="/^\d{9}[V|v|X|x]$/" limit-to="10">
 										</div>
 
 										<div class="form-group">
@@ -63,7 +63,7 @@
 											</select>
 										</div> -->
 										<div class="from-group">
-											<label>Select ajob type</label>
+											<label>Select a job type</label>
 											<select class="custom-select form-control" name="job_type" id="job_type"
 												#job_type="ngModel"
 												[(ngModel)]="jobApplyService.selectedJobapply.job_type" required>
@@ -89,9 +89,9 @@
 										<div class="row">
 											<div class="input-field col s12">
 												<button class="btn btn-default" type="button"
-													(click)="resetForm(employeeForm)">Reset</button>
+													(click)="resetForm(jobapplyForm)">Reset</button>
 												<button class="btn btn-danger" type="submit"
-													[disabled]="!jobapplyForm.valid">Submit</button>
+												[disabled]="jobapplyForm.invalid">Submit</button>
 											</div>
 										</div>
 									</form>
