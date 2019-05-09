@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ToastrService } from 'ngx-toastr'; 
+
 import { NgForm } from '@angular/forms';
 import { Jobapply } from 'src/app/shared/jobapply.model';
 import { JobapplyService } from 'src/app/shared/jobapply.service';
@@ -14,7 +16,8 @@ export class RegisterComponent implements OnInit {
   job = new Jobapply();
 
   constructor(
-	  public jobApplyService: JobapplyService
+	  public jobApplyService: JobapplyService,
+	  private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -40,7 +43,8 @@ export class RegisterComponent implements OnInit {
   onSubmit(form : NgForm){
 	  this.jobApplyService.postJobapply(form.value).subscribe((res) => {
 		  this.resetForm(form);
-		  M.toast({html: 'Saved Succesfully', classes:'rounded'});
+		  this.toastr.success("You will get an email, when we confirm your data",'Success')
+		  this.toastr.success("Application saved",'Success')
 	  })
 }
 
