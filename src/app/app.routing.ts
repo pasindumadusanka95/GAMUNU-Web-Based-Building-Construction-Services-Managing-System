@@ -11,14 +11,10 @@ import { RegisterComponent } from './pages/register/register.component';
 // import { LoginComponent } from './auth/login/login.component';
 
 const routes: Routes =[
-	{ path: 'login', component:LoginComponent },
-	{ path: 'register', component:RegisterComponent },
-	{ path: 'home', component: HomepageComponent},
+	  { path: '', component: HomepageComponent},
+	  { path: 'login', component:LoginComponent },
+	  { path: 'register', component:RegisterComponent },
   {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
-  }, {
     path: '',
     component: AdminLayoutComponent, // AdminLayoutComponent
     children: [
