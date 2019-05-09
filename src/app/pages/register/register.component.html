@@ -4,7 +4,6 @@
 			<div class="row justify-content-center">
 
 				<div class="container mt-4 pb-5">
-					<!-- Table -->
 					<div class="row justify-content-center">
 						<div class="col-lg-6 col-md-8">
 							<div class="card bg-secondary shadow border-0">
@@ -12,7 +11,7 @@
 									<div class="text-center text-muted mb-4">
 										<h1>Apply a job</h1>
 									</div>
-									
+
 									<form #jobapplyForm="ngForm" (ngSubmit)="onSubmit(jobapplyForm)">
 										<input type="hidden" name="worker_id" #worker_id="ngModel"
 											[(ngModel)]="jobApplyService.selectedJobapply.worker_id">
@@ -50,17 +49,35 @@
 												<label>Address</label>
 											</div>
 										</div>
+
+										<div class="row">
+											<label>Select ajob type</label>
+											<select class="browser-default" name="job_type" id="job_type"
+												#job_type="ngModel"
+												[(ngModel)]="jobApplyService.selectedJobapply.job_type" required>
+												<option value="Carpenter">Carpenter</option>
+												<option value="Plumber">Plumber</option>
+												<option value="Electrician">Electrician</option>
+												<option value="Carpenter">Carpenter</option>
+												<option value="Pipefitter">Pipefitter</option>
+												<option value="Construction Laborer">Construction Laborer</option>
+											</select>
+										</div>
+
 										<div class="row">
 											<div class="input-field col s12">
 												<input type="password" name="password" #worker_password="ngModel"
-													[(ngModel)]="jobApplyService.selectedJobapply.worker_password" required>
+													[(ngModel)]="jobApplyService.selectedJobapply.worker_password"
+													placeholder="Enter Password" required>
 												<label>Password</label>
 											</div>
 										</div>
 										<div class="row">
 											<div class="input-field col s12">
-												<button class="btn btn-custom right" type="button" (click)="resetForm(employeeForm)">Reset</button>
-												<button class="btn btn-custom right" type="submit" [disabled]="!jobapplyForm.valid">Submit</button>
+												<button class="btn btn-custom right" type="button"
+													(click)="resetForm(employeeForm)">Reset</button>
+												<button class="btn btn-custom right" type="submit"
+													[disabled]="!jobapplyForm.valid">Submit</button>
 											</div>
 										</div>
 									</form>
@@ -81,3 +98,9 @@
 	</div>
 </div>
 <!-- Page content -->
+
+<script>
+	$(document).ready(function () {
+		$('select').formSelect();
+	});
+</script>
