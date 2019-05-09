@@ -12,10 +12,10 @@
 									<div class="text-center text-muted mb-4">
 										<h1>Apply a job</h1>
 									</div>
-									<form role="form" #jobForm="ngForm">
+									<form #workerForm="ngForm" (ngSubmit)="onSubmit(workerForm)">
 										<!-- {{jobForm.value | json}} -->
 										
-										<!-- <div class="form-group">
+										<div class="form-group">
 											<div class="input-group input-group-alternative mb-3">
 												<div class="input-group-prepend">
 													<span class="input-group-text"><i class="fa fa-user"></i></span>
@@ -23,15 +23,26 @@
 												<input class="form-control" placeholder="Name" type="hidden" name="worker_id"
 													required ngModel>
 											</div>
-										</div> -->
+										</div>
+										
+										<div class="row">
+											<div class="input-field col s12">
+												<input type="text" name="name" #name="ngModel"
+													[(ngModel)]="jobApplyService.selectedJobapply.worker_name"
+													placeholder="Enter full name" required>
+												<label>Name :
+													<label class="red-text">*</label>
+												</label>
+											</div>
+										</div>
 
 										<div class="form-group">
 											<div class="input-group input-group-alternative mb-3">
-												<div class="input-group-prepend">
+												<!-- <div class="input-group-prepend">
 													<span class="input-group-text"><i class="fa fa-user"></i></span>
-												</div>
-												<input #name class="form-control" placeholder="Name" type="text" name="worker_name"
-													required [(ngModel)]="job.worker_name">
+												</div> -->
+												<input class="form-control" placeholder="Name" type="text" name="worker_name"
+													#worker_name="ngModel" [(ngModel)]="jobApplyService.selectedJobapply.worker_name">
 													
 											</div>
 										</div>
@@ -41,7 +52,7 @@
 													<span class="input-group-text"><i class="fa fa-id-card"></i></span>
 												</div>
 												<input class="form-control" placeholder="NIC" type="text" name="worker_nic"
-													required [(ngModel)]="job.worker_nic">
+													#worker_nic="ngModel" [(ngModel)]="jobApplyService.selectedJobapply.worker_nic">
 											</div>
 										</div>
 										<div class="form-group">
@@ -49,8 +60,8 @@
 												<div class="input-group-prepend">
 													<span class="input-group-text"><i class="fa fa-phone"></i></span>
 												</div>
-												<input class="form-control" placeholder="Phone" type="text"
-													name="worker_phone" required [(ngModel)]="job.worker_phone">
+												<input class="form-control" placeholder="Phone" type="text" name="worker_phone"
+													#worker_phone="ngModel" [(ngModel)]="jobApplyService.selectedJobapply.worker_phone">
 											</div>
 										</div>
 
@@ -62,7 +73,7 @@
 																class="fa fa-location-arrow"></i></span>
 													</div>
 
-													<select class="form-control" name="job_type" id="job_type" [(ngModel)]="job.job_type">
+													<select class="form-control" name="job_type" id="job_type" #job_type="ngModel" [(ngModel)]="jobApplyService.selectedJobapply.job_type">
 														<option selected value="">I am interested in</option>
 														<option>I</option>
 														<option>am</option>
@@ -82,7 +93,7 @@
 																class="fa fa-location-arrow"></i></span>
 													</div>
 													<input class="form-control" placeholder="Adderss" type="text"
-														name="worker_address" required [(ngModel)]="job.worker_address">
+														name="worker_address" #worker_address="ngModel" [(ngModel)]="jobApplyService.selectedJobapply.worker_address">
 												</div>
 											</div>
 											<!-- 
@@ -115,7 +126,7 @@
 															class="ni ni-lock-circle-open"></i></span>
 												</div>
 												<input class="form-control" placeholder="Password" type="password"
-													name="worker_password" required [(ngModel)]="job.worker_password">
+													name="worker_password" #worker_password="ngModel" [(ngModel)]="jobApplyService.selectedJobapply.worker_password">
 											</div>
 										</div>
 										<!-- <div class="form-group">
@@ -143,8 +154,7 @@
 											</div>
 										</div>
 										<div class="text-center">
-											<button type="button" (click)="onSubmit()" class="btn btn-primary mt-4">Apply
-												Job</button>
+											<button type="submit" class="btn btn-primary mt-4">Apply Job</button>
 										</div>
 									</form>
 								</div>

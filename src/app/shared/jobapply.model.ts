@@ -6,6 +6,6 @@ export class Jobapply {
   worker_phone : number;
   worker_address:string;
   job_type: string;
-  worker_password?:string;
+  worker_password:string;
 
 }
