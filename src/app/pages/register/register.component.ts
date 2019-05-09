@@ -25,7 +25,8 @@ export class RegisterComponent implements OnInit {
   }
 
   resetForm(form?: NgForm){
-	if (form) {
+	//   console.log(form.value)
+	  if (form) {
 		form.reset();
 		this.jobApplyService.selectedJobapply = {
 			_id: "" ,
