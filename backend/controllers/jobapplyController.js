@@ -56,7 +56,6 @@ router.delete('/:id', (req, res) => {
 router.post('/',(req,res)=>{
 	let count = 0
 	jobapply.find((err, docs) =>{
-		console.log(docs);
 		if(!err){
 			var c = Object.keys(docs).length;
 			console.log(c);
@@ -68,8 +67,10 @@ router.post('/',(req,res)=>{
 				worker_phone:req.body.worker_phone,
 				worker_address: req.body.worker_address,
 				job_type:req.body.job_type,
-			  });
-			  jobapp.save((err,doc)=>{
+				worker_password:req.body.worker_password,
+			});
+			jobapp.save((err,doc)=>{
+				console.log(doc);
 				if(!err){res.send(doc); }
 				else { console.log('Error in Job apply Save : ' + JSON.stringify(err,undefined,2));}
 			  });
