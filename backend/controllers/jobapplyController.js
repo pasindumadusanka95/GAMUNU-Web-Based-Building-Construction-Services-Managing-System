@@ -4,6 +4,7 @@ var ObjectId = require('mongoose').Types.ObjectId;
 
 var {jobapply} = require('../models/jobapply.model');
 
+var count = 0;
 // => localhost:3000/jobapplys
 router.get('/',(req,res)=>{
   jobapply.find((err, docs) =>{
@@ -53,17 +54,32 @@ router.delete('/:id', (req, res) => {
 });
 
 router.post('/',(req,res)=>{
-  var jobapp= new jobapply({
-    worker_id : req.body.worker_id,
-    worker_name: req.body.worker_name,
-    worker_nic: req.body.worker_nic,
-    worker_phone:req.body.worker_phone,
-    worker_address: req.body.worker_address,
-    job_type:req.body.job_type,
-  });
-  jobapp.save((err,doc)=>{
-    if(!err){res.send(doc); }
-    else { console.log('Error in Job apply Save : ' + JSON.stringify(err,undefined,2));}
-  });
+	let count = 0
+	jobapply.find((err, docs) =>{
+		console.log(docs);
+		if(!err){
+			var c = Object.keys(docs).length;
+			console.log(c);
+			
+			var jobapp= new jobapply({
+				worker_id : c + 1,
+				worker_name: req.body.worker_name,
+				worker_nic: req.body.worker_nic,
+				worker_phone:req.body.worker_phone,
+				worker_address: req.body.worker_address,
+				job_type:req.body.job_type,
+			  });
+			  jobapp.save((err,doc)=>{
+				if(!err){res.send(doc); }
+				else { console.log('Error in Job apply Save : ' + JSON.stringify(err,undefined,2));}
+			  });
+		}
+		else { console.log('Error in Retriving Worker : ' + JSON.stringify(err,undefined,2));}
+	});
+	
+	console.log("Count "+count);
+  
 });
+
+
 module.exports = router;
