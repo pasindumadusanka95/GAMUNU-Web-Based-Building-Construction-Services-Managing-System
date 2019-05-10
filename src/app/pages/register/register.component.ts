@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(form : NgForm){
 	  this.jobApplyService.postJobapply(form.value).subscribe((res) => {
-		  this.resetForm(form);
+		//   this.resetForm(form);
 		  this.toastr.success("You will get an email, when we confirm your data",'Success')
 		  this.toastr.success("Application saved",'Success')
 	  })
