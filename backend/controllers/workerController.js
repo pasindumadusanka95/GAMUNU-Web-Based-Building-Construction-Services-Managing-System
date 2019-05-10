@@ -53,13 +53,15 @@ router.delete('/:id', (req, res) => {
 });
 
 router.post('/',(req,res)=>{
+	console.log(req.body.worker_password)
   var wor= new worker({
     worker_id : req.body.worker_id,
     worker_name: req.body.worker_name,
     worker_nic: req.body.worker_nic,
     worker_phone:req.body.worker_phone,
     worker_address: req.body.worker_address,
-    job_type:req.body.job_type,
+	job_type:req.body.job_type,
+	worker_password:req.body.worker_password,
   });
   wor.save((err,doc)=>{
     if(!err){res.send(doc); }
