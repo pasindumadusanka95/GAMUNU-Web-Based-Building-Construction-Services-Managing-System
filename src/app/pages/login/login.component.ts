@@ -8,7 +8,8 @@ import { AuthService } from '../../shared/auth.service';
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
-  user = new LoginUser();
+  contact: String
+  password: String
   constructor(public Auth : AuthService) { }
 
   ngOnInit() {
@@ -17,15 +18,19 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   display() {
-    if (!this.user.nic && !this.user.password) {
+	const user = {
+		cantact: this.contact,
+		password: this.password
+	}
+    if (!user.cantact && !user.password) {
       alert("NIC and Password missing")
-    } else if (!this.user.nic) {
+    } else if (!user.cantact) {
       alert("NIC is missing")
-    } else if (!this.user.password) {
+    } else if (!user.password) {
       alert("Password Missing")
 	}
 	else{
-		this.Auth.checkUser(this.user)
+		this.Auth.checkUser(user)
 	}
     // console.log(this.user);
   }
