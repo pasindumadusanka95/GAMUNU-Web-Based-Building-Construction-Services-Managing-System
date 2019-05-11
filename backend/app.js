@@ -25,4 +25,4 @@ app.use('/resources', resourceController);
 app.use('/services', serviceController);
 app.use('/workers', workerController);
 app.use('/jobapplys', jobapplyController);
-app.use('/users', userController);
+app.use('/login', userController);

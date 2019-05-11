@@ -9,7 +9,7 @@ export class AuthService {
 
 	// selectedJobapply: Jobapply|{}={};
 	user : User |{}={};
-	readonly baseURL = 'http://localhost:3000/users'
+	readonly baseURL = 'http://localhost:3000/login'
 
   constructor(public http: HttpClient) { }
 

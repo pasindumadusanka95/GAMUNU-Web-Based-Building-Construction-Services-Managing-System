@@ -3,7 +3,6 @@ var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId;
 
 var { worker } = require('../models/worker.model');
-var { user } = require('../models/user.model');
 
 // => localhost:3000/workers
 router.get('/', (req, res) => {
@@ -70,17 +69,9 @@ router.post('/', (req, res) => {
 				job_type: req.body.job_type,
 				worker_password: req.body.worker_password,
 			});
-			var usr = new user({
-				worker_nic: req.body.worker_nic,
-				worker_password: req.body.worker_password,
-			});
 			wor.save((err, doc) => {
 				if (!err) {
-					usr.save((err, usr) => {
-						if (!err) { res.send(doc); }
-						else { console.log('Error in Worker Save : ' + JSON.stringify(err, undefined, 2)); }
-					});
-					// res.send(doc); 
+					res.send(doc); 
 				}
 				else { console.log('Error in Worker Save : ' + JSON.stringify(err, undefined, 2)); }
 			});
