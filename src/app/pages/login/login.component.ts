@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { LoginUser } from '../../shared/login-user';
-import { AuthService } from '../../shared/auth.service';
+import { AuthService } from '../../shared/user.service';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,7 +9,7 @@ import { AuthService } from '../../shared/auth.service';
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
-  contact: String
+  nic: String
   password: String
   constructor(public Auth : AuthService) { }
 
@@ -17,21 +18,15 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
   }
 
-  display() {
-	const user = {
-		cantact: this.contact,
-		password: this.password
-	}
-    if (!user.cantact && !user.password) {
-      alert("NIC and Password missing")
-    } else if (!user.cantact) {
-      alert("NIC is missing")
-    } else if (!user.password) {
-      alert("Password Missing")
-	}
-	else{
-		this.Auth.checkUser(user)
-	}
+  onSubmit(form: NgForm) {
+		this.Auth.checkUser(form.value).subscribe(checkedUser => {
+			// if (!checkedUser) {
+			// 	console.log("No User")
+			// } else  {
+				console.log(checkedUser)
+			// } 
+		})
+	// }
     // console.log(this.user);
   }
 

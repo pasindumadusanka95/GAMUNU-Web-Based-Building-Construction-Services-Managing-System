@@ -3,7 +3,7 @@ var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId;
 
 var { worker } = require('../models/worker.model');
-var { user } = require('../models/auth.model');
+var { user } = require('../models/user.model');
 
 // => localhost:3000/workers
 router.get('/', (req, res) => {
