@@ -28,13 +28,14 @@
 										<small>Sign in with credentials</small>
 										{{user | json}}
 									</div>
-									<form role="form">
+									<form #jobapplyForm="ngForm" (ngSubmit)="onSubmit(jobapplyForm)">
 										<div class="form-group mb-3">
 											<div class="input-group input-group-alternative">
 												<div class="input-group-prepend">
 													<span class="input-group-text"><i class="ni ni-email-83"></i></span>
 												</div>
-												<input class="form-control" placeholder="NIC" type="text" [(ngModel)]="user.nic" name="nic" required>
+												<input class="form-control" placeholder="nic" type="text" 
+												#worker_nic="ngModel" [(ngModel)]="Auth.user.worker_nic" name="worker_nic" required>
 											</div>
 										</div>
 										<div class="form-group">
@@ -43,7 +44,8 @@
 													<span class="input-group-text"><i
 															class="ni ni-lock-circle-open"></i></span>
 												</div>
-												<input class="form-control" placeholder="Password" type="password" [(ngModel)]="user.password" name="password" required>
+												<input class="form-control" placeholder="Password" type="password" 
+												#worker_password="ngModel" [(ngModel)]="Auth.user.worker_password" name="worker_password" required>
 											</div>
 										</div>
 										<div class="custom-control custom-control-alternative custom-checkbox">
@@ -53,7 +55,7 @@
 											</label>
 										</div>
 										<div class="text-center">
-											<button type="button" class="btn btn-primary my-4" (click)="display()">Sign in</button>
+											<button type="submit" class="btn btn-primary my-4">Sign in</button>
 										</div>
 									</form>
 								</div>

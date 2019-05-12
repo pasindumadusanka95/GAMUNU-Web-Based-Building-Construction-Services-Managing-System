@@ -9,6 +9,7 @@ var resourceController= require('./controllers/resourceController');
 var serviceController= require('./controllers/serviceController');
 var workerController= require('./controllers/workerController');
 var jobapplyController= require('./controllers/jobapplyController');
+var userController = require('./controllers/userController')
 var app = express();
 
 //middleware
@@ -24,3 +25,4 @@ app.use('/resources', resourceController);
 app.use('/services', serviceController);
 app.use('/workers', workerController);
 app.use('/jobapplys', jobapplyController);
+app.use('/login', userController);

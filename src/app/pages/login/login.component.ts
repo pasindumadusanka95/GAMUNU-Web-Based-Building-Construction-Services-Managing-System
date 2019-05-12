@@ -1,6 +1,9 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { ToastrService } from 'ngx-toastr'; 
+
 import { LoginUser } from '../../shared/login-user';
-import { AuthService } from '../../shared/auth.service';
+import { AuthService } from '../../shared/user.service';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,25 +11,24 @@ import { AuthService } from '../../shared/auth.service';
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
-  user = new LoginUser();
-  constructor(public Auth : AuthService) { }
+  nic: String
+  password: String
+  constructor(public Auth : AuthService, private toastr: ToastrService) { }
 
   ngOnInit() {
   }
   ngOnDestroy() {
   }
 
-  display() {
-    if (!this.user.nic && !this.user.password) {
-      alert("NIC and Password missing")
-    } else if (!this.user.nic) {
-      alert("NIC is missing")
-    } else if (!this.user.password) {
-      alert("Password Missing")
-	}
-	else{
-		this.Auth.checkUser(this.user)
-	}
+  onSubmit(form: NgForm) {
+		this.Auth.checkUser(form.value).subscribe(checkedUser => {
+			if (!checkedUser) {
+				this.toastr.success("Sorry. Please register first",'Error')
+			} else  {
+				console.log(checkedUser)
+			} 
+		})
+	// }
     // console.log(this.user);
   }
 
