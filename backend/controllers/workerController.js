@@ -2,7 +2,9 @@ const express = require('express');
 var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId;
 
-var { worker } = require('../models/worker.model');
+// var { worker } = require('../models/worker.model');
+const mongoose =require('mongoose');
+const worker = mongoose.model('worker')
 
 // => localhost:3000/workers
 router.get('/', (req, res) => {

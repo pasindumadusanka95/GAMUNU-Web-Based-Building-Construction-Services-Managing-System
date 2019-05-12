@@ -10,8 +10,8 @@ var resourceController= require('./controllers/resourceController');
 var serviceController= require('./controllers/serviceController');
 var workerController= require('./controllers/workerController');
 var jobapplyController= require('./controllers/jobapplyController');
-var userController = require('./controllers/userController');
-var registrationController = require('./controllers/registrationController');
+// var userController = require('./controllers/userController');
+// var registrationController = require('./controllers/registrationController');
 var app = express();
 
 //middleware
@@ -35,4 +35,4 @@ app.use('/services', serviceController);
 app.use('/workers', workerController);
 // app.use('/workers', registrationController);
 app.use('/jobapplys', jobapplyController);
-app.use('/login', userController);
+// app.use('/login', loginController);

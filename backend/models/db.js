@@ -9,3 +9,4 @@ mongoose.connect("mongodb+srv://pasindu2:pasindu2@cluster0-elbkn.mongodb.net/Web
 });
 
 require('./jobapply.model');
+require('./worker.model');
