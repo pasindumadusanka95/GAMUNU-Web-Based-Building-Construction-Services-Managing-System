@@ -56,7 +56,7 @@ router.delete('/:id', (req, res) => {
   });
 });
 
-router.post('/',(req,res)=>{
+router.post('/',(req,res, next)=>{
 	let count = 0
 	jobapply.find((err, docs) =>{
 		if(!err){
@@ -85,7 +85,15 @@ router.post('/',(req,res)=>{
 			job.save((err,doc)=>{
 				console.log(doc);
 				if(!err){res.send(doc); }
-				else { console.log('Error in Job apply Save : ' + JSON.stringify(err,undefined,2));}
+				else { 
+					// console.log('Error in Job apply Save : ' + JSON.stringify(err,undefined,2));
+					if (err.code == 11000) {
+						res.status(422).send(['Duplicate nic address found']);
+						// console.log("Dup nic")
+					} else {
+						return next(err)
+					}
+				}
 			  });
 		}
 		else { console.log('Error in Retriving Worker : ' + JSON.stringify(err,undefined,2));}

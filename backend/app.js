@@ -18,6 +18,13 @@ var app = express();
 app.use(bodyParser.json());
 app.use(cors({origin:'http://localhost:4200'}));
 
+// app.use((err, req, res, next) => {
+// 	if (err.name === 'Validationerror') {
+// 		var valErrors = [];
+// 		Object.keys(err.errors).forEach(key => {valErrors.push(err.errors[key].message)});
+// 		res.status(422).send(valErrors);
+// 	}
+// })
 //start server
 app.listen(process.env.PORT, () => console.log(`Server started at port: ${process.env.PORT}`));
 

@@ -8,6 +8,7 @@ var worker = mongoose.model('worker',{
   worker_address:{type:String},
   job_type:{type: String},
   worker_password:{type: String},
+  saltSecret: String
 });
 
 module.exports = {worker};

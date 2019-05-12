@@ -68,6 +68,7 @@ router.post('/', (req, res) => {
 				worker_address: req.body.worker_address,
 				job_type: req.body.job_type,
 				worker_password: req.body.worker_password,
+				saltSecret: req.body.saltSecret
 			});
 			wor.save((err, doc) => {
 				if (!err) {
