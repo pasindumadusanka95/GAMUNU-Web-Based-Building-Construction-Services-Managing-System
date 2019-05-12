@@ -8,7 +8,7 @@ router.post('/', (req, res) => {
 	console.log("object")
 	worker.findOne({ worker_nic: req.body.worker_nic },(err, doc) => {
 		if (!err) { res.send(doc); }
-		else { console.log('Error in Retriving Worker : ' + JSON.stringify(err, undefined, 2)); }
+		else { console.log('Error in Retriving : ' + JSON.stringify(err, undefined, 2)); }
 	});
 });
 
