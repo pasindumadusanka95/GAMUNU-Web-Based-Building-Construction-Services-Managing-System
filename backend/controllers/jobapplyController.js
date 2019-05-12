@@ -2,7 +2,10 @@ const express = require('express');
 var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId;
 
-var {jobapply} = require('../models/jobapply.model');
+// var {jobapply} = require('../models/jobapply.model');
+const mongoose =require('mongoose');
+const jobapply = mongoose.model('jobapply')
+
 
 var count = 0;
 // => localhost:3000/jobapplys
@@ -60,16 +63,26 @@ router.post('/',(req,res)=>{
 			var c = Object.keys(docs).length;
 			console.log(c);
 			
-			var jobapp= new jobapply({
-				worker_id : c + 1,
-				worker_name: req.body.worker_name,
-				worker_nic: req.body.worker_nic,
-				worker_phone:req.body.worker_phone,
-				worker_address: req.body.worker_address,
-				job_type:req.body.job_type,
-				worker_password:req.body.worker_password,
-			});
-			jobapp.save((err,doc)=>{
+			// var jobapp= new jobapply({
+			// 	worker_id : c + 1,
+			// 	worker_name: req.body.worker_name,
+			// 	worker_nic: req.body.worker_nic,
+			// 	worker_phone:req.body.worker_phone,
+			// 	worker_address: req.body.worker_address,
+			// 	job_type:req.body.job_type,
+			// 	worker_password:req.body.worker_password,
+			// });
+
+			var job = new jobapply();
+			job.worker_id = c + 1;
+			job.worker_name= req.body.worker_name;
+			job.worker_nic= req.body.worker_nic;
+			job.worker_phone=req.body.worker_phone;
+			job.worker_address= req.body.worker_address;
+			job.job_type=req.body.job_type;
+			job.worker_password=req.body.worker_password;
+
+			job.save((err,doc)=>{
 				console.log(doc);
 				if(!err){res.send(doc); }
 				else { console.log('Error in Job apply Save : ' + JSON.stringify(err,undefined,2));}

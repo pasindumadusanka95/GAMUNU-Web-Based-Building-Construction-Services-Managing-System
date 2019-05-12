@@ -1,0 +1,10 @@
+{
+	"development": {
+		"PORT": 3000,
+		"MONGODB_URI": "mongodb+srv://pasindu2:pasindu2@cluster0-elbkn.mongodb.net/WebDB?retryWrites=true"
+	},
+	"production": {
+		"PORT": 80,
+		"MONGODB_URI": "mongodb+srv://pasindu2:pasindu2@cluster0-elbkn.mongodb.net/WebDB?retryWrites=true"
+	}
+}
