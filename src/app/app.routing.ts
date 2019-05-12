@@ -8,12 +8,14 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { LoginComponent } from './pages/login/login.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { WorkerComponent } from './worker/worker.component';
 // import { LoginComponent } from './auth/login/login.component';
 
 const routes: Routes =[
 	  { path: '', component: HomepageComponent},
 	  { path: 'users', component:LoginComponent },
-	  { path: 'register', component:RegisterComponent },
+    { path: 'register', component:RegisterComponent },
+    { path: 'worker', component:WorkerComponent },
   {
     path: '',
     component: AdminLayoutComponent, // AdminLayoutComponent
@@ -36,7 +38,7 @@ const routes: Routes =[
     path: '**',
     redirectTo: 'dashboard'
   },
-  
+
 ];
 
 @NgModule({
