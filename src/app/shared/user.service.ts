@@ -15,6 +15,7 @@ export class AuthService {
 
   checkUser(user: User){
 	  console.log("service worked")
+	  console.log(user);
 	return this.http.post(this.baseURL,user);
 	// console.log("User",user)
   }

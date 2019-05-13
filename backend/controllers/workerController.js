@@ -1,7 +1,7 @@
 const express = require('express');
 var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId;
-
+const passport = require('passport')
 // var { worker } = require('../models/worker.model');
 const mongoose =require('mongoose');
 const worker = mongoose.model('worker')
@@ -79,7 +79,8 @@ router.post('/', (req, res) => {
 			wor.worker_phone=req.body.worker_phone;
 			wor.worker_address= req.body.worker_address;
 			wor.job_type=req.body.job_type;
-			wor.worker_password=req.body.worker_password;
+			wor.username=req.body.worker_nic;
+			wor.password=req.body.worker_password;
 
 			wor.save((err, doc) => {
 				if (!err) {
@@ -94,4 +95,7 @@ router.post('/', (req, res) => {
 
 
 });
+
+
+
 module.exports = router;
