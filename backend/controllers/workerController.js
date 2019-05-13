@@ -62,16 +62,25 @@ router.post('/', (req, res) => {
 			console.log(c);
 
 			console.log(req.body.worker_password)
-			var wor = new worker({
-				worker_id: c + 1,
-				worker_name: req.body.worker_name,
-				worker_nic: req.body.worker_nic,
-				worker_phone: req.body.worker_phone,
-				worker_address: req.body.worker_address,
-				job_type: req.body.job_type,
-				worker_password: req.body.worker_password,
-				saltSecret: req.body.saltSecret
-			});
+			// var wor = new worker({
+			// 	worker_id: c + 1,
+			// 	worker_name: req.body.worker_name,
+			// 	worker_nic: req.body.worker_nic,
+			// 	worker_phone: req.body.worker_phone,
+			// 	worker_address: req.body.worker_address,
+			// 	job_type: req.body.job_type,
+			// 	worker_password: req.body.worker_password,
+			// 	saltSecret: req.body.saltSecret
+			// });
+			var wor = new worker();
+			wor.worker_id = c + 1;
+			wor.worker_name= req.body.worker_name;
+			wor.worker_nic= req.body.worker_nic;
+			wor.worker_phone=req.body.worker_phone;
+			wor.worker_address= req.body.worker_address;
+			wor.job_type=req.body.job_type;
+			wor.worker_password=req.body.worker_password;
+
 			wor.save((err, doc) => {
 				if (!err) {
 					res.send(doc); 

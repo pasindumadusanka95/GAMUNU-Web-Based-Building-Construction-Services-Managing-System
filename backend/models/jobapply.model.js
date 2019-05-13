@@ -43,20 +43,20 @@ var jobapplySchema = new mongoose.Schema({
 		required: 'Password cannot be empty',
 		minlength: [6, 'Password must be atleast 6 character long']
 	},
-	saltSecret: String
+	// saltSecret: String
 })
 
 //generate hash and key for password
 
-jobapplySchema.pre('save', function (next) {
-	bcrypt.genSalt(10, (err, salt) => {
-		bcrypt.hash(this.worker_password, salt, (err, hash) => {
-			this.worker_password = hash;
-			this.saltSecret = salt;
-			next();
-		})
-	})
-})
+// jobapplySchema.pre('save', function (next) {
+// 	bcrypt.genSalt(10, (err, salt) => {
+// 		bcrypt.hash(this.worker_password, salt, (err, hash) => {
+// 			this.worker_password = hash;
+// 			this.saltSecret = salt;
+// 			next();
+// 		})
+// 	})
+// })
 
 jobapplySchema.path('worker_nic').validate((val) => {
 	nicRegex = /^[0-9]{9}[x|X|v|V]$/

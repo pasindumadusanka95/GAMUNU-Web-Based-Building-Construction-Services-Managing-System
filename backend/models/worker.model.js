@@ -1,5 +1,5 @@
 const mongoose =require('mongoose');
-
+const bcrypt = require('bcrypt');
 // var worker = mongoose.model('worker',{
 //   worker_id : {type: Number},
 //   worker_name: {type: String},
@@ -23,5 +23,15 @@ var workerSchema = new mongoose.Schema({
 	worker_password:{type: String},
 	saltSecret: String
 });
+
+workerSchema.pre('save', function (next) {
+	bcrypt.genSalt(10, (err, salt) => {
+		bcrypt.hash(this.worker_password, salt, (err, hash) => {
+			this.worker_password = hash;
+			this.saltSecret = salt;
+			next();
+		})
+	})
+})
 
 mongoose.model('worker', workerSchema)
