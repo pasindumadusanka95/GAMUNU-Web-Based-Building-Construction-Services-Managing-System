@@ -2,7 +2,9 @@ const express = require('express');
 var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId;
 
-var { worker } = require('../models/worker.model');
+// var { worker } = require('../models/worker.model');
+const mongoose =require('mongoose');
+const worker = mongoose.model('worker')
 
 // => localhost:3000/workers
 router.get('/', (req, res) => {
@@ -68,6 +70,7 @@ router.post('/', (req, res) => {
 				worker_address: req.body.worker_address,
 				job_type: req.body.job_type,
 				worker_password: req.body.worker_password,
+				saltSecret: req.body.saltSecret
 			});
 			wor.save((err, doc) => {
 				if (!err) {
