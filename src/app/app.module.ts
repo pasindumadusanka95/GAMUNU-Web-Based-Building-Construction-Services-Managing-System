@@ -21,6 +21,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { NavigationBarComponent } from './pages/navigation-bar/navigation-bar.component';
 import { RegisterComponent } from './pages/register/register.component';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import { WorkerComponent } from './worker/worker.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
     HomepageComponent,
     NavigationBarComponent,
   RegisterComponent,
+  WorkerComponent,
 
 
 
