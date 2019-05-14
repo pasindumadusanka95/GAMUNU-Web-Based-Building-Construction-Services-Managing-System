@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
 		this.Auth.login(form.value).subscribe(
 			res => {
+				console.log(res)
 				this.Auth.setToken(res['token']);
 				this.router.navigateByUrl('/userprofile')
 			},

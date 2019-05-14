@@ -19,7 +19,7 @@ const worker = mongoose.model('worker')
 // module.exports = router;
 
 router.post('/', (req, res, next) => {
-	console.log("object")
+	// console.log("object")
 	//call for passport authentication
 	passport.authenticate('local', (err, worker, info) => {
 		//error from passport authentication
@@ -38,23 +38,6 @@ router.post('/', (req, res, next) => {
 	})(req, res)
 })
 
-// module.exports.authenticate = (req, res, next) => {
-// 	console.log("object")
-// 	//call for passport authentication
-// 	passport.authenticate('local', (err, worker, info) => {
-// 		//error from passport authentication
-// 		if (err) {
-// 			return res.status(400).json(err);
-// 		}
-// 		//registered users
-// 		else if (worker) {
-// 			return res.status(200).json({"token" : worker.generateJwt()});
-// 		}
-// 		//unknown users and wrong passwords
-// 		else{
-// 			return res.status(404).json(info);
-// 		}
-// 	})(req, res)
-// }
+
 
 module.exports = router;

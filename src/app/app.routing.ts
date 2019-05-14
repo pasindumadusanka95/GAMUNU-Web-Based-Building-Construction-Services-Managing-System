@@ -12,12 +12,14 @@ import { WorkerComponent } from './worker/worker.component';
 import {UserProfileComponent} from './pages/user-profile/user-profile.component'
 // import { LoginComponent } from './auth/login/login.component';
 
+import { AuthGuard } from './shared/auth/auth.guard';
+
 const routes: Routes =[
 	  { path: '', component: HomepageComponent},
 	  { path: 'login', component:LoginComponent },
     { path: 'apply', component:RegisterComponent },
     { path: 'worker', component:WorkerComponent },
-    { path: 'userprofile', component:UserProfileComponent },
+    { path: 'userprofile', component:UserProfileComponent, canActivate:[AuthGuard] },
   {
     path: '',
     component: AdminLayoutComponent, // AdminLayoutComponent
@@ -51,5 +53,6 @@ const routes: Routes =[
   ],
   exports: [
   ],
+  providers:[AuthGuard]
 })
 export class AppRoutingModule { }

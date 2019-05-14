@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AuthService } from '../shared/user.service';
+import { Router } from '@angular/router'
 @Component({
   selector: 'app-worker',
   templateUrl: './worker.component.html',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkerComponent implements OnInit {
 
-  constructor() { }
+	// userDetails;
+  constructor(
+	  private authService: AuthService,
+	  private router: Router,
+  ) { }
 
   ngOnInit() {
+	//   this.authService.getUserProfile().subscribe(
+	// 	  res => {
+	// 		  this.userDetails = res['user']
+	// 	  },
+	// 	  err => {
+	// 		  console.log(err);
+	// 	  }
+	//   );
   }
 
 }
