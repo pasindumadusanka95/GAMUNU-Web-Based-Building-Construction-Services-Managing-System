@@ -26,9 +26,9 @@
 									<div class="text-center text-muted mb-4">
 										<h1>Gemunu Constructions</h1>
 										<small>Sign in with credentials</small>
-										{{user | json}}
+										<!-- {{user | json}} -->
 									</div>
-									<form #jobapplyForm="ngForm" (ngSubmit)="onSubmit(jobapplyForm)">
+									<!-- <form #jobapplyForm="ngForm" (ngSubmit)="onSubmit(jobapplyForm)">
 										<div class="form-group mb-3">
 											<div class="input-group input-group-alternative">
 												<div class="input-group-prepend">
@@ -57,6 +57,26 @@
 										<div class="text-center">
 											<button type="submit" class="btn btn-primary my-4">Sign in</button>
 										</div>
+									</form> -->
+
+									<form #loginForm="ngForm" (ngSubmit)="loginForm.valid && onSubmit(loginForm)">
+										<input type="text" name="username" id="username" #username="ngModel"
+										[(ngModel)]="user.username"
+										placeholder="NIC" [pattern]="nicRegex" required 
+										[ngClass]="{'invalid-textbox': loginForm.submitted && !username.valid}">
+										<div *ngIf="loginForm.submitted && username.errors?.pattern">
+											<label for="">Invalid NIC</label>
+										</div>
+										
+										<input type="password" name="password" id="password" #password="ngModel"
+										[(ngModel)]="user.password"
+										placeholder="Password" required minlength="6"
+										[ngClass]="{'invalid-textbox': loginForm.submitted && !password.valid}">
+										<div *ngIf="loginForm.submitted && password.errors?.minlength">
+											<label for="">Minimum 6 characters</label>
+										</div>
+
+										<input type="submit" value="Sign In">
 									</form>
 								</div>
 							</div>
@@ -65,8 +85,7 @@
 									<a href="javascript:void(0)" class="text-light"><small>Forgot password?</small></a>
 								</div>
 								<div class="col-6 text-right">
-									<a href="javascript:void(0)" class="text-light"><small>Create new
-											account</small></a>
+									<a href="/apply" class="text-light"><small>Apply for a job</small></a>
 								</div>
 							</div>
 						</div>

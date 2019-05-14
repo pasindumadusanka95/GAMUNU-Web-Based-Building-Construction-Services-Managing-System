@@ -13,10 +13,18 @@ export class AuthService {
 
   constructor(public http: HttpClient) { }
 
-  checkUser(user: User){
-	  console.log("service worked")
-	  console.log(user);
-	return this.http.post(this.baseURL,user);
-	// console.log("User",user)
+//   checkUser(user: User){
+// 	  console.log("service worked")
+// 	  console.log(user);
+// 	return this.http.post(this.baseURL,user);
+// 	// console.log("User",user)
+//   }
+
+  login(user: User){
+	return this.http.post(this.baseURL,user);   
+  }
+
+  setToken(token: string){
+	  localStorage.setItem('token', token);
   }
 }

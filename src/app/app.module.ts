@@ -22,7 +22,7 @@ import { NavigationBarComponent } from './pages/navigation-bar/navigation-bar.co
 import { RegisterComponent } from './pages/register/register.component';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import { WorkerComponent } from './worker/worker.component';
-
+import {UserProfileComponent} from './pages/user-profile/user-profile.component'
 
 @NgModule({
   imports: [
@@ -51,6 +51,7 @@ import { WorkerComponent } from './worker/worker.component';
     NavigationBarComponent,
   RegisterComponent,
   WorkerComponent,
+  UserProfileComponent
 
 
 
