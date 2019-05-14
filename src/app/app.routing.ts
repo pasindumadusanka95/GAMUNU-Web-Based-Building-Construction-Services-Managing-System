@@ -9,13 +9,17 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { WorkerComponent } from './worker/worker.component';
+import {UserProfileComponent} from './pages/user-profile/user-profile.component'
 // import { LoginComponent } from './auth/login/login.component';
+
+import { AuthGuard } from './shared/auth/auth.guard';
 
 const routes: Routes =[
 	  { path: '', component: HomepageComponent},
-	  { path: 'users', component:LoginComponent },
-    { path: 'register', component:RegisterComponent },
+	  { path: 'login', component:LoginComponent },
+    { path: 'apply', component:RegisterComponent },
     { path: 'worker', component:WorkerComponent },
+    { path: 'userprofile', component:UserProfileComponent, canActivate:[AuthGuard] },
   {
     path: '',
     component: AdminLayoutComponent, // AdminLayoutComponent
@@ -49,5 +53,6 @@ const routes: Routes =[
   ],
   exports: [
   ],
+  providers:[AuthGuard]
 })
 export class AppRoutingModule { }

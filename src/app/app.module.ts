@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -9,6 +9,9 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import {  ToastrModule } from 'ngx-toastr';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { AuthGuard } from './shared/auth/auth.guard';
+import { AuthInterceptor } from './shared/auth/auth.interceptor';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
@@ -22,8 +25,9 @@ import { NavigationBarComponent } from './pages/navigation-bar/navigation-bar.co
 import { RegisterComponent } from './pages/register/register.component';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import { WorkerComponent } from './worker/worker.component';
+import {UserProfileComponent} from './pages/user-profile/user-profile.component'
 
-
+import { AuthService } from './shared/user.service'
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -51,13 +55,17 @@ import { WorkerComponent } from './worker/worker.component';
     NavigationBarComponent,
   RegisterComponent,
   WorkerComponent,
-
-
-
-
+  UserProfileComponent
   ],
   providers: [
-    NgbActiveModal
+	  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  },
+	NgbActiveModal,
+	AuthGuard,
+	AuthService,
   ],
   bootstrap: [AppComponent],
 
