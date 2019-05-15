@@ -28,6 +28,7 @@ import { WorkerComponent } from './worker/worker.component';
 import {UserProfileComponent} from './pages/user-profile/user-profile.component'
 
 import { AuthService } from './shared/user.service'
+import { SharedModule } from './shared/shared.module';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -43,7 +44,8 @@ import { AuthService } from './shared/user.service'
       preventDuplicates: true,
     }),
     MatButtonModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    SharedModule
   ],
   declarations: [
     AppComponent,
@@ -55,7 +57,7 @@ import { AuthService } from './shared/user.service'
     NavigationBarComponent,
   RegisterComponent,
   WorkerComponent,
-  UserProfileComponent
+  // UserProfileComponent
   ],
   providers: [
 	  {

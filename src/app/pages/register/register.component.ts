@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ToastrService } from 'ngx-toastr'; 
+import { ToastrService } from 'ngx-toastr';
 
 import { NgForm } from '@angular/forms';
 import { Jobapply } from 'src/app/shared/jobapply.model';
@@ -30,10 +30,10 @@ export class RegisterComponent implements OnInit {
 		form.reset();
 		this.jobApplyService.selectedJobapply = {
 			_id: "" ,
-			worker_id: "",
+			worker_id: null,
 			worker_name: "",
 			worker_nic: "",
-			worker_phone : "",
+			worker_phone : null,
 			worker_address: "",
 			job_type: "",
 			worker_password:""
