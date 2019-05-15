@@ -30,10 +30,10 @@ export class RegisterComponent implements OnInit {
 		form.reset();
 		this.jobApplyService.selectedJobapply = {
 			_id: "" ,
-			worker_id: null,
+			worker_id: 0,
 			worker_name: "",
 			worker_nic: "",
-			worker_phone : null,
+			worker_phone : 0,
 			worker_address: "",
 			job_type: "",
 			worker_password:""
