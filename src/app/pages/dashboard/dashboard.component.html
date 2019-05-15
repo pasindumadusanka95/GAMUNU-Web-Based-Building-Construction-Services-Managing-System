@@ -72,7 +72,7 @@
 </div>
 
   <div class="row mt-5">
-    <div class="col-xl-8 mb-5 mb-xl-0">
+    <div class="col-xl-10 mb-5 mb-xl-0">
       <div class="card shadow">
         <div class="card-header border-0">
           <div class="row align-items-center">
@@ -89,10 +89,11 @@
           <table class="table table-borderless table-striped table-earning">
             <thead>
                 <tr>
-                    <th>date</th>
-                    <th>payment id</th>
-                    <th>customer name</th>
-                    <th>customer phone</th>
+                    <th>Date</th>
+                    <th>payment ID</th>
+                    <th>service ID</th>
+                    <th>customer Name</th>
+                    <th>customer Phone</th>
                     <th></th>
 
                 </tr>
@@ -103,6 +104,7 @@
                     <tr *ngFor="let ord of orderService.orders">
                       <td>{{ord.date}}</td>
                       <td>{{ord.payment_id}}</td>
+                      <td>{{ord.service_id}}</td>
                       <td>{{ord.cus_name}}</td>
                       <td>{{ord.cus_phone}}</td>
                       <td>
@@ -116,44 +118,9 @@
         </div>
       </div>
     </div>
-    <div class="col-xl-4">
-      <div class="card shadow">
-        <div class="card-header border-0">
-          <div class="row align-items-center">
-            <div class="col">
-              <h4 class="mb-0">Ongoing Projects</h4>
-            </div>
-            <div class="col text-right">
-
-            </div>
-          </div>
-        </div>
-        <div class="table-responsive">
-          <!-- Projects table -->
-          <table class="table align-items-center table-flush">
-            <thead class="thead-light">
-              <tr>
-                <th>Project Location</th>
-                <th>Workers Count</th>
-
-              </tr>
-            </thead>
-            <tbody>
-             <tr *ngFor="let pro of projectService.projects">
-                <td>{{pro.project_loc}}</td>
-              <td>{{pro.worker_count}}</td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- current Job Application table -->
+     <!-- current Job Application table -->
   <div class="row mt-5">
-    <div class="col-xl-6 mb-5 mb-xl-0">
+    <div class="col-xl-8 mb-5 mb-xl-0">
       <div class="card shadow">
         <div class="card-header border-0">
           <div class="row align-items-center">
@@ -203,13 +170,49 @@
         </div>
       </div>
     </div>
+
+    <div class="col-xl-4">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="mb-0">Ongoing Projects</h5>
+            </div>
+            <div class="col text-right">
+
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <!-- Projects table -->
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th>Project Location</th>
+                <th>Workers Count</th>
+
+              </tr>
+            </thead>
+            <tbody>
+             <tr *ngFor="let pro of projectService.projects">
+                <td>{{pro.project_loc}}</td>
+              <td>{{pro.worker_count}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
+  </div>
+
+
+
 
 
 
   <!-- current worker table -->
   <div class="row mt-5">
-    <div class="col-xl-10 mb-5 mb-xl-0">
+    <div class="col-xl-12 mb-5 mb-xl-0">
       <div class="card shadow">
         <div class="card-header border-0">
           <div class="row align-items-center">

@@ -8,7 +8,7 @@ import {Jobapply} from './jobapply.model';
 })
 export class JobapplyService {
 
-  selectedJobapply: Jobapply;
+  selectedJobapply: Jobapply|{}={};
   jobapplys: Jobapply[];
   readonly baseURL= 'http://localhost:3000/jobapplys';
 
