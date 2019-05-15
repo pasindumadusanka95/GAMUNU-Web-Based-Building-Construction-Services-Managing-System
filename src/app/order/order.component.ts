@@ -24,7 +24,7 @@ resetForm(form?: NgForm){
     _id: '',
     date: '',
     order_id: null,
-    service_id: null,
+    service_id: '',
     cus_name: '',
     cus_phone: null,
     cus_address: '',

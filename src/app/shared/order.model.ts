@@ -2,7 +2,7 @@ export class Order {
   _id: string ;
   date: string;
   order_id: number;
-  service_id: number;
+  service_id: string;
   cus_name: string;
   cus_phone: number;
   cus_address: string;
