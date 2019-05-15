@@ -26,6 +26,7 @@ import {
 } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCheckboxModule, MatButtonModule } from '@angular/material';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -48,11 +49,12 @@ import { MatCheckboxModule, MatButtonModule } from '@angular/material';
     }),
     MatButtonModule,
     MatCheckboxModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   declarations: [
     DashboardComponent,
-    UserProfileComponent,
+    // UserProfileComponent,
     TablesComponent,
     IconsComponent,
     MapsComponent,
