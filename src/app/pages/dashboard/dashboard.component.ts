@@ -39,6 +39,7 @@ AddedWorker(_id:string , job:Jobapply){
   if(confirm('Are you sure to add this one as a worker?')==true){
   this.onDeleteJob(_id);
   this.jobapplyService.selectedJobapply= job ;
+	console.log(job)
   this.workerService.postWorker(job).subscribe((res)=>{
 
     this.refreshWorkerList();
