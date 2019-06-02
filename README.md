@@ -1,6 +1,6 @@
 # GamunuBuildingConstruction
 
-this is a web based application implemented using MEAN stack
+This is a web based application implemented using MEAN stack. this system helps to manage Resources,Services,Orders,Workers and Projects of the Gamunu Construction.
 This project was generated with Angular CLI version 7.3.2.
 
 ### Development server
