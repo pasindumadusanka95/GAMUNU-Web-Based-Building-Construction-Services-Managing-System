@@ -13,7 +13,12 @@ router.get('/',(req,res)=>{
     else { console.log('Error in Retriving Orders : ' + JSON.stringify(err,undefined,2));}
   });
 });
-
+router.get('/acpt',(req,res)=>{ 
+  order.find({order_status:'Accepted'},(err, docs) =>{
+    if(!err){res.send(docs); }
+    else { console.log('Error in Retriving Orders : ' + JSON.stringify(err,undefined,2));}
+  });
+});
 router.get('/reqe',(req,res)=>{
   order.find({order_status:'requested'},(err, docs) =>{
     if(!err){res.send(docs); }

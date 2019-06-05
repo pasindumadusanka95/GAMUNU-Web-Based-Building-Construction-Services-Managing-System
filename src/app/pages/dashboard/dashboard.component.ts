@@ -28,6 +28,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.refreshReqOrderList();
+    this.refreshAcptOrderList();
     this.refreshWorkerList();
     this.refreshJobapplyList();
     this.refreshProjectList();
@@ -97,6 +98,12 @@ onSubmitJob(form : NgForm){
   refreshReqOrderList(){
     this.orderService.getReqOrderList().subscribe((res)=>{
       this.orderService.orders= res as Order[];
+    });
+  }
+  
+  refreshAcptOrderList(){
+    this.orderService.getAcptOrderList().subscribe((res)=>{
+      this.orderService.AcptOrders= res as Order[];
     });
   }
   refreshWorkerList(){
