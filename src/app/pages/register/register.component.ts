@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   constructor(
 	  public jobApplyService: JobapplyService,
 	  private toastr: ToastrService
-  ) { }
+  ) { } 
 
   ngOnInit() {
 	this.resetForm();
