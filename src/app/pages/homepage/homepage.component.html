@@ -38,7 +38,7 @@ min-height:700px   ; position: relative;  background-position: center; backgroun
 								<div class="form-group">
 									<label>Contact </label>
 									<input class="form-control" type="text" name="cus_phone" #cus_phone="ngModel"
-									[class.is-invalid]="cus_phone.invalid && formError"
+									[class.is-invalid]="cus_phone.invalid && formError || cus_phone.pristine && formError"
 									[(ngModel)]="orderService.selectedOrder.cus_phone"	placeholder="Eg : 0773269713"  pattern="^\d{10}$" >
 								</div>
 
