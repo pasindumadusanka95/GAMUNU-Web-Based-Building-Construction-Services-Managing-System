@@ -28,6 +28,8 @@ export class HomepageComponent implements OnInit {
 	order=new Order;
 	modalReference:any;
 	myDate = new Date();
+	service_idHasError=true; /////For Validation////////
+	formError=false; /////For Validation////////
 
 	constructor(private workerService: WorkerService,
 		private modalService: NgbModal,
@@ -69,13 +71,15 @@ open(content) {
 		order_id:0,
 		service_id:"" ,
 		cus_name:"" ,
-		cus_phone:0 ,
+		cus_phone:null ,
 		cus_address: "",
 		cus_email:"" ,
 		payment_id:0 ,
 		order_status:"requested",
 	}
+	this.service_idHasError=true;
 	this.resetForm();
+	this.formError=false;
 }
 
 getService(){
@@ -93,7 +97,7 @@ resetForm(form?: NgForm){
 			order_id:0,
 			service_id:"" ,
 			cus_name:"" ,
-			cus_phone:0 ,
+			cus_phone:null ,
 			cus_address: "",
 			cus_email:" " ,
 			payment_id:0 ,
@@ -102,18 +106,29 @@ resetForm(form?: NgForm){
 	}
   }
   onSubmit(form : NgForm){
-	  this.orderService.postOrder(form.value).subscribe((res) => {
-		//   this.resetForm(form);
-		 // this.toastr.success("You will get an email, when we confirm your data",'Success')
-		// this.toastr.success("Application saved",'Success')
-		})
+	if(form.value.cus_name!=''&&form.value.cus_phone.length==10&&form.value.cus_address!=''&&
+	form.value.cus_email!=''&&!this.service_idHasError){
+	    this.orderService.postOrder(form.value).subscribe((res) => {})
 		this.modalReference.close();
 		this.resetForm(form);
+		this.formError=false;
+		alert("Your Order Has Been Placed");
+	}else{
+		this.formError=true;
 	}
-	closeModal(form : NgForm){
+}
+closeModal(form : NgForm){
 		this.modalReference.close();
 		this.resetForm(form);
-	}
+}
 ///////////////////////////////Modal End/////////////////////////////////////////
+
+Validate_serviceID(value){
+	if(value=='default' || value==''){
+		this.service_idHasError=true;
+	}else{
+		this.service_idHasError=false;
+	}
+}
 
 }

@@ -14,7 +14,8 @@ min-height:700px   ; position: relative;  background-position: center; backgroun
 
 			<div style="margin-top:40px;">
 			<button style="height:1cm; width:4cm; background-color: white !important; color: #000 !important" type="button" class="btn btn-default"  (click)="open(content)">Place Order</button>
-			<!--PLACE ORDER form MODAL-->
+		
+		<!--PLACE ORDER form MODAL-->
 			<ng-template style="background-color:black" #content let-modal>
 					<div class="modal-header"><div style="padding-top:15px;">
 						<h1 style="font-weight:bold;" class="modal-title">PLACE YOUR ORDER</h1></div>
@@ -24,41 +25,54 @@ min-height:700px   ; position: relative;  background-position: center; backgroun
 						</div>
 						<div class="modal-body">
 							<form #orderForm="ngForm" (ngSubmit)="onSubmit(orderForm)">
-							  <!--<input type="hidden" name="_id" #_id="ngModel"	[(ngModel)]="orderService.selectedOrder._id"> -->
+
 								<input type="hidden" name="date" #date="ngModel" value="requested"	[(ngModel)]="orderService.selectedOrder.date"> 
+								
 								<div class="form-group">
 									<label for="">Name</label>
-									<input class="form-control" type="text" name="cus_name" #cus_name="ngModel"
+									<input class="form-control is-invalid" type="text" name="cus_name" #cus_name="ngModel" 
+									[class.is-invalid]="cus_name.invalid&&formError"
 									[(ngModel)]="orderService.selectedOrder.cus_name" placeholder="Eg : Tony Stark" required>
 								</div>
+
 								<div class="form-group">
 									<label>Contact </label>
-									<input class="form-control" type="number" name="cus_phone" #cus_phone="ngModel"
-									[(ngModel)]="orderService.selectedOrder.cus_phone"	placeholder="Eg : 0773269713" required ng-pattern="/^[0-9]{1,6}$/" limit-to="10">
+									<input class="form-control" type="text" name="cus_phone" #cus_phone="ngModel"
+									[class.is-invalid]="cus_phone.invalid && formError"
+									[(ngModel)]="orderService.selectedOrder.cus_phone"	placeholder="Eg : 0773269713"  pattern="^\d{10}$" >
 								</div>
+
 								<div class="form-group">
 									<label>Address</label>
 									<input class="form-control" type="text" name="cus_address" #cus_address="ngModel"
+									[class.is-invalid]="cus_address.invalid && formError"
 									[(ngModel)]="orderService.selectedOrder.cus_address"	placeholder="Eg : No 7, kotta Rd, Borella" required>
 								</div>
+
 								<div class="form-group">
 										<label>Email</label>
 										<input class="form-control" type="text" name="cus_email" #cus_email="ngModel"
+										[class.is-invalid]="cus_email.invalid && formError"
 										[(ngModel)]="orderService.selectedOrder.cus_email"	placeholder="abcde@gmail.com" required>
 								</div>
+
 								<div class="from-group">
-									<label>Select your need</label>
+									<label >Select your need</label>
 									<select class="custom-select form-control" name="service_id" #service_id="ngModel"
-									[(ngModel)]="orderService.selectedOrder.service_id" id="service_id">
-										<option selected *ngFor="let ser of serviceService.service">{{ser.service_name}}</option>
+									 (blur)="Validate_serviceID(service_id.value)" (change)="Validate_serviceID(service_id.value)"
+									 [class.is-invalid]="service_idHasError && formError"
+									 [(ngModel)]="orderService.selectedOrder.service_id" id="service_id">
+										<option selected *ngFor="let ser of serviceService.service" [value]="ser.service_id" >{{ser.service_name}}</option>
 									</select>
 								</div>
+
 								<input type="hidden" name="order_status" #order_status="ngModel" value="requested"	[(ngModel)]="orderService.selectedOrder.order_status"> 
+								
 								<div class="row" style="padding-top:50px">								
 								<div class="col-md-6" ></div>
 									<div class="col-md-6">
 										<button class="btn btn-default" style="width:125px" type="button" (click)="closeModal(orderForm)">CANCEL</button>
-										<button class="btn btn-danger" style="width:225px" type="submit" >SUBMIT</button>
+										<button class="btn btn-danger" style="width:225px" type="submit">SUBMIT</button>
 									</div>
 								</div>
 							</form>		
