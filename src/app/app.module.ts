@@ -29,7 +29,7 @@ import {UserProfileComponent} from './pages/user-profile/user-profile.component'
 
 import { AuthService } from './shared/user.service'
 import { SharedModule } from './shared/shared.module';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+// import { DashboardComponent } from './pages/dashboard/dashboard.component';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -58,7 +58,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     NavigationBarComponent,
   RegisterComponent,
   WorkerComponent,
-  DashboardComponent
+//   DashboardComponent
   // UserProfileComponent
   ],
   providers: [
