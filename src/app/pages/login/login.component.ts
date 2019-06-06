@@ -39,10 +39,10 @@ export class LoginComponent implements OnInit, OnDestroy {
 		// 		console.log(checkedUser)
 		// 	} 
 		// })
-		if (form.value.username === this.Auth.adm.username && form.value.password === this.Auth.adm.password) {
-			this.router.navigateByUrl('/gc_admin_dashb')
-		}
-		else{
+		// if (form.value.username === this.Auth.adm.username && form.value.password === this.Auth.adm.password) {
+		// 	this.router.navigateByUrl('/gc_admin_dashb')
+		// }
+		// else{
 
 		console.log(form.value)
 		this.Auth.login(form.value).subscribe(
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 				this.toastr.error("Sorry. Please register first",'Error')
 			}
 		);
-		}
+		// }
     }
 
 }
