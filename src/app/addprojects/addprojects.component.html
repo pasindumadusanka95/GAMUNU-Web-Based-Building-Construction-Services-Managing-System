@@ -50,8 +50,11 @@
   </div>
   <div class="row">
     <div class="col-md-12 mb-3">
-  <label>Project Status</label>
-  <input size="16" type="text" name="project_status" #project_status="ngModel" [(ngModel)]="projectService.selectedProject.project_status" class="form-control" required>
+   <label>Project Status</label>
+  <!--<input size="16" type="text" name="project_status" #project_status="ngModel" [(ngModel)]="projectService.selectedProject.project_status" class="form-control" required> -->
+  <select [ngModel]="projectService.selectedProject.project_status" (ngModelChange)="onChange($event)" name="project_status" class="form-control" required>
+    <option [value]="project" *ngFor="let project of projects">{{project}}</option>
+</select>
 </div>
 </div>
 <div class="row">

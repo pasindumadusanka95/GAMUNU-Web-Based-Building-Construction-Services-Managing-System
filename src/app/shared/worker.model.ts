@@ -6,5 +6,5 @@ export class Worker {
   worker_phone : number;
   worker_address:string;
   job_type: string;
-
+  worker_password:string;
 }

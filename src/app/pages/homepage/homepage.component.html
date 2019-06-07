@@ -3,11 +3,92 @@
 <div class="pimag1"
 	style="background-image: url('../../../assets/img/backgrounds/image1.jpg');
 min-height:700px   ; position: relative;  background-position: center; background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
-	<div class="ptext" style="position: absolute; top: 50%; width: 100%; 
+	<div class="ptext" style="position: absolute; top: 30%; width: 100%; 
   text-align: center; color: #000; font-size: 27px; letter-spacing:8px;text-transform: uppercase;">
-		<span class="border" style="background-color:#111; color:#fff; padding:20px;">
-			Gemunu Construction Service
-		</span>
+		<div class="column">
+			<div>
+				<span class="border" style="background-color:#111; color:#fff; padding:20px;">
+					Gemunu Construction Service
+				</span>
+			</div>
+
+			<div style="margin-top:40px;">
+			<button style="height:1cm; width:4cm; background-color: white !important; color: #000 !important" type="button" class="btn btn-default"  (click)="open(content)">Place Order</button>
+		
+		<!--PLACE ORDER form MODAL-->
+			<ng-template style="background-color:black" #content let-modal>
+					<div class="modal-header"><div style="padding-top:15px;">
+						<h1 style="font-weight:bold;" class="modal-title">PLACE YOUR ORDER</h1></div>
+						<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						</div>
+						<div class="modal-body">
+							<form #orderForm="ngForm" (ngSubmit)="onSubmit(orderForm)">
+
+								<input type="hidden" name="date" #date="ngModel" value="requested"	[(ngModel)]="orderService.selectedOrder.date"> 
+								
+								<div class="form-group">
+									<label for="">Name</label>
+									<input class="form-control is-invalid" type="text" name="cus_name" #cus_name="ngModel" 
+									[class.is-invalid]="cus_name.invalid&&formError"
+									[(ngModel)]="orderService.selectedOrder.cus_name" placeholder="Eg : Tony Stark" required>
+								</div>
+
+								<div class="form-group">
+									<label>Contact </label>
+									<input class="form-control" type="text" name="cus_phone" #cus_phone="ngModel"
+									[class.is-invalid]="cus_phone.invalid && formError || cus_phone.pristine && formError"
+									[(ngModel)]="orderService.selectedOrder.cus_phone"	placeholder="Eg : 0773269713"  pattern="^\d{10}$" >
+								</div>
+
+								<div class="form-group">
+									<label>Address</label>
+									<input class="form-control" type="text" name="cus_address" #cus_address="ngModel"
+									[class.is-invalid]="cus_address.invalid && formError"
+									[(ngModel)]="orderService.selectedOrder.cus_address"	placeholder="Eg : No 7, kotta Rd, Borella" required>
+								</div>
+
+								<div class="form-group">
+										<label>Email</label>
+										<input class="form-control" type="text" name="cus_email" #cus_email="ngModel"
+										[class.is-invalid]="cus_email.invalid && formError"
+										[(ngModel)]="orderService.selectedOrder.cus_email"	placeholder="abcde@gmail.com" required>
+								</div>
+
+								<div class="from-group">
+									<label >Select your need</label>
+									<select class="custom-select form-control" name="service_id" #service_id="ngModel"
+									 (blur)="Validate_serviceID(service_id.value)" (change)="Validate_serviceID(service_id.value)"
+									 [class.is-invalid]="service_idHasError && formError"
+									 [(ngModel)]="orderService.selectedOrder.service_id" id="service_id">
+										<option selected *ngFor="let ser of serviceService.service" [value]="ser.service_id" >{{ser.service_name}}</option>
+									</select>
+								</div>
+
+								<div class="from-group">
+									<br>
+									<p>*An inital payment of Rs. 5000 must be made. (Approx. $28.34)
+									<br>**A PayPal link has been provided below</p>
+								</div>
+
+								<input type="hidden" name="order_status" #order_status="ngModel" value="requested"	[(ngModel)]="orderService.selectedOrder.order_status"> 
+								
+								<div class="row" style="padding-top:50px">								
+								<div class="col-md-3" id="paypall-checkout-btn" ></div>
+									<div class="col-md-6">
+										<button class="btn btn-default" style="width:125px" type="button" (click)="closeModal(orderForm)">CANCEL</button>
+										<button class="btn btn-danger" style="width:225px" type="submit">SUBMIT</button>
+									</div>
+								</div>
+							</form>		
+						</div>
+				</ng-template>
+		</div>
+<!-- 	PLACE ORDER form MODAL END-->
+
+
+		</div>
 	</div>
 </div>
 
@@ -15,14 +96,27 @@ min-height:700px   ; position: relative;  background-position: center; backgroun
 
 <section class="section section-Light" id="about"
 	style="text-align: center; padding: 50px 80px; background-color: #f4f4f4;color:#666;">
-	<h2>ABOUT</h2>
-	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore officia dolor excepturi tenetur non
+	<h1 class="mb-4">ABOUT</h1>
+	<div class="row">
+		<div class="col-md-4">
+			<h2>{{workers}} Workers</h2>
+		</div>
+		
+		<div class="col-md-4">
+			<h2>{{projects}} Projects</h2>
+		</div>
+		
+		<div class="col-md-4">
+			<h2>{{orders}} Orders</h2>
+		</div>
+	</div>
+	<!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore officia dolor excepturi tenetur non
 		necessitatibus ex expedita nihil earum enim beatae odit vero et adipisci eligendi cupiditate ipsum corrupti
 		ratione, rem dolore. Assumenda, pariatur accusamus numquam, necessitatibus vero maxime ipsum aperiam quasi
 		minima sapiente ipsam. Iusto sint aspernatur voluptates molestias, enim, laborum inventore ea ab porro dolorum
 		quisquam nam dignissimos illo, cum repellat eligendi eius rerum aliquid quae saepe iure similique ipsa
 		accusamus. Accusantium blanditiis, molestiae omnis nam culpa enim laborum? Itaque totam est debitis magnam
-		tenetur dolores minus repudiandae sit! Sequi doloribus unde atque accusantium nisi molestias dolorem? Non?</p>
+		tenetur dolores minus repudiandae sit! Sequi doloribus unde atque accusantium nisi molestias dolorem? Non?</p> -->
 </section>
 
 <div class="pimag2"

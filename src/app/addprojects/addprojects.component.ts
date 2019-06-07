@@ -11,6 +11,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AddprojectsComponent implements OnInit {
   @ViewChild('projectForm') project_form;
+
+  projects=['Completed','Not Compeleted','Ongoing','Finished','Canceled'];
   constructor(public projectService: ProjectService,
     private toastr: ToastrService) { }
 
@@ -61,5 +63,10 @@ export class AddprojectsComponent implements OnInit {
 }
 onEdit(pro:Project){
   this.projectService.selectedProject = pro;
+}
+
+onChange(newValue) {
+  // console.log(newValue);
+  this.projectService.selectedProject.project_status = newValue;
 }
 }

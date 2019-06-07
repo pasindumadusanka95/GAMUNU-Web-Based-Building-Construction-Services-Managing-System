@@ -1,0 +1,19 @@
+.grey-backdrop {
+    filter: blur(1.5rem);
+  
+    background-color:rgb(73, 74, 75);
+    opacity:0.7 !important;
+  }
+  
+  .modal-header {
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    height:70px;
+    background-color: rgb(255, 145, 0);
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+  }

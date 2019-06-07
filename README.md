@@ -1,6 +1,6 @@
 # GamunuBuildingConstruction
 
-this is a web based application implemented using MEAN stack
+This is a web based application implemented using MEAN stack. this system helps to manage Resources,Services,Orders,Workers and Projects of the Gamunu Construction.
 This project was generated with Angular CLI version 7.3.2.
 
 ### Development server
@@ -20,3 +20,24 @@ Run ng e2e to execute the end-to-end tests via Protractor.
 
 ### Further help
 To get more help on the Angular CLI use ng help or go check out the Angular CLI README.
+
+
+### Developers
+
+<table>
+<tr>
+<td align="center"><img src="https://avatars3.githubusercontent.com/u/25347476?s=460&v=4" width=200></td>
+<td align="center"><img src="https://avatars0.githubusercontent.com/u/25944492?s=460&v=4" width=200></td>
+<td align="center"><img src="https://avatars3.githubusercontent.com/u/30468185?s=460&v=4" width=200></td>
+<td align="center"><img src="https://avatars2.githubusercontent.com/u/43530609?s=460&v=4" width=200></td>
+<td align="center"><img src="https://avatars2.githubusercontent.com/u/30321620?s=460&v=4" width=200></td>
+</tr>
+<tr>
+
+<td align="center"><a href="https://github.com/pasindumadusanka95">Pasindu Madusanka</a></td>
+<td align="center"><a href="https://github.com/ayeshnipun">Ayesh Nipun</a></td>
+<td align="center"><a href="https://github.com/sajith1028">Sajith Pathirathne</a></td>
+<td align="center"><a href="https://github.com/Sajanauk">Sajana Karunarathna</a></td>
+<td align="center"><a href="https://github.com/Athuriviveka">Athuri Viveka</a></td>
+</tr>
+</table>
