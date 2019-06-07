@@ -66,10 +66,16 @@ min-height:700px   ; position: relative;  background-position: center; backgroun
 									</select>
 								</div>
 
+								<div class="from-group">
+									<br>
+									<p>*An inital payment of Rs. 5000 must be made. (Approx. $28.34)
+									<br>**A PayPal link has been provided below</p>
+								</div>
+
 								<input type="hidden" name="order_status" #order_status="ngModel" value="requested"	[(ngModel)]="orderService.selectedOrder.order_status"> 
 								
 								<div class="row" style="padding-top:50px">								
-								<div class="col-md-6" ></div>
+								<div class="col-md-3" id="paypall-checkout-btn" ></div>
 									<div class="col-md-6">
 										<button class="btn btn-default" style="width:125px" type="button" (click)="closeModal(orderForm)">CANCEL</button>
 										<button class="btn btn-danger" style="width:225px" type="submit">SUBMIT</button>
