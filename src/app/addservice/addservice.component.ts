@@ -41,6 +41,8 @@ export class AddserviceComponent implements OnInit {
       this.serviceService.service = res as Service[];
     });
   }
+
+   // here if condition is executed when adding new data and else condtion executed when updating data
   onSubmit(form: NgForm) {
     if (form.value._id == "") {
       this.serviceService.postService(form.value).subscribe((res) => {
@@ -49,8 +51,7 @@ export class AddserviceComponent implements OnInit {
         this.toastr.success('Submitted Successfully', 'Service Data');
       });
 
-    }
-    else {
+    } else {
 
       this.serviceService.putService(form.value).subscribe((res) => {
         this.resetForm(form);

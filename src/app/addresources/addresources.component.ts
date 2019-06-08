@@ -11,12 +11,15 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AddresourcesComponent implements OnInit {
   @ViewChild('resourceForm') resource_form;
+
   constructor(public resourceService: ResourceService,
     private toastr: ToastrService) { }
+
   ngOnInit() {
     this.resetForm(this.resource_form);
     this.refreshResourceList();
   }
+  // values reseting function
   resetForm(form?: NgForm) {
     if (form) {
       form.reset();
@@ -37,6 +40,8 @@ export class AddresourcesComponent implements OnInit {
       this.resourceService.resource = res as Resource[];
     });
   }
+
+   // here if condition is executed when adding new data and else condtion executed when updating data
   onSubmit(form: NgForm) {
     if (form.value._id == '') {
       this.resourceService.postResource(form.value).subscribe((res) => {

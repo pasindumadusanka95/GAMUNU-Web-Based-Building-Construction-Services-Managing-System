@@ -20,6 +20,8 @@ export class AddprojectsComponent implements OnInit {
     this.resetForm(this.project_form);
     this.refreshProjectList();
   }
+
+  // form values reseting function
   resetForm(form?: NgForm) {
     if (form) {
       form.reset();
@@ -45,6 +47,8 @@ export class AddprojectsComponent implements OnInit {
       this.projectService.projects = res as Project[];
     });
   }
+
+  // here if condition is executed when adding new data and else condtion executed when updating data
   onSubmit(form: NgForm) {
     if (form.value._id == '') {
       this.projectService.postProject(form.value).subscribe((res) => {
@@ -53,7 +57,7 @@ export class AddprojectsComponent implements OnInit {
         this.toastr.success('Submiited Successfully', 'Project Data');
       });
     } else {
-      // tslint:disable-next-line: deprecation
+
       this.projectService.putProject(form.value).subscribe((res) => {
         this.resetForm(form);
         this.refreshProjectList();
@@ -65,6 +69,8 @@ export class AddprojectsComponent implements OnInit {
     this.projectService.selectedProject = pro;
   }
 
+
+// this function store new value  according to drop down changes
   onChange(newValue) {
     this.projectService.selectedProject.project_status = newValue;
   }
