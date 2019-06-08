@@ -123,6 +123,7 @@ export class DashboardComponent implements OnInit {
       ord.order_status = 'Accepted';
       this.orderService.putOrder(ord).subscribe((res) => {
         this.refreshReqOrderList();
+        this.refreshAcptOrderList();
         this.toastr.success(' Successfully', 'Order Accepted');
       });
     }
