@@ -1,57 +1,57 @@
-<!-- order form -->
+<!-- resource form -->
 
 <form #resourceForm="ngForm" autocomplete="off" (ngSubmit)="onSubmit(resourceForm)">
   <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="resourceService.selectedResource._id">
   <div class="row">
 
     <div class="col-md-12 mb-3">
-              <label>Resource ID</label>
-              <input size="16" type="number" name="resource_id" #resource_id="ngModel" [(ngModel)]="resourceService.selectedResource.resource_id" class="form-control" required>
-              <div *ngIf="resource_id.invalid && resource_id.touched" class="validation-error">This field is required.</div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12 mb-3">
-          <label>Resource Type</label>
-          <input size="16" type="text" name="resource_type" #resource_type="ngModel" [(ngModel)]="resourceService.selectedResource.resource_type" class="form-control" required>
-        </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12 mb-3">
-          <label>Resource Name</label>
-          <input size="16" type="text" name="resource_name" #resource_name="ngModel" [(ngModel)]="resourceService.selectedResource.resource_name" class="form-control" required>
-        </div>
-        </div>
+      <label>Resource ID</label>
+      <input size="16" type="number" name="resource_id" #resource_id="ngModel"
+        [(ngModel)]="resourceService.selectedResource.resource_id" class="form-control" required>
+      <div *ngIf="resource_id.invalid && resource_id.touched" class="validation-error">This field is required.</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <label>Resource Type</label>
+      <input size="16" type="text" name="resource_type" #resource_type="ngModel"
+        [(ngModel)]="resourceService.selectedResource.resource_type" class="form-control" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <label>Resource Name</label>
+      <input size="16" type="text" name="resource_name" #resource_name="ngModel"
+        [(ngModel)]="resourceService.selectedResource.resource_name" class="form-control" required>
+    </div>
+  </div>
 
-      <div class="row">
-        <div class="col-md-12 mb-3">
-          <label>Resource Owner</label>
-          <input size="16" type="text" name="resource_owner" #resource_owner="ngModel" [(ngModel)]="resourceService.selectedResource.resource_owner" class="form-control" required>
-        </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 mb-3">
-        <label>Resource Count</label>
-        <input size="16" type="number" name="resource_count" #resource_count="ngModel" [(ngModel)]="resourceService.selectedResource.resource_count" class="form-control" required>
-      </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12 mb-3">
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <label>Resource Owner</label>
+      <input size="16" type="text" name="resource_owner" #resource_owner="ngModel"
+        [(ngModel)]="resourceService.selectedResource.resource_owner" class="form-control" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <label>Resource Count</label>
+      <input size="16" type="number" name="resource_count" #resource_count="ngModel"
+        [(ngModel)]="resourceService.selectedResource.resource_count" class="form-control" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 mb-3">
       <label>Available</label>
-      <input size="16" type="number" name="available" #available="ngModel" [(ngModel)]="resourceService.selectedResource.available" class="form-control" required>
+      <input size="16" type="number" name="available" #available="ngModel"
+        [(ngModel)]="resourceService.selectedResource.available" class="form-control" required>
     </div>
-    </div>
+  </div>
 
-
-
-
-      <div class="form-group text-right">
-        <button type="button" class="btn btn-secondary gap-right" (click)="resetForm(resourceForm)">Reset</button>
-        <button type="submit" class="btn btn-success" [disabled]="resourceForm.invalid" >Submit</button>
-      </div>
-
-
+  <div class="form-group text-right">
+    <button type="button" class="btn btn-secondary gap-right" (click)="resetForm(resourceForm)">Reset</button>
+    <button type="submit" class="btn btn-success" [disabled]="resourceForm.invalid">Submit</button>
+  </div>
 
 
 </form>
-
