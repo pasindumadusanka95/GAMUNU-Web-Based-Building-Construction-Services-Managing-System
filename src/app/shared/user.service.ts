@@ -7,6 +7,10 @@ import { User } from './user.model';
 })
 export class AuthService {
 
+	 adm = {
+		username: "953141544V",
+		password: "111111"
+	};
 	// selectedJobapply: Jobapply|{}={};
 	user : User |{}={};
 	readonly baseURL = 'http://localhost:3000/login'

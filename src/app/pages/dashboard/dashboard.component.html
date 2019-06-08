@@ -17,10 +17,6 @@
                   </div>
                 </div>
               </div>
-              <!-- <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                <span class="text-nowrap">Since last month</span>
-              </p> -->
             </div>
           </div>
         </div>
@@ -63,7 +59,7 @@
         <!-- <div class="col-xl-3 col-lg-6">:D
 
               </p> -->
-            <!-- </div>
+        <!-- </div>
           </div>
         </div> -->
       </div>
@@ -71,242 +67,243 @@
   </div>
 </div>
 
-  <div class="row mt-5">
-    <div class="col-xl-12 mb-5 mb-xl-0">
-      <div class="card shadow">
-        <div class="card-header border-0">
-          <div class="row align-items-center">
-            <div class="col">
-              <h3 class="mb-0">New Orders</h3>
-            </div>
-            <div class="col text-right">
+<div class="row mt-5">
+  <div class="col-xl-12 mb-5 mb-xl-0">
+    <div class="card shadow">
+      <div class="card-header border-0">
+        <div class="row align-items-center">
+          <div class="col">
+            <h3 class="mb-0">New Orders</h3>
+          </div>
+          <div class="col text-right">
 
-            </div>
           </div>
         </div>
-        <div class="table-responsive">
-          <!-- Order table -->
-          <table class="table table-borderless table-striped table-earning">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>service ID</th>
-                    <th>customer Name</th>
-                    <th>customer Phone</th>
-                    <th></th>
+      </div>
+      <div class="table-responsive">
+        <!-- Order table -->
+        <table class="table table-borderless table-striped table-earning">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>service ID</th>
+              <th>customer Name</th>
+              <th>customer Phone</th>
+              <th></th>
 
-                </tr>
-            </thead>
+            </tr>
+          </thead>
 
-            <tbody>
+          <tbody>
 
-                    <tr *ngFor="let ord of orderService.orders">
-                      <td>{{ord.date}}</td>
-                      <td>{{ord.service_id}}</td>
-                      <td>{{ord.cus_name}}</td>
-                      <td>{{ord.cus_phone}}</td>
-                      <td>
-                        <button style='border-radius:30px' class='btn btn-success' (click)="AcceptOrder(ord)">Accept</button>
-                        <button style='border-radius:30px' class='btn btn-danger' (click)="RejectOrder(ord)">Reject</button>
-                      </td>
+            <tr *ngFor="let ord of orderService.orders">
+              <td>{{ord.date}}</td>
+              <td>{{ord.service_id}}</td>
+              <td>{{ord.cus_name}}</td>
+              <td>{{ord.cus_phone}}</td>
+              <td>
+                <button style='border-radius:30px' class='btn btn-success' (click)="AcceptOrder(ord)">Accept</button>
+                <button style='border-radius:30px' class='btn btn-danger' (click)="RejectOrder(ord)">Reject</button>
+              </td>
 
-                        </tr>
-            </tbody>
+            </tr>
+          </tbody>
         </table>
-        </div>
       </div>
     </div>
   </div>
-    <div class="row mt-5">
-      <div class="col-xl-12 mb-5 mb-xl-0">
-        <div class="card shadow">
-          <div class="card-header border-0">
-            <div class="row align-items-center">
-              <div class="col">
-                <h3 class="mb-0">Current Orders</h3>
-              </div>
-              <div class="col text-right">
-  
-              </div>
-            </div>
+</div>
+<div class="row mt-5">
+  <div class="col-xl-12 mb-5 mb-xl-0">
+    <div class="card shadow">
+      <div class="card-header border-0">
+        <div class="row align-items-center">
+          <div class="col">
+            <h3 class="mb-0">Current Orders</h3>
           </div>
-          <div class="table-responsive">
-            <!-- Order table -->
-            <table class="table table-borderless table-striped table-earning">
-              <thead>
-                  <tr>
-                      <th>Date</th>
-                      <th>Order ID</th>
-                      <th>Payment ID</th>
-                      <th>Service ID</th>
-                      <th>customer Name</th>
-                      <th>customer Phone</th>
-                      <th></th>
-                  </tr>
-              </thead>
-              <tbody>
-                      <tr *ngFor="let ordd of orderService.AcptOrders">
-                        <td>{{ordd.date}}</td>
-                        <td>{{ordd.order_id}}</td>
-                        <td>{{ordd.payment_id}}</td>
-                        <td>{{ordd.service_id}}</td>
-                        <td>{{ordd.cus_name}}</td>
-                        <td>{{ordd.cus_phone}}</td>
-                      </tr>
-              </tbody>
-          </table>
+          <div class="col text-right">
+
           </div>
         </div>
       </div>
+      <div class="table-responsive">
+        <!-- Order table -->
+        <table class="table table-borderless table-striped table-earning">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Order ID</th>
+              <th>Payment ID</th>
+              <th>Service ID</th>
+              <th>customer Name</th>
+              <th>customer Phone</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ordd of orderService.AcptOrders">
+              <td>{{ordd.date}}</td>
+              <td>{{ordd.order_id}}</td>
+              <td>{{ordd.payment_id}}</td>
+              <td>{{ordd.service_id}}</td>
+              <td>{{ordd.cus_name}}</td>
+              <td>{{ordd.cus_phone}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-     <!-- current Job Application table -->
-  <div class="row mt-5">
-    <div class="col-xl-8 mb-5 mb-xl-0">
-      <div class="card shadow">
-        <div class="card-header border-0">
-          <div class="row align-items-center">
-            <div class="col">
-              <h3 class="mb-0">Job Applications</h3>
-            </div>
-            <div class="col text-right">
+  </div>
+</div>
+<!-- current Job Application table -->
+<div class="row mt-5">
+  <div class="col-xl-8 mb-5 mb-xl-0">
+    <div class="card shadow">
+      <div class="card-header border-0">
+        <div class="row align-items-center">
+          <div class="col">
+            <h3 class="mb-0">Job Applications</h3>
+          </div>
+          <div class="col text-right">
 
-            </div>
           </div>
         </div>
-        <div class="table-responsive">
-          <!-- Order table -->
-          <table class="table table-borderless table-striped table-earning">
-            <thead>
-                <tr>
-                    <th>Job Type</th>
-                    <th>Worker Name</th>
-                    <th>Worker Phone</th>
-                  <th></th>
-                    <!-- <th>service type</th>
+      </div>
+      <div class="table-responsive">
+        <!-- Order table -->
+        <table class="table table-borderless table-striped table-earning">
+          <thead>
+            <tr>
+              <th>Job Type</th>
+              <th>Worker Name</th>
+              <th>Worker Phone</th>
+              <th></th>
+              <!-- <th>service type</th>
                     <th>service name</th>
                     <th class="text-right">price</th>
                     <th>Status</th> -->
-                </tr>
-            </thead>
+            </tr>
+          </thead>
 
-            <tbody>
+          <tbody>
 
-                    <tr *ngFor="let job of jobapplyService.jobapplys">
-                      <td class="tst">{{job.job_type}}</td>
-                      <td>{{job.worker_name}}</td>
-                      <td>{{job.worker_phone}}</td>
-                      <td><button type='submit' class='btn btn-primary' style='border-radius:50px' alt='Add' (click)="AddedWorker(job._id,job)">Add</button>
-                        <button style='border-radius:50px' class='btn btn-danger' (click)="onDeleteJob(job._id)">Remove</button></td>
+            <tr *ngFor="let job of jobapplyService.jobapplys">
+              <td class="tst">{{job.job_type}}</td>
+              <td>{{job.worker_name}}</td>
+              <td>{{job.worker_phone}}</td>
+              <td><button type='submit' class='btn btn-primary' style='border-radius:50px' alt='Add'
+                  (click)="AddedWorker(job._id,job)">Add</button>
+                <button style='border-radius:50px' class='btn btn-danger' (click)="onDeleteJob(job._id)">Remove</button>
+              </td>
 
-                      <!-- <td>{{ord.date}}</td> -->
-
-
-                            <!-- <a href='addProjects/".$row['order_id']."/".$row['cus_name']."/".$row['service_name']."'><button type='submit' class='btn btn-primary'>Confirm</button>&nbsp<a href='deleteOrders/".$row['order_id']."'><button class='btn btn-danger'>Reject</button></a></td> -->
-                        </tr>
+              <!-- <td>{{ord.date}}</td> -->
 
 
+              <!-- <a href='addProjects/".$row['order_id']."/".$row['cus_name']."/".$row['service_name']."'><button type='submit' class='btn btn-primary'>Confirm</button>&nbsp<a href='deleteOrders/".$row['order_id']."'><button class='btn btn-danger'>Reject</button></a></td> -->
+            </tr>
 
-            </tbody>
+
+
+          </tbody>
         </table>
-        </div>
       </div>
     </div>
+  </div>
 
-    <div class="col-xl-4">
-      <div class="card shadow">
-        <div class="card-header border-0">
-          <div class="row align-items-center">
-            <div class="col">
-              <h5 class="mb-0">Ongoing Projects</h5>
-            </div>
-            <div class="col text-right">
+  <div class="col-xl-4">
+    <div class="card shadow">
+      <div class="card-header border-0">
+        <div class="row align-items-center">
+          <div class="col">
+            <h5 class="mb-0">Ongoing Projects</h5>
+          </div>
+          <div class="col text-right">
 
-            </div>
           </div>
         </div>
-        <div class="table-responsive">
-          <!-- Projects table -->
-          <table class="table align-items-center table-flush">
-            <thead class="thead-light">
-              <tr>
-                <th>Project Location</th>
-                <th>Workers Count</th>
+      </div>
+      <div class="table-responsive">
+        <!-- Projects table -->
+        <table class="table align-items-center table-flush">
+          <thead class="thead-light">
+            <tr>
+              <th>Project Location</th>
+              <th>Workers Count</th>
 
-              </tr>
-            </thead>
-            <tbody>
-             <tr *ngFor="let pro of projectService.projects">
-                <td>{{pro.project_loc}}</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pro of projectService.projects">
+              <td>{{pro.project_loc}}</td>
               <td>{{pro.worker_count}}</td>
             </tr>
-            </tbody>
-          </table>
-        </div>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
+</div>
 
 
 
 
 
 
-  <!-- current worker table -->
-  <div class="row mt-5">
-    <div class="col-xl-12 mb-5 mb-xl-0">
-      <div class="card shadow">
-        <div class="card-header border-0">
-          <div class="row align-items-center">
-            <div class="col">
-              <h3 class="mb-0">Current Workers</h3>
-            </div>
-            <div class="col text-right">
+<!-- current worker table -->
+<div class="row mt-5">
+  <div class="col-xl-12 mb-5 mb-xl-0">
+    <div class="card shadow">
+      <div class="card-header border-0">
+        <div class="row align-items-center">
+          <div class="col">
+            <h3 class="mb-0">Current Workers</h3>
+          </div>
+          <div class="col text-right">
 
-            </div>
           </div>
         </div>
-        <div class="table-responsive">
-          <!-- Order table -->
-          <table class="table table-borderless table-striped table-earning">
-            <thead>
-                <tr>
-                    <th>worker ID</th>
-                    <th>Worker Name</th>
-                    <th>Worker NIC</th>
-                    <th>Worker Phone</th>
-                    <th>Worker Address</th>
-                    <th>Job Type</th>
-                    <th></th>
-                    <!-- <th>service type</th>
+      </div>
+      <div class="table-responsive">
+        <!-- Order table -->
+        <table class="table table-borderless table-striped table-earning">
+          <thead>
+            <tr>
+              <th>worker ID</th>
+              <th>Worker Name</th>
+              <th>Worker NIC</th>
+              <th>Worker Phone</th>
+              <th>Worker Address</th>
+              <th>Job Type</th>
+              <th></th>
+              <!-- <th>service type</th>
                     <th>service name</th>
                     <th class="text-right">price</th>
                     <th>Status</th> -->
-                </tr>
-            </thead>
+            </tr>
+          </thead>
 
-            <tbody>
+          <tbody>
 
-                    <tr *ngFor="let wor of workerService.worker">
-                      <td>{{wor.worker_id}}</td>
-                      <td>{{wor.worker_name}}</td>
-                      <td>{{wor.worker_nic}}</td>
-                      <td>{{wor.worker_phone}}</td>
-                      <td>{{wor.worker_address}}</td>
-                      <td>{{wor.job_type}}</td>
-                     <td>
+            <tr *ngFor="let wor of workerService.worker">
+              <td>{{wor.worker_id}}</td>
+              <td>{{wor.worker_name}}</td>
+              <td>{{wor.worker_nic}}</td>
+              <td>{{wor.worker_phone}}</td>
+              <td>{{wor.worker_address}}</td>
+              <td>{{wor.job_type}}</td>
+              <td>
 
-                            <button style='border-radius:30px' class='btn btn-danger' (click)="onDelete(wor._id)">Remove</button>
-
-
-                     </td>
-                        </tr>
+                <button style='border-radius:30px' class='btn btn-danger' (click)="onDelete(wor._id)">Remove</button>
 
 
+              </td>
+            </tr>
 
-            </tbody>
+
+
+          </tbody>
         </table>
-        </div>
       </div>
     </div>
-    </div>
-
+  </div>
+</div>

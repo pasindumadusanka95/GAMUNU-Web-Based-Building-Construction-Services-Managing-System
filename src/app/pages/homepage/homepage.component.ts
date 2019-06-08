@@ -10,6 +10,8 @@ import { DatePipe } from '@angular/common';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
 
+declare let paypal: any;
+
 
 @Component({
   selector: 'app-homepage',
@@ -21,6 +23,35 @@ import { NgForm } from '@angular/forms';
 })
 export class HomepageComponent implements OnInit {
 
+	//PayPal configuration
+	addScript: boolean = false;
+	//paypalLoad: boolean = false;
+
+	finalAmount: number = 28.34;
+
+	paypalConfig = {
+		env: 'sandbox',
+		client: {
+			sandbox: 'AceVMdzs7yHZcvhsEWybhLR2zr0sEULvoJAtpqMrvFTEeQClTJfVOh15KsH5T9szeZPAEQzgV9N27ULY'
+		},
+		commit: true,
+		payment: (data, actions) =>{
+			return actions.payment.create({
+				payment: {
+					transactions: [
+						{amount: {total: this.finalAmount, currency: 'USD'}}
+					]
+				}
+			});
+		},
+		onAuthorize: (data, actions) => {
+			return actions.payment.execute().then((payment) => {
+				//redirection after payment	
+				this.addScript = true;
+			})
+		}
+	};
+
 	workers: number;
 	projects: number;
 	orders: number;
@@ -28,6 +59,8 @@ export class HomepageComponent implements OnInit {
 	order=new Order;
 	modalReference:any;
 	myDate = new Date();
+	service_idHasError=true; /////For Validation////////
+	formError=false; /////For Validation////////
 
 	constructor(private workerService: WorkerService,
 		private modalService: NgbModal,
@@ -41,6 +74,16 @@ export class HomepageComponent implements OnInit {
 	this.getProjectCount();
 	this.getOrderCount();
 	this.getService();
+  }
+
+  addPaypalScript() {
+	//   this.addScript = true;
+	  return new Promise((resolve, reject) => {
+		  let scriptTagElement = document.createElement('script');
+		  scriptTagElement.src = 'https://www.paypalobjects.com/api/checkout.js';
+		  scriptTagElement.onload = resolve;
+		  document.body.appendChild(scriptTagElement);
+	  })
   }
 
   getWorkerCount(){
@@ -62,20 +105,30 @@ export class HomepageComponent implements OnInit {
 	
 //////Order Form Modal /////
 open(content) {
-	this.modalReference =this.modalService.open(content, {backdropClass: 'light-blue-backdrop', size: 'lg'});
+	this.modalReference =this.modalService.open(content, {backdropClass: 'grey-backdrop', size: 'lg'});
 	this.orderService.selectedOrder = {
 		_id: "" ,
 		date: this.datePipe.transform(this.myDate, 'yyyy-MM-dd'),
 		order_id:0,
 		service_id:"" ,
 		cus_name:"" ,
-		cus_phone:0 ,
+		cus_phone:null ,
 		cus_address: "",
 		cus_email:"" ,
 		payment_id:0 ,
 		order_status:"requested",
 	}
+	this.service_idHasError=true;
 	this.resetForm();
+	this.formError=false;
+
+	//paypal btn load
+	if (!this.addScript){
+		this.addPaypalScript().then(() => {
+			paypal.Button.render(this.paypalConfig, '#paypall-checkout-btn');
+			//this.paypalLoad = true;
+		})
+	}
 }
 
 getService(){
@@ -93,7 +146,7 @@ resetForm(form?: NgForm){
 			order_id:0,
 			service_id:"" ,
 			cus_name:"" ,
-			cus_phone:0 ,
+			cus_phone:null ,
 			cus_address: "",
 			cus_email:" " ,
 			payment_id:0 ,
@@ -102,18 +155,29 @@ resetForm(form?: NgForm){
 	}
   }
   onSubmit(form : NgForm){
-	  this.orderService.postOrder(form.value).subscribe((res) => {
-		//   this.resetForm(form);
-		 // this.toastr.success("You will get an email, when we confirm your data",'Success')
-		// this.toastr.success("Application saved",'Success')
-		})
+	if(form.value.cus_name!=''&&form.value.cus_phone.length==10&&form.value.cus_address!=''&&
+	form.value.cus_email!=''&&!this.service_idHasError){
+	    this.orderService.postOrder(form.value).subscribe((res) => {})
 		this.modalReference.close();
 		this.resetForm(form);
+		this.formError=false;
+		alert("Your Order Has Been Placed");
+	}else{
+		this.formError=true;
 	}
-	closeModal(form : NgForm){
+}
+closeModal(form : NgForm){
 		this.modalReference.close();
 		this.resetForm(form);
-	}
+}
 ///////////////////////////////Modal End/////////////////////////////////////////
+
+Validate_serviceID(value){
+	if(value=='default' || value==''){
+		this.service_idHasError=true;
+	}else{
+		this.service_idHasError=false;
+	}
+}
 
 }

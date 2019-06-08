@@ -6,6 +6,7 @@ var {order} = require('../models/order.model');
 var {transporter} = require('../models/email.model');
 
 
+
 // => localhost:3000/orders
 router.get('/',(req,res)=>{
   order.find((err, docs) =>{
@@ -43,27 +44,55 @@ router.get('/:id', (req, res) => {
 });
 
 
-
+function yuh(req,prevOrder_id,prevPayment_id){
+  ord= {
+    date : req.body.date,
+    order_id: prevOrder_id,
+    service_id: req.body.service_id,
+    cus_name:req.body.cus_name,
+    cus_phone: req.body.cus_phone,
+    cus_address:req.body.cus_address,
+    cus_email: req.body.cus_email,
+    payment_id:prevPayment_id,
+    order_status:req.body.order_status,
+  };
+  return ord
+}
 
 router.put('/:id', (req, res) => {
   if (!ObjectId.isValid(req.params.id))
-      return res.status(400).send(`No record with given id : ${req.params.id}`);
+    return res.status(400).send(`No record with given id : ${req.params.id}`);
 
-      var ord= {
-        date : req.body.date,
-        order_id: req.body.order_id,
-        service_id: req.body.service_id,
-        cus_name:req.body.cus_name,
-        cus_phone: req.body.cus_phone,
-        cus_address:req.body.cus_address,
-        cus_email: req.body.cus_email,
-        payment_id:req.body.payment_id,
-        order_status:req.body.order_status,
-      };
-  order.findByIdAndUpdate(req.params.id, { $set: ord }, { new: true }, (err, doc) => {
-      if (!err) { res.send(doc); }
-      else { console.log('Error in Order Update :' + JSON.stringify(err, undefined, 2)); }
-  });
+    // waterfall(tasks, callback);
+     const update= async() =>{
+     /////////////////////Update Order_id  and payment_id////////////////////// 
+         var prevOrder_id=5112;
+         var prevPayment_id=5217;
+         await  order.find((err, docs) =>{
+                  prevOrder_id=0;
+                  prevPayment_id=0;
+                  for( orders of docs){
+                    if(orders.order_status=='Accepted'){
+                      if(orders.order_id>prevOrder_id){
+                        prevOrder_id=orders.order_id;
+                      }
+                      if(orders.payment_id>prevPayment_id){
+                        prevPayment_id=orders.payment_id;
+                      }
+                    }
+                  }
+                  prevOrder_id+=1; 
+                  prevPayment_id+=1; 
+                }).exec();  
+        var ord= await yuh(req,prevOrder_id,prevPayment_id);
+
+         await order.findByIdAndUpdate(req.params.id, { $set: ord }, { new: true }, (err, doc) => {
+            if (!err) { res.send(doc); }
+            else { console.log('Error in Order Update :' + JSON.stringify(err, undefined, 2)); }
+         });
+      }
+
+      update();
 });
 
 router.delete('/:id', (req, res) => {
