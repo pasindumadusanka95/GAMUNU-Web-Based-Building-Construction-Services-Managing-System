@@ -33,4 +33,9 @@ export class UserProfileComponent implements OnInit {
 		);
 	}
 
+	Logout(){
+		this.authService.deleteToken();
+		this.router.navigateByUrl('');
+	}
+
 }
