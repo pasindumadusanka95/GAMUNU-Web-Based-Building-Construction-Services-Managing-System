@@ -1,6 +1,6 @@
 export class LoginUser {
-	constructor(
-		public nic ?: string,
-		public password ?: string,
-	){}
+  constructor(
+    public nic?: string,
+    public password?: string,
+  ) { }
 }

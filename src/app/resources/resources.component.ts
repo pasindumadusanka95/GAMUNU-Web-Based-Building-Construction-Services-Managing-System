@@ -16,10 +16,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ResourcesComponent implements OnInit {
 
-  constructor( public orderService:OrderService,
-    public resourceService:ResourceService,
-    public jobapplyService:JobapplyService,
-    public projectService:ProjectService,
+  constructor(public orderService: OrderService,
+    public resourceService: ResourceService,
+    public jobapplyService: JobapplyService,
+    public projectService: ProjectService,
     private toastr: ToastrService) { }
 
   ngOnInit() {
@@ -30,60 +30,60 @@ export class ResourcesComponent implements OnInit {
     this.orderService.setOrderCount();
   }
 
-  resetForm(form?: NgForm){
-    if (form){
+  resetForm(form?: NgForm) {
+    if (form) {
       form.reset();
       this.resourceService.selectedResource = {
-      _id: '',
-      resource_id: null,
-      resource_type: '',
-      resource_name: '',
-      resource_owner: '',
-      resource_count: null,
-      available: null,
+        _id: '',
+        resource_id: null,
+        resource_type: '',
+        resource_name: '',
+        resource_owner: '',
+        resource_count: null,
+        available: null,
 
 
       };
     }
   }
-  refreshOrderList(){
-    this.orderService.getOrderList().subscribe((res)=>{
-      this.orderService.orders= res as Order[];
+  refreshOrderList() {
+    this.orderService.getOrderList().subscribe((res) => {
+      this.orderService.orders = res as Order[];
     });
   }
 
-  refreshResourceList(){
-    this.resourceService.getResourceList().subscribe((res)=>{
+  refreshResourceList() {
+    this.resourceService.getResourceList().subscribe((res) => {
       this.resourceService.resource = res as Resource[];
     });
   }
 
-  onSubmit(form : NgForm){
-    if(form.value._id==''){
-    this.resourceService.postResource(form.value).subscribe((res)=>{
-      this.resetForm(form);
-      this.refreshResourceList();
-     // M.toast({html: 'Saved Successfully', classes: 'rounded'});
-    });
-  } else{
-  // tslint:disable-next-line: deprecation
-    this.resourceService.putResource(form.value).subscribe((res)=>{
-      this.resetForm(form);
-      this.refreshResourceList();
-    });
+  onSubmit(form: NgForm) {
+    if (form.value._id == '') {
+      this.resourceService.postResource(form.value).subscribe((res) => {
+        this.resetForm(form);
+        this.refreshResourceList();
+
+      });
+    } else {
+
+      this.resourceService.putResource(form.value).subscribe((res) => {
+        this.resetForm(form);
+        this.refreshResourceList();
+      });
+    }
   }
-}
-onEdit(reso:Resource){
-  this.resourceService.selectedResource= reso;
-}
-  onDelete(_id:string , form:NgForm ){
-    if(confirm('Are you sure to delete this record?')==true){
-      this.resourceService.deleteResource(_id).subscribe((res)=>{
+  onEdit(reso: Resource) {
+    this.resourceService.selectedResource = reso;
+  }
+  onDelete(_id: string, form: NgForm) {
+    if (confirm('Are you sure to delete this record?') == true) {
+      this.resourceService.deleteResource(_id).subscribe((res) => {
         this.refreshResourceList();
         this.resetForm(form);
         this.toastr.error('Deleted Successfully', 'Resource Data');
       },
-      (e) => console.log(e.message));
+        (e) => console.log(e.message));
     }
   }
 }

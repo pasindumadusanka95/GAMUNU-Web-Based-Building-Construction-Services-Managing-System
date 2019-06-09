@@ -86,49 +86,43 @@
         </div>
       </div>
       <div class="table-responsive">
-        <!-- Order table -->
+        <!-- Resource table -->
         <table class="table table-borderless table-striped table-earning">
           <thead>
-              <tr>
-                  <th>resource ID</th>
-                  <th>resource Type</th>
-                  <th>resource Name</th>
-                  <th>resource Owner</th>
-                  <th>resource Count</th>
-                  <th>available</th>
-                  <th></th>
-                  <!-- <th>service type</th>
-                  <th>service name</th>
-                  <th class="text-right">price</th>
-                  <th>Status</th> -->
-              </tr>
+            <tr>
+              <th>resource ID</th>
+              <th>resource Type</th>
+              <th>resource Name</th>
+              <th>resource Owner</th>
+              <th>resource Count</th>
+              <th>available</th>
+              <th></th>
+
+            </tr>
           </thead>
 
           <tbody>
 
-                  <tr *ngFor="let reso of resourceService.resource">
-                    <td>{{reso.resource_id}}</td>
-                    <td>{{reso.resource_type}}</td>
-                    <td>{{reso.resource_name}}</td>
-                    <td>{{reso.resource_owner}}</td>
-                    <td>{{reso.resource_count}}</td>
-                    <td>{{reso.available}}</td>
-                    <td> <button class="btn btn-outline-info" (click)="onEdit(reso)">Edit</button>
-                      <button class="btn btn-outline-danger" (click)="onDelete(reso._id,resourceForm)">Delete</button></td>
-                    <!-- <td>{{ord.date}}</td> -->
+            <tr *ngFor="let reso of resourceService.resource">
+              <td>{{reso.resource_id}}</td>
+              <td>{{reso.resource_type}}</td>
+              <td>{{reso.resource_name}}</td>
+              <td>{{reso.resource_owner}}</td>
+              <td>{{reso.resource_count}}</td>
+              <td>{{reso.available}}</td>
+              <td> <button class="btn btn-outline-info" (click)="onEdit(reso)">Edit</button>
+                <button class="btn btn-outline-danger" (click)="onDelete(reso._id,resourceForm)">Delete</button></td>
 
-
-                          <!-- <a href='addProjects/".$row['order_id']."/".$row['cus_name']."/".$row['service_name']."'><button type='submit' class='btn btn-primary'>Confirm</button>&nbsp<a href='deleteOrders/".$row['order_id']."'><button class='btn btn-danger'>Reject</button></a></td> -->
-                      </tr>
+            </tr>
 
 
 
           </tbody>
-      </table>
+        </table>
       </div>
     </div>
 
-  <hr>
-  <h3><b>Add Resources</b></h3>
-<br>
-  <app-addresources></app-addresources>
+    <hr>
+    <h3><b>Add Resources</b></h3>
+    <br>
+    <app-addresources></app-addresources>

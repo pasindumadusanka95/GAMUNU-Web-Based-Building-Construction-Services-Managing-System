@@ -17,10 +17,7 @@
                   </div>
                 </div>
               </div>
-              <!-- <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                <span class="text-nowrap">Since last month</span>
-              </p> -->
+
             </div>
           </div>
         </div>
@@ -38,10 +35,7 @@
                   </div>
                 </div>
               </div>
-              <!-- <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
-                <span class="text-nowrap">Since last week</span>
-              </p> -->
+
             </div>
           </div>
         </div>
@@ -59,10 +53,7 @@
                   </div>
                 </div>
               </div>
-              <!-- <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                <span class="text-nowrap">Since yesterday</span>
-              </p> -->
+
             </div>
           </div>
         </div>
@@ -89,54 +80,48 @@
         <!-- Order table -->
         <table class="table table-borderless table-striped table-earning">
           <thead>
-              <tr>
-                  <th>Project ID</th>
-                  <th>Order ID</th>
-                  <th>Project Name</th>
-                  <th>Start Date</th>
-                  <th>End Date</th>
-                  <th>Project Location</th>
-                  <th>Customer Name</th>
-                  <th>Project Status</th>
-                  <th>Project Cost</th>
-                  <th>Worker Count</th>
-                  <th></th>
-                  <!-- <th>service type</th>
-                  <th>service name</th>
-                  <th class="text-right">price</th>
-                  <th>Status</th> -->
-              </tr>
+            <tr>
+              <th>Project ID</th>
+              <th>Order ID</th>
+              <th>Project Name</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Project Location</th>
+              <th>Customer Name</th>
+              <th>Project Status</th>
+              <th>Project Cost</th>
+              <th>Worker Count</th>
+              <th></th>
+
+            </tr>
           </thead>
 
           <tbody>
 
-                  <tr *ngFor="let pro of projectService.projects">
-                    <td>{{pro.project_id}}</td>
-                    <td>{{pro.order_id}}</td>
-                    <td>{{pro.project_name}}</td>
-                    <td>{{pro.start_date}}</td>
-                    <td>{{pro.end_date}}</td>
-                    <td>{{pro.project_loc}}</td>
-                    <td>{{pro.cus_name}}</td>
-                    <td>{{pro.project_status}}</td>
-                    <td>{{pro.project_cost}}</td>
-                    <td>{{pro.worker_count}}</td>
-                    <td> <button class="btn btn-outline-info" (click)="onEdit(pro)">Edit</button>
-                      <button class="btn btn-outline-danger" (click)="onDelete(pro._id,projectForm)">Delete</button></td>
-                    <!-- <td>{{ord.date}}</td> -->
+            <tr *ngFor="let pro of projectService.projects">
+              <td>{{pro.project_id}}</td>
+              <td>{{pro.order_id}}</td>
+              <td>{{pro.project_name}}</td>
+              <td>{{pro.start_date}}</td>
+              <td>{{pro.end_date}}</td>
+              <td>{{pro.project_loc}}</td>
+              <td>{{pro.cus_name}}</td>
+              <td>{{pro.project_status}}</td>
+              <td>{{pro.project_cost}}</td>
+              <td>{{pro.worker_count}}</td>
+              <td> <button class="btn btn-outline-info" (click)="onEdit(pro)">Edit</button>
+                <button class="btn btn-outline-danger" (click)="onDelete(pro._id,projectForm)">Delete</button></td>
 
-
-                          <!-- <a href='addProjects/".$row['order_id']."/".$row['cus_name']."/".$row['service_name']."'><button type='submit' class='btn btn-primary'>Confirm</button>&nbsp<a href='deleteOrders/".$row['order_id']."'><button class='btn btn-danger'>Reject</button></a></td> -->
-                      </tr>
+            </tr>
 
 
 
           </tbody>
-      </table>
+        </table>
       </div>
     </div>
 
-<hr>
-<h3><b>Add Project</b></h3>
-<br>
-<app-addprojects></app-addprojects>
+    <hr>
+    <h3><b>Add Project</b></h3>
+    <br>
+    <app-addprojects></app-addprojects>

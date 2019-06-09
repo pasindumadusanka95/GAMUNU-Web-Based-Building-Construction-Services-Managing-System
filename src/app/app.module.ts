@@ -29,6 +29,8 @@ import {UserProfileComponent} from './pages/user-profile/user-profile.component'
 
 import { AuthService } from './shared/user.service'
 import { SharedModule } from './shared/shared.module';
+// import { StatisticsComponent } from './pages/statistics/statistics.component';
+//import { CalendarComponent } from './pages/calendar/calendar.component';
 // import { DashboardComponent } from './pages/dashboard/dashboard.component';
 @NgModule({
   imports: [
@@ -58,6 +60,8 @@ import { SharedModule } from './shared/shared.module';
     NavigationBarComponent,
   RegisterComponent,
   WorkerComponent,
+  // StatisticsComponent,
+  //CalendarComponent,
 //   DashboardComponent
   // UserProfileComponent
   ],

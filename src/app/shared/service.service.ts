@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Service} from './service.model';
+import { HttpClient } from '@angular/common/http';
+import { Service } from './service.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,21 +9,21 @@ export class ServiceService {
 
   selectedService: Service;
   service: Service[];
-  readonly baseURL= 'http://localhost:3000/services';
+  readonly baseURL = 'http://localhost:3000/services';
 
   constructor(private http: HttpClient) { }
 
-  postService(ser: Service){
-    return this.http.post(this.baseURL,ser);
+  postService(ser: Service) {
+    return this.http.post(this.baseURL, ser);
   }
 
-  getServiceList(){
+  getServiceList() {
     return this.http.get(this.baseURL);
   }
-  putService(ser: Service){
+  putService(ser: Service) {
     return this.http.put(this.baseURL + `/${ser._id}`, ser);
   }
-  deleteService(_id:String){
-    return this.http.delete(this.baseURL+`/${_id}`);
+  deleteService(_id: String) {
+    return this.http.delete(this.baseURL + `/${_id}`);
   }
 }
