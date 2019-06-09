@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
-import {Resource} from './resource.model';
+import { Resource } from './resource.model';
 
 
 @Injectable({
@@ -11,21 +11,21 @@ export class ResourceService {
 
   selectedResource: Resource;
   resource: Resource[];
-  readonly baseURL= 'http://localhost:3000/resources';
+  readonly baseURL = 'http://localhost:3000/resources';
 
   constructor(private http: HttpClient) { }
 
-  postResource(reso: Resource){
-    return this.http.post(this.baseURL,reso);
+  postResource(reso: Resource) {
+    return this.http.post(this.baseURL, reso);
   }
 
-  getResourceList(){
+  getResourceList() {
     return this.http.get(this.baseURL);
   }
-  putResource(reso: Resource){
+  putResource(reso: Resource) {
     return this.http.put(this.baseURL + `/${reso._id}`, reso);
   }
-  deleteResource(_id:String){
-    return this.http.delete(this.baseURL+`/${_id}`);
+  deleteResource(_id: String) {
+    return this.http.delete(this.baseURL + `/${_id}`);
   }
 }
