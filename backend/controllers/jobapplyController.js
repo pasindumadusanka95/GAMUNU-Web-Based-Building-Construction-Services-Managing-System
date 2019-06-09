@@ -84,7 +84,12 @@ router.post('/',(req,res, next)=>{
 
 			job.save((err,doc)=>{
 				console.log(doc);
-				if(!err){res.send(doc); }
+				if(!err){
+					const io = req.app.get('io');/////////Event Emitor////////////
+					io.emit("newJobApplicaitonEvent");
+
+					res.send(doc);
+				 }
 				else { 
 					// console.log('Error in Job apply Save : ' + JSON.stringify(err,undefined,2));
 					if (err.code == 11000) {

@@ -2,6 +2,7 @@ require('./models/db');
 require('./config/config');
 require('./config/passportConfig');
 
+const socket = require('socket.io');
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
@@ -22,6 +23,7 @@ var userFetchController = require('./controllers/userFetchController');
 const jwtHelper = require('./config/jwtHelper');
 // var registrationController = require('./controllers/registrationController');
 var app = express();
+const server = require('http').createServer(app);
 
 //middleware
 app.use(bodyParser.json());
@@ -29,7 +31,11 @@ app.use(cors({origin:'http://localhost:4200'}));
 app.use(passport.initialize());
 // app.use('/', rtsIndex)
 //start server
-app.listen(process.env.PORT, () => console.log(`Server started at port: ${process.env.PORT}`));
+server.listen(process.env.PORT, () => console.log(`Server started at port: ${process.env.PORT}`));
+
+//For Sockets
+const io = socket(server);
+app.set('io', io);
 
 app.use('/orders', orderController);
 app.use('/projects', projectController);

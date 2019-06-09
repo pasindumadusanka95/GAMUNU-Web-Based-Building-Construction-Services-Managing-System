@@ -145,6 +145,7 @@ router.delete('/:id', (req, res) => {
 });
 
 router.post('/',(req,res)=>{
+
   var ord= new order({
     date : req.body.date,
     order_id: req.body.order_id,
@@ -179,7 +180,10 @@ router.post('/',(req,res)=>{
       }
     });  
 
-     res.send(doc); 
+    const io = req.app.get('io');/////////Event Emitor////////////
+    io.emit("newOrderEvent");
+
+    res.send(doc); 
     }
     
     else { console.log('Error in Order Save : ' + JSON.stringify(err,undefined,2));}
