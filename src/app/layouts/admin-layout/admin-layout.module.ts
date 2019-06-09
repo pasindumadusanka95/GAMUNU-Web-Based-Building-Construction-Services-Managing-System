@@ -2,6 +2,11 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'; import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChartsModule } from 'ng2-charts';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ClipboardModule } from 'ngx-clipboard';
 
@@ -52,7 +57,14 @@ import { StatisticsComponent } from '../../pages/statistics/statistics.component
     MatButtonModule,
     MatCheckboxModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    ChartsModule,
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
   ],
   declarations: [
     DashboardComponent,
