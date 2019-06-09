@@ -20,6 +20,7 @@ var jobapplyController= require('./controllers/jobapplyController');
 var loginController= require('./controllers/loginController');
 var userFetchController = require('./controllers/userFetchController');
 var requestLeaveController= require('./controllers/requestLeaveController');
+var getnamesController= require('./controllers/getnameController');
 
 const jwtHelper = require('./config/jwtHelper');
 // var registrationController = require('./controllers/registrationController');
@@ -43,7 +44,7 @@ app.use('/projects', projectController);
 app.use('/resources', resourceController);
 app.use('/services', serviceController);
 app.use('/workers', workerController);
-app.use('/worker', workerController);
+app.use('/worker', getnameController);
 
 // app.use('/workers', registrationController);
 app.use('/jobapplys', jobapplyController);
