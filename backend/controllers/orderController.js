@@ -102,17 +102,17 @@ router.put('/:id', (req, res) => {
         }
         var ord= await orderPay_values(req,value[0],value[1]);
        
-        var draft= 'Your  Order has been processed  "'+
-          '\n\n'+
+        var draft= 'Your order has been processed  '+
+          '\n'+
           'Order ID :    '+value[0]+'\n'+
           'Service :     '+req.body.service_id+'\n'+
           'Payment ID :  '+value[1]+'\n'+
-          'Date :        '+req.body.date+'\n\nThank You';
+          'Date :        '+req.body.date+'\n\nFeel free to contact us for further details\n\nThank You\nGAMUNU Constructions';
           console.log(draft);
 
         await order.findByIdAndUpdate(req.params.id, { $set: ord }, { new: true }, (err, doc) => {
             if (!err) { 
-             /* var mailOptions = {                ///////////////////////email///////////////////
+              var mailOptions = {                ///////////////////////email///////////////////
                 from: '@gmail.com',
                 to: req.body.cus_email,
                 subject: 'GAMUNU CONSTRUCTION - For Your ORDER',
@@ -124,7 +124,7 @@ router.put('/:id', (req, res) => {
                 } else {
                   console.log('Email sent: ' + info.response);
                 }
-              }); */
+              }); 
               res.send(doc); 
             }
             else { console.log('Error in Order Update :' + JSON.stringify(err, undefined, 2)); }
@@ -161,16 +161,14 @@ router.post('/',(req,res)=>{
     ord.cus_email+'\n'+
     ord.cus_phone+'\n'+
     ord.cus_address+'\n\n'+
-    'Order ID:    '+ord.order_id+'\n'+
     'Service ID:  '+ord.service_id+'\n'+
-    'Payment ID:  '+ord.payment_id+'\n'+
     'Date:        '+ord.date;
   ord.save((err,doc)=>{
     if(!err){
       var mailOptions = {                ///////////////////////email///////////////////
       from: '@gmail.com',
       to: '@gmail.com',
-      subject: 'GAMUNU CONSTRUCTION new ORDER',
+      subject: 'GAMUNU CONSTRUCTION NEW ORDER',
       text:draft
     };
     transporter.sendMail(mailOptions, function(error, info){
