@@ -17,50 +17,51 @@ export class AddserviceComponent implements OnInit {
   closeResult: string;
   constructor(
     public serviceService: ServiceService,
-    private toastr : ToastrService) { }
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.resetForm(this.service_form);
     this.refreshServiceList();
   }
-  resetForm(form?: NgForm){
-    if(form){
+  resetForm(form?: NgForm) {
+    if (form) {
       form.reset();
       this.serviceService.selectedService = {
-      _id: '',
-      service_id: null,
-      service_name: '',
-      service_type: '',
-      price: '',
+        _id: '',
+        service_id: null,
+        service_name: '',
+        service_type: '',
+        price: '',
       };
     }
   }
 
-  refreshServiceList(){
-    this.serviceService.getServiceList().subscribe((res)=>{
-      this.serviceService.service= res as Service[];
+  refreshServiceList() {
+    this.serviceService.getServiceList().subscribe((res) => {
+      this.serviceService.service = res as Service[];
     });
-  }
-  onSubmit(form : NgForm){
-    if(form.value._id==""){
-    this.serviceService.postService(form.value).subscribe((res)=>{
-      this.resetForm(form);
-      this.refreshServiceList();
-      this.toastr.success('Submitted Successfully', 'Service Data');
-    });
-
-  }
-  else{
-  // tslint:disable-next-line: deprecation
-    this.serviceService.putService(form.value).subscribe((res)=>{
-      this.resetForm(form);
-      this.refreshServiceList();
-      this.toastr.info('Updated Successfully', 'Service Data');
-    });
-  }
   }
 
-  onEdit(ser:Service){
-    this.serviceService.selectedService= ser;
+   // here if condition is executed when adding new data and else condtion executed when updating data
+  onSubmit(form: NgForm) {
+    if (form.value._id == "") {
+      this.serviceService.postService(form.value).subscribe((res) => {
+        this.resetForm(form);
+        this.refreshServiceList();
+        this.toastr.success('Submitted Successfully', 'Service Data');
+      });
+
+    } else {
+
+      this.serviceService.putService(form.value).subscribe((res) => {
+        this.resetForm(form);
+        this.refreshServiceList();
+        this.toastr.info('Updated Successfully', 'Service Data');
+      });
+    }
+  }
+
+  onEdit(ser: Service) {
+    this.serviceService.selectedService = ser;
   }
 }

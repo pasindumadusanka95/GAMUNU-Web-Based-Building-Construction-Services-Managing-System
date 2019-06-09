@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http'; import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -54,7 +54,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
   ],
   declarations: [
     DashboardComponent,
-    // UserProfileComponent,
     TablesComponent,
     IconsComponent,
     MapsComponent,
@@ -70,4 +69,4 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 })
 
-export class AdminLayoutModule {}
+export class AdminLayoutModule { }
