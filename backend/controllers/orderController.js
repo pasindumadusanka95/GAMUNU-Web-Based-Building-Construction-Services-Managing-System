@@ -4,6 +4,7 @@ var ObjectId = require('mongoose').Types.ObjectId;
 
 var {order} = require('../models/order.model');
 var {transporter} = require('../models/email.model');
+var {promisify} = require('util');
 
 
 
@@ -44,7 +45,7 @@ router.get('/:id', (req, res) => {
 });
 
 
-function yuh(req,prevOrder_id,prevPayment_id){
+function orderPay_values(req,prevOrder_id,prevPayment_id){
   ord= {
     date : req.body.date,
     order_id: prevOrder_id,
@@ -56,44 +57,82 @@ function yuh(req,prevOrder_id,prevPayment_id){
     payment_id:prevPayment_id,
     order_status:req.body.order_status,
   };
-  return ord
+  return ord;
 }
+
+async function calOrderPay_ID(){
+  var prevOrder_id;
+  var prevPayment_id;
+  
+  /////////////////////Update Order_id  and payment_id////////////////////// 
+        var t=await order.find().exec();
+
+        prevOrder_id=0;
+        prevPayment_id=0;
+        for( orders of t){
+          if(orders.order_status=='Accepted'){
+            if(orders.order_id>prevOrder_id){
+              prevOrder_id=orders.order_id;
+            }
+            if(orders.payment_id>prevPayment_id){
+              prevPayment_id=orders.payment_id;
+            }
+          }
+        }
+        prevOrder_id+=1; 
+        prevPayment_id+=1; 
+
+        return await ([prevOrder_id,prevPayment_id]); 
+}
+
 
 router.put('/:id', (req, res) => {
   if (!ObjectId.isValid(req.params.id))
     return res.status(400).send(`No record with given id : ${req.params.id}`);
 
-    // waterfall(tasks, callback);
-     const update= async() =>{
      /////////////////////Update Order_id  and payment_id////////////////////// 
-         var prevOrder_id=5112;
-         var prevPayment_id=5217;
-         await  order.find((err, docs) =>{
-                  prevOrder_id=0;
-                  prevPayment_id=0;
-                  for( orders of docs){
-                    if(orders.order_status=='Accepted'){
-                      if(orders.order_id>prevOrder_id){
-                        prevOrder_id=orders.order_id;
-                      }
-                      if(orders.payment_id>prevPayment_id){
-                        prevPayment_id=orders.payment_id;
-                      }
-                    }
-                  }
-                  prevOrder_id+=1; 
-                  prevPayment_id+=1; 
-                }).exec();  
-        var ord= await yuh(req,prevOrder_id,prevPayment_id);
+      const update= async() =>{               
+        var value;
+        var ok=false;
+        while (ok==false){
+          value=await calOrderPay_ID();
+          if(value[0]!=null && value[1]!=null){
+            break;
+          }
+        }
+        var ord= await orderPay_values(req,value[0],value[1]);
+       
+        var draft= 'Your  Order has been processed  "'+
+          '\n\n'+
+          'Order ID :    '+value[0]+'\n'+
+          'Service :     '+req.body.service_id+'\n'+
+          'Payment ID :  '+value[1]+'\n'+
+          'Date :        '+req.body.date+'\n\nThank You';
+          console.log(draft);
 
-         await order.findByIdAndUpdate(req.params.id, { $set: ord }, { new: true }, (err, doc) => {
-            if (!err) { res.send(doc); }
+        await order.findByIdAndUpdate(req.params.id, { $set: ord }, { new: true }, (err, doc) => {
+            if (!err) { 
+             /* var mailOptions = {                ///////////////////////email///////////////////
+                from: '@gmail.com',
+                to: req.body.cus_email,
+                subject: 'GAMUNU CONSTRUCTION - For Your ORDER',
+                text:draft
+              }
+              transporter.sendMail(mailOptions, function(error, info){
+                if (error) {
+                  console.log('Error! Couldn\'t send the Email\n'+error);
+                } else {
+                  console.log('Email sent: ' + info.response);
+                }
+              }); */
+              res.send(doc); 
+            }
             else { console.log('Error in Order Update :' + JSON.stringify(err, undefined, 2)); }
-         });
+        });
       }
-
       update();
 });
+
 
 router.delete('/:id', (req, res) => {
   if (!ObjectId.isValid(req.params.id))
