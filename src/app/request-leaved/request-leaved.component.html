@@ -1,0 +1,64 @@
+
+
+<div class="card-body px-lg-5 py-lg-5">
+  <div class="text-center text-muted mb-4">
+    <h1>leave request form</h1>
+
+  </div>
+  <form #leaveForm="ngForm" autocomplete="off" (ngSubmit)="onSubmit(leaveForm)">
+
+    <div class="form-group">
+      <div class="input-group input-group-alternative">
+        <div class="input-group-prepend">
+
+        </div>
+        <input class="form-control" placeholder="from date" type="text"  name="fromdate" #from_date="ngModel" [(ngModel)]="requestLeaveService.selected.from_date" required>
+        <div *ngIf="from_date.invalid && (from_date.dirty || from_date.touched)" class="alert alert-danger">
+       <div *ngIf="from_date.errors.required">From_date is required</div>
+    </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-group input-group-alternative">
+        <div class="input-group-prepend">
+
+        </div>
+        <input class="form-control" placeholder="to Date" type="text"  name="todate" #to_date="ngModel" [(ngModel)]="requestLeaveService.selected.to_date" required>
+        <div *ngIf="to_date.invalid && (to_date.dirty || to_date.touched)" class="alert alert-danger">
+       <div *ngIf="to_date.errors.required">to_date is required</div>
+    </div>
+      </div>
+    </div>
+    <div class="custom-control custom-control-alternative custom-checkbox">
+      <input class="custom-control-input" id="sick" name="sick" #sick="ngModel" [(ngModel)]="requestLeaveService.selected.sick" type="checkbox">
+      <label class="custom-control-label" for="sick">
+        <span class="text-muted">sick</span>
+      </label>
+    </div>
+    <div class="custom-control custom-control-alternative custom-checkbox">
+      <input class="custom-control-input" id="bereavement" name="bereavement" #bereavement="ngModel" [(ngModel)]="requestLeaveService.selected.bereavement" type="checkbox">
+      <label class="custom-control-label" for="bereavement">
+        <span class="text-muted">bereavement</span>
+      </label>
+    </div>
+    <div class="custom-control custom-control-alternative custom-checkbox">
+      <input class="custom-control-input" id="timeoff" name="timeoff" #timeoff="ngModel" [(ngModel)]="requestLeaveService.selected.timeoff" type="checkbox">
+      <label class="custom-control-label" for="timeoff">
+        <span class="text-muted">timeoff(no pay)</span>
+      </label>
+    </div>
+    <div class="form-group">
+      <div class="input-group input-group-alternative">
+        <div class="input-group-prepend">
+
+        </div>
+        <input class="form-control" placeholder="other reason" type="text"  name="other" #other="ngModel" [(ngModel)]="requestLeaveService.selected.other" >
+      </div>
+    </div>
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-success my-4" [disabled]="leaveForm.invalid" >submit</button>
+      <button type="button" class="btn btn-danger my-4" ><a routerLink="/worker">cancel</a></button>
+    </div>
+  </form>
+</div>

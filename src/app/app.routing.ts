@@ -11,8 +11,11 @@ import { RegisterComponent } from './pages/register/register.component';
 import { WorkerComponent } from './worker/worker.component';
 import {UserProfileComponent} from './pages/user-profile/user-profile.component';
 // import { LoginComponent } from './auth/login/login.component';
-
+import { RequestLeavedComponent } from './request-leaved/request-leaved.component';
+import { ViewProjectsdComponent } from './view-projectsd/view-projectsd.component';
 import { AuthGuard } from './shared/auth/auth.guard';
+import { WorkerdComponent } from './workerd/workerd.component';
+
 // import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes =[
@@ -22,6 +25,16 @@ const routes: Routes =[
 	  { path: 'login', component:LoginComponent },
     { path: 'apply', component:RegisterComponent },
     { path: 'worker', component:WorkerComponent },
+		{ path: 'worker', component:WorkerdComponent,
+	children:[
+			 {
+					path: 'viewProjects',component:ViewProjectsdComponent
+			},
+				{path: 'leave',component:RequestLeavedComponent
+
+			}
+		]
+		 },
 	{ path: 'userprofile', component:UserProfileComponent, canActivate:[AuthGuard] },
 	// { path: 'dashboard', component:DashboardComponent},
   {

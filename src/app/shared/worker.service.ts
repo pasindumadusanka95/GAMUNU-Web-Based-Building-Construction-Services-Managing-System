@@ -11,13 +11,15 @@ export class WorkerService {
   selectedWorker: Worker;
   worker: Worker[];
   readonly baseURL= 'http://localhost:3000/workers';
-
+  readonly baseURLW= 'http://localhost:4200/worker';
   constructor(private http: HttpClient) { }
 
   postWorker(wor: Worker){
     return this.http.post(this.baseURL,wor);
   }
-
+  getname(){
+    return this.http.get(this.baseURLW);
+  }
   getWorkerList(){
     return this.http.get(this.baseURL);
   }
@@ -28,4 +30,3 @@ export class WorkerService {
     return this.http.delete(this.baseURL+`/${_id}`);
   }
 }
-

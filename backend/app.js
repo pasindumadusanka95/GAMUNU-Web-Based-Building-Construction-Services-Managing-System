@@ -19,6 +19,7 @@ var workerController= require('./controllers/workerController');
 var jobapplyController= require('./controllers/jobapplyController');
 var loginController= require('./controllers/loginController');
 var userFetchController = require('./controllers/userFetchController');
+var requestLeaveController= require('./controllers/requestLeaveController');
 
 const jwtHelper = require('./config/jwtHelper');
 // var registrationController = require('./controllers/registrationController');
@@ -42,8 +43,13 @@ app.use('/projects', projectController);
 app.use('/resources', resourceController);
 app.use('/services', serviceController);
 app.use('/workers', workerController);
+app.use('/worker', workerController);
+
 // app.use('/workers', registrationController);
 app.use('/jobapplys', jobapplyController);
 // app.use('/login');
+app.use('/worker/leave', requestLeaveController);
+app.use('/worker/viewProjects', projectController);
+
 app.use('/login', loginController)
 app.use('/userProfile', jwtHelper.verifyJwtToken, userFetchController )

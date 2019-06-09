@@ -13,7 +13,7 @@ export class ProjectService {
   projects: Project[];
   readonly baseURL = 'http://localhost:3000/projects';
   readonly baseURLC = 'http://localhost:3000/projects/count';
-
+  readonly baseURLW= 'http://localhost:4200/worker/viewProjects';
   constructor(private http: HttpClient) { }
 
   postProject(pro: Project) {
@@ -22,6 +22,9 @@ export class ProjectService {
 
   getProjectList() {
     return this.http.get(this.baseURL);
+  }
+  getProjectList1(){
+    return this.http.get(this.baseURLW);
   }
   putProject(pro: Project) {
     return this.http.put(this.baseURL + `/${pro._id}`, pro);

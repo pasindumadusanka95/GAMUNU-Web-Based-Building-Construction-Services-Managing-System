@@ -31,6 +31,9 @@ import {UserProfileComponent} from './pages/user-profile/user-profile.component'
 
 import { AuthService } from './shared/user.service'
 import { SharedModule } from './shared/shared.module';
+import { RequestLeavedComponent } from './request-leaved/request-leaved.component';
+import { ViewProjectsdComponent } from './view-projectsd/view-projectsd.component';
+import { WorkerdComponent } from './workerd/workerd.component';
 // import { StatisticsComponent } from './pages/statistics/statistics.component';
 //import { CalendarComponent } from './pages/calendar/calendar.component';
 // import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -64,6 +67,9 @@ import { SharedModule } from './shared/shared.module';
     NavigationBarComponent,
   RegisterComponent,
   WorkerComponent,
+  RequestLeavedComponent,
+  ViewProjectsdComponent,
+  WorkerdComponent,
   // StatisticsComponent,
   //CalendarComponent,
 //   DashboardComponent

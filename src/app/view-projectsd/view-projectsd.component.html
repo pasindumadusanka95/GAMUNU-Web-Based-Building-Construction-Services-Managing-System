@@ -1,0 +1,62 @@
+
+<div class="row mt-5">
+  <div class="col-xl-12 mb-5 mb-xl-0">
+    <div class="card shadow">
+      <div class="card-header border-0">
+        <div class="row align-items-center">
+          <div class="col">
+            <h3 class="mb-0">Ongoing Projects</h3>
+          </div>
+          <div class="col text-right">
+
+          </div>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <!-- Order table -->
+        <table class="table table-borderless table-striped table-earning">
+          <thead>
+              <tr>
+                  <th>Project ID</th>
+                  <th>Order ID</th>
+                  <th>Project Name</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Project Location</th>
+                  <th>Customer Name</th>
+                  <th>Project Status</th>
+                  <th>Project Cost</th>
+                  <th>Worker Count</th>
+                  <th></th>
+                  <!-- <th>service type</th>
+                  <th>service name</th>
+                  <th class="text-right">price</th>
+                  <th>Status</th> -->
+              </tr>
+          </thead>
+
+          <tbody>
+
+                  <tr *ngFor="let pro of projectService.projects">
+                    <td>{{pro.project_id}}</td>
+                    <td>{{pro.order_id}}</td>
+                    <td>{{pro.project_name}}</td>
+                    <td>{{pro.start_date}}</td>
+                    <td>{{pro.end_date}}</td>
+                    <td>{{pro.project_loc}}</td>
+                    <td>{{pro.cus_name}}</td>
+                    <td>{{pro.project_status}}</td>
+                    <td>{{pro.project_cost}}</td>
+                    <td>{{pro.worker_count}}</td>
+
+
+
+                          <!-- <a href='addProjects/".$row['order_id']."/".$row['cus_name']."/".$row['service_name']."'><button type='submit' class='btn btn-primary'>Confirm</button>&nbsp<a href='deleteOrders/".$row['order_id']."'><button class='btn btn-danger'>Reject</button></a></td> -->
+                      </tr>
+
+
+
+          </tbody>
+      </table>
+      </div>
+    </div>
