@@ -27,6 +27,8 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCheckboxModule, MatButtonModule } from '@angular/material';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { CalendarComponent } from '../../pages/calendar/calendar.component';
+import { StatisticsComponent } from '../../pages/statistics/statistics.component';
 
 @NgModule({
   imports: [
@@ -62,7 +64,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ProjectsComponent,
     AddserviceComponent,
     AddresourcesComponent,
-    AddprojectsComponent
+    AddprojectsComponent,
+    CalendarComponent,
+    StatisticsComponent
   ],
   providers: [
   ],
