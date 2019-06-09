@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import Chart from 'chart.js';
+//import Chart from 'chart.js';
 import { OrderService } from '../../shared/order.service';
 import { JobapplyService } from '../../shared/jobapply.service';
 import { Order } from '../../shared/order.model';

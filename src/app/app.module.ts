@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { ChartsModule } from 'ng2-charts';
+import { FlatpickrModule } from 'angularx-flatpickr';
 
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
@@ -48,7 +50,9 @@ import { SharedModule } from './shared/shared.module';
     }),
     MatButtonModule,
     MatCheckboxModule,
-    SharedModule
+    SharedModule,
+    ChartsModule,
+    FlatpickrModule.forRoot(),
   ],
   declarations: [
     AppComponent,

@@ -12,5 +12,7 @@ a.action-btn:hover{
   cursor: pointer;
 }
 @import '~ngx-toastr/toastr.css';
+@import 'flatpickr/dist/flatpickr.css';
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
 
 
